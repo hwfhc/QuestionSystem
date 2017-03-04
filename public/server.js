@@ -13,10 +13,6 @@ app.get('/javascripts/:file',function(req,res){
     res.sendFile(__dirname + '/javascripts/' + req.params['file']);
 });
 
-app.get('/articles/:file',function(req,res){
-    res.sendFile(__dirname + '/articles/' + req.params['file']);
-});
-
 var server = app.listen(80,function(){
     console.log('server running');
 });
