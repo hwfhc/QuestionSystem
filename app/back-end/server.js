@@ -2,6 +2,8 @@ exports.start = start;
 
 var express = require('express');
 var bodyParser = require('body-parser');//用于处理表单数据
+var signIn = require('./signIn');//用于处理用户登录
+var signUp = require('./signUp');//用于处理用户登录
 
 var app = express();
 
@@ -20,8 +22,20 @@ function start(root){
         res.sendFile(root + '/javascripts/' + req.params['file']);
     });
 
-    app.post('/test',function(req,res){
-        res.send("username: " + req.body.username + "<br>password: " + req.body.password);
+    app.post('/signIn',function(req,res){
+        var user = {
+            username: req.body.username,
+            password: req.body.password
+        }
+        signIn(user);
+    });
+
+    app.post('/signUp',function(req,res){
+        var user = {
+            username: req.body.username,
+            password: req.body.password
+        }
+        signUp(user);
     });
 
     var server = app.listen(80,function(){
