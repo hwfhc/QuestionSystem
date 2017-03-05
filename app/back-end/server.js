@@ -2,8 +2,7 @@ exports.start = start;
 
 var express = require('express');
 var bodyParser = require('body-parser');//用于处理表单数据
-var signIn = require('./signIn');//用于处理用户登录
-var signUp = require('./signUp');//用于处理用户登录
+var sign = require('./Sign');//用于处理用户登注册
 
 var app = express();
 
@@ -27,7 +26,7 @@ function start(root){
             username: req.body.username,
             password: req.body.password
         }
-        signIn(user);
+        sign.In(user);
     });
 
     app.post('/signUp',function(req,res){
@@ -35,7 +34,7 @@ function start(root){
             username: req.body.username,
             password: req.body.password
         }
-        signUp(user);
+        sign.Up(user);
     });
 
     var server = app.listen(80,function(){
