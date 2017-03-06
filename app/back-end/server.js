@@ -2,7 +2,7 @@ exports.start = start;
 
 var express = require('express');
 var bodyParser = require('body-parser');//用于处理表单数据
-var sign = require('./Sign');//用于处理用户登注册
+var sign = require('./sign');//用于处理用户登注册
 
 var app = express();
 
