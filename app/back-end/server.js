@@ -2,8 +2,10 @@ exports.start = start;
 
 var express = require('express');
 var bodyParser = require('body-parser');//用于处理表单数据
+var multipart = require('connect-multiparty');//用于处理AJAX表单
 var sign = require('./sign');//用于处理用户登注册
 
+var multipartMiddleware = multipart();
 var app = express();
 
 function start(root){
@@ -29,7 +31,8 @@ function start(root){
         sign.In(user);
     });
 
-    app.post('/signUp',function(req,res){
+    app.post('/signUp',multipartMiddleware,function(req,res){
+        console.log(req.body);
         var user = {
             username: req.body.username,
             password: req.body.password

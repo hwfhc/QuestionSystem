@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>划水</title>
+<meta charset="UTF-8">
+<title>划水</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 </head>
 <body>
 <div id="container">
 
     <form action="/signIn" method="post"><!--登陆表单-->
-          <p>用户名:</p>
-          <input type="text" name="username" autocomplete="off">
-          <br>
-          <p>密码:</p>
-          <input type="password" name="password" autocomplete="off">
-          <br><br>
-          <input type="submit" value="登录">
-      </form>
+        <p>用户名:</p>
+        <input type="text" name="username" autocomplete="off">
+        <br>
+        <p>密码:</p>
+        <input type="password" name="password" autocomplete="off">
+        <br><br>
+        <input type="submit" value="登录">
+    </form>
 
-<form action="/signUp" method="post"><!--注册表单-->
-          <p>用户名:</p>
-          <input type="text" name="username" autocomplete="off">
-          <br>
-          <p>密码:</p>
-          <input type="password" name="password" autocomplete="off">
-          <br><br>
-          <input type="submit" value="注册">
-      </form>
+    <form id="signUp"><!--注册表单-->
+        <p>用户名:</p>
+        <input type="text" name="username" autocomplete="off">
+        <br>
+        <p>密码:</p>
+        <input type="password" name="password" autocomplete="off">
+        <br><br>
+    </form>
 
-
-
+        <button id="test">daewf </button>
 </div>
 
-</body>
 <script src="javascripts/bundle.js"></script>
+
+</body>
 </html>

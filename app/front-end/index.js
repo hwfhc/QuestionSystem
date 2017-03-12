@@ -1,18 +1,14 @@
 console.log('dsaf');
 
-function send(){
-    var demo = new FormData(document.getElementById('test'));
-    demo.append('username','hehe');
+function signUp(){
+    var demo = new FormData(document.getElementById('signUp'));
+    console.log(demo);
+    console.log(demo.getAll('username'));
+    var xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4){
-            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
-                alert(xhr.responseText);
-            }
-        }else{
-            alert("success" + xhr.status);
-        }
-    }
-    xhr.open("post","/test.js",true);
+    xhr.open("post","/signUp",true);
     xhr.send(demo);
 }
+
+var btn = document.getElementById('test');
+btn.addEventListener('click',signUp);
