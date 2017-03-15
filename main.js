@@ -1,3 +1,3 @@
-var server = require('./app/back-end/server');
+var server = require('./app/server');
 
 server.start('/usr/local/Repositories/GuildHall/public');
