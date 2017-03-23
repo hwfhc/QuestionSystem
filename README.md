@@ -1,7 +1,7 @@
 ## 前端：
  + 兼容性暂时只考虑chrome
  + 暂时不考虑移动端页面
- + 会用js dom 和 margin布局
+ + 会用js dom(后台传数据渲染页面) 和 margin布局
  + 推荐学习webpack（打包工具），less（css编译器，写的更舒服），git（协作工具）
  + 了解ajax（前后端交互）
  + 建议代码结构清晰
