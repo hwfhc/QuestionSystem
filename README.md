@@ -30,8 +30,8 @@
      </li>
      <li>app:存放后台代码
       <ul>
-      <li>server.js:接受浏览器请求并调用相应函数,相当于一个中转站
-        <ul>
+      <li>server.js:接受浏览器请求并调用相应函数,相当于一个中转站，并在此处定义一些全局变量
+        <ul>
         <li>AJAX请求为/action/*</li>
         <li>对于页面的请求为/page.html、/page/javascripts/file.js、/page/css/file.css</li>
         </ul>
