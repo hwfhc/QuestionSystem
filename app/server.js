@@ -8,7 +8,9 @@ var sign = require('./sign');//用于处理用户登注册
 var multipartMiddleware = multipart();
 var app = express();
 
-function start(root){
+var root = '/usr/local/Repositories/GuildHall/public';
+
+function start(){
     app.use(bodyParser.urlencoded({ extended: false }));
 
     app.get('/',function(req,res){
