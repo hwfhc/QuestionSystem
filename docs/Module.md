@@ -41,7 +41,8 @@
 + start():初始化模块，挂载模块拥有接口
 + publishEssay(string):
 发布一个问答题
-  + string:题目描述
+
+  + string:题目描述
   
 ### **view_module**（题目查看模块）
 前端请求查看所有的题目时，此模块将数据从数据库中调出，然后以json的格式传回
