@@ -23,9 +23,9 @@
      <li>docs:存放说明文档
       <ul>
       <li>ProductRequirements.md:需求文档</li>
-      <li>前端页面说明.md:对每个页面进行说明，注明页面负责人</li>
-      <li>后台模块说明.md:说明模块，注明负责人</li>    
-      <li>后台接口说明.md:说明后台接口所需参数和返回值，注明接口负责人和从属模块</li>
+      <li>PageList.md:对每个页面进行说明，注明页面负责人</li>
+      <li>Module.md:说明模块，注明负责人</li>    
+      <li>DBtable.md:说明mysql数据库中的所有表</li>
       </ul>
      </li>
      <li>app:存放后台代码
