@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mysql --user=root --password=879574764 << eof
+DROP DATABASE QuestionSystem;
 CREATE DATABASE QuestionSystem;
 USE QuestionSystem; CREATE TABLE PersonalInformation(
      ID INT,
