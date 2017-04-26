@@ -2,4 +2,12 @@
 
 mysql --user=root --password=879574764 << eof
 CREATE DATABASE QuestionSystem;
+USE QuestionSystem; CREATE TABLE PersonalInformation(
+     ID INT,
+     NAME VARCHAR(20),
+     Graph INT,
+     PhoneNumber INT,
+     Score INT
+        )
+
 eof
