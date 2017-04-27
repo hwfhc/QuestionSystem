@@ -52,6 +52,7 @@
        <li>......</li>
        </ul>
      </li>
+     <li>tools:存放辅助开发的脚本 </li>
      <li>node_modules:存放第三方模块，如express，中间件等,存放功能性模块，如Sign模块负责登陆和注册)
        <ul>
        <li>express:使用express框架</li>
