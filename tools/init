@@ -1,13 +1,60 @@
 #!/bin/bash
 
 mysql --user=root --password=879574764 << eof
+
+#init QuestionSystem database
+
 CREATE DATABASE QuestionSystem;
-USE QuestionSystem; CREATE TABLE PersonalInformation(
+
+USE QuestionSystem;
+
+CREATE TABLE PersonalInformation(
      ID INT,
      NAME VARCHAR(20),
      Graph INT,
      PhoneNumber INT,
      Score INT
-        )
+   );
 
+CREATE TABLE ShadowTable(
+     ID INT,
+     Shadow VARCHAR(20)
+   );
+
+CREATE TABLE RightsTable(
+     ID INT,
+     Rights VARCHAR(20)
+   );
+
+CREATE TABLE AskQuestionTable(
+     ID INT,
+     description VARCHAR(20),
+     score INT,
+     time VARCHAR(20),
+     author INT
+   );
+
+CREATE TABLE MultipleChoiceTable(
+     ID INT,
+     description VARCHAR(20),
+     choices VARCHAR(20),
+     correct INT,
+     score INT,
+     time VARCHAR(20),
+     author INT
+   );
+
+CREATE TABLE AnswerTable(
+     ID INT,
+     title VARCHAR(20),
+     type VARCHAR(20),
+     userID INT,
+     answer VARCHAR(20),
+     state INT
+   );
+
+CREATE TABLE QuestionTable(
+     ID INT,
+     title VARCHAR(20),
+     type VARCHAR(20)
 eof
