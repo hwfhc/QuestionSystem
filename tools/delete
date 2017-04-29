@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mysql --user=root --password=879574764 << eof
+
+#delete QuestionSystem database
+
+DROP DATABASE QuestionSystem;
+
+eof

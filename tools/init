@@ -57,4 +57,5 @@ CREATE TABLE QuestionTable(
      ID INT,
      title VARCHAR(20),
      type VARCHAR(20)
+   );
 eof
