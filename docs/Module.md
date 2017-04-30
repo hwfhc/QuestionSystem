@@ -176,14 +176,14 @@
 + /signPage:    
 获取登录注册主页，前端通过js代码在发布两种题型间切换(切换时不与后台交互)
 
-+ /signPage/signIn:  
-获取个人的信息，返回json字符串
++ /signPage/signIn:  
+获取登录的请求，post表单
 
 + /signPage/signUp:  
-获取个人的信息，返回json字符串
+获取注册的请求，post表单
 
-+ /signPage/logOut:  
-获取个人的信息，返回json字符串
++ /signPage/logOut:  
+清除用户的登录状态
 
 
 方法：
