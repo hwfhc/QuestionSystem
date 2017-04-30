@@ -58,4 +58,10 @@ CREATE TABLE QuestionTable(
      title VARCHAR(20),
      type VARCHAR(20)
    );
+
+CREATE TABLE SignTable(
+     ID INT,
+     state INT
+   );
+
 eof
