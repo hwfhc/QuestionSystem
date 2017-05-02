@@ -1,13 +1,19 @@
 var express = require('express');
 
+//init global config
 var config = {
     app: express(),
-    directory: '/usr/local/Repositories/GuildHall/public',
+    directory: '/home/firewaterge/Repositories/GuildHall/public',
     modules: []
 };
 
-var sign = (require('./sign'))(config);
+//module load area
+config.modules['sign_module'] = (require('./sign_module'))(config);
 
-var server = app.listen(80,function(){
+//call function of the module in this way
+config.modules['sign_module'].hehe();
+
+//start server, and listen to port
+var server = config.app.listen(8080,function(){
     console.log('server start...');
 });

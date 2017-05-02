@@ -5,7 +5,7 @@ function start(config){
 
     app.get('/signPage', function(req, res){
         console.log('signPage');
-        res.send('hehe');
+        res.sendFile(config.directory + '/index.html');
     });
 
     return (new test());
