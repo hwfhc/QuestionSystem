@@ -14,6 +14,6 @@ config.modules['sign_module'] = (require('./sign_module'))(config);
 config.modules['sign_module'].hehe();
 
 //start server, and listen to port
-var server = config.app.listen(8080,function(){
+var server = config.app.listen(80,function(){
     console.log('server start...');
 });
