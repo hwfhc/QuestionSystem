@@ -4,22 +4,18 @@ function start(config){
     var app = config.app;
 
     app.get('/signPage', function(req, res){
-        console.log('signPage');
         res.sendFile(config.directory + '/index.html');
     });
 
     app.get('/signPage/signIn', function(req, res){
-        console.log('signPage');
         res.sendFile(config.directory + '/index.html');
     });
 
     app.get('/signPage/signUP', function(req, res){
-        console.log('signPage');
         res.sendFile(config.directory + '/index.html');
     });
 
     app.get('/signPage/logOut', function(req, res){
-        console.log('signPage');
         res.sendFile(config.directory + '/index.html');
     });
 
