@@ -3,18 +3,20 @@ module.exports = start;
 function start(config){
     var app = config.app;
 
-    config.connection.query('SELECT * FROM RightsTable',function (error, results, fields){
-        if (error) throw error;
-        console.log(results[0].Rights.split('|'));
-    });
-
-    return (new test());
+    return (new API(config));
 };
 
-function test(){
-    this.a = '23';
+function API(config){
+    this.config = config;
 }
 
-test.prototype.hehe = function(){
-    console.log('asdf');
+API.prototype.isAvailable = function(ID,right){
+    this.config.connection.query('SELECT * FROM RightsTable',
+        function (error, results, fields){
+            if (error) throw error;
+            results[0].Rights.split('|').some(function(item,index,array){
+                return (right == item);
+            });
+        });
+
 }
