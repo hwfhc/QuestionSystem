@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/SignIn-css.css">
+
+<title>无标题文档</title>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(document).ready(function(){
+
+    // Your code here.
+	$("input[name='username']").focus();
+	/*
+	$("#button").click(function(event){
+		event.preventDefault();
+
+		//....
+		$(".wrapper").addClass("form-success");
+	});
+	*/
+	/*
+	function check(){
+	    if(form.username.value.length<6||form.username.value.length>16)
+		{
+			alert("用户名不合法，请输入6-16位用户名");
+			form.username.focus();
+			return false;
+		}
+	    if(form.password.value.length<6||form.password.value.length>16)
+		{
+			alert("密码不合法，请输入6-16位密码");
+			form.password.focus();
+			return false;
+		}
+		//经常需要输入两次密码用于验证设置的密码是否一样
+	}
+	*/
+
+});
+</script>
+
+</head>
+
+<body>
+<div class="wrapper">
+
+<div id="header">
+  <span id="span1">注册</span>
+  <span id="span2">Sign in</span>
+</div>
+
+<div id="SignIn">
+  <form name="form" method="post" action="" onsubmit="">
+
+    <span style="display:block; font-family:myfont1; float:left; color:RGB(67,67,67);font-size:14px">*用户名</span>
+    <input type="text" required="required" name="username"></input>
+
+    <span style="display:block; float:left; font-family:myfont1;color:RGB(67,67,67);font-size:14px">*密码</span>
+    <input type="password" required="required" name="password"></input>
+
+    <span style="display:block; float:left; font-family:myfont1;color:RGB(67,67,67);font-size:14px">*真实姓名</span>
+    <input type="text" required="required" name="realname"></input>
+
+    <span style="display:block; float:left; font-family:myfont1;color:RGB(67,67,67);font-size:14px">手机号码</p>
+    <input type="password" name="phonenumber"></input>
+
+    <span style="display:block; float:left; font-family:myfont1;color:RGB(67,67,67);font-size:14px">邮箱</span>
+    <input type="text" name="mail"></input>
+
+    <button id="button" type="submit" value="submit">注册</button>
+
+    <div id="footer">
+      <span style="display:block; float:left; font-family:myfont1; font-size:14px">*为必填项</span>
+      <a href="LogIn.html" style="color:rgb(133,201,192); text-decoration:none; display:block; float:right; font-family:myfont1; font-size:14px">已有账号</a>
+    </div>
+
+  </form>
+</div>
+
+</div>
+
+</body>
+</html>
