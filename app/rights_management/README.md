@@ -1,4 +1,4 @@
-##Rights_management
+## Rights_management
 ---
 **isAvailable:**  
 查找某用户是否拥有某个权限  
