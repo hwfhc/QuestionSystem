@@ -10,13 +10,17 @@ function API(config){
     this.config = config;
 }
 
-API.prototype.isAvailable = function(ID,right){
+//exec callback function
+API.prototype.isAvailable = function(ID,right,callback){
     this.config.connection.query('SELECT * FROM RightsTable',
         function (error, results, fields){
             if (error) throw error;
-            results[0].Rights.split('|').some(function(item,index,array){
-                return (right == item);
-            });
-        });
 
+            if(results[0] != undefined){
+                var match = /publish/
+                console.log(match.exec(results[0].Rights)!=null);
+            }else{
+                return false;
+            }
+        });
 }
