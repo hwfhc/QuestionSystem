@@ -16,11 +16,17 @@ API.prototype.isAvailable = function(ID,right,callback){
         function (error, results, fields){
             if (error) throw error;
 
+            var value;
+
             if(results[0] != undefined){
-                var match = /publish/
-                console.log(match.exec(results[0].Rights)!=null);
+                var match = new RegExp(right);
+                value = (match.exec(results[0].Rights)!=null);
+
+                callback(value);
             }else{
-                return false;
+                value = false;
+
+                callback(value);
             }
         });
 }
