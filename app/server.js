@@ -24,12 +24,11 @@ config.modules['sign_module'] = (require('./sign_module'))(config);
 config.modules['rights_management'] = (require('./rights_management'))(config);
 
 //call function of the module in this way
-//config.modules['sign_module'].hehe();
 
-function test(result){
+/*function test(result){
     console.log(result);
-}
-config.modules['rights_management'].isAvailable(1,'hehe',test);
+}*/
+//config.modules['rights_management'].isAvailable(1,'hehe',test);
 
 //start server, and listen to port
 var server = config.app.listen(8080,function(){
