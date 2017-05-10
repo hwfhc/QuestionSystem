@@ -11,8 +11,8 @@ function API(config){
 }
 
 //exec callback function
-API.prototype.sql = function(ID,right,callback){
-    this.config.connection.query('SELECT * FROM RightsTable',
+API.prototype.sql = function(sql,callback){
+    this.config.connection.query(sql,
         function (error, results, fields){
             if (error) throw error;
 
