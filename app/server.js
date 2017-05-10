@@ -1,16 +1,5 @@
 var express = require('express');
 
-//init mysql
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password : '879574764',
-    database : 'QuestionSystem'
-});
-
-connection.connect();
-
 //init global config
 var config = {
     app: express(),
@@ -22,6 +11,7 @@ var config = {
 //module load area
 config.modules['sign_module'] = (require('./sign_module'))(config);
 config.modules['rights_management'] = (require('./rights_management'))(config);
+config.modules['saferman'] = (require('./saferman'))(config);
 
 //call function of the module in this way
 

@@ -1,32 +1,27 @@
 module.exports = start;
 
-function start(config){
-    var app = config.app;
+var mysql = require('mysql');
 
-    return (new API(config));
+
+function start(config){
+    var connection = mysql.createConnection({
+        host : 'localhost',
+        user : 'root',
+        password : '879574764',
+        database : 'QuestionSystem'
+    });
+
+    connection.connect();
+
+    return (new API(config,connection));
 };
 
-function API(config){
+function API(config,connection){
     this.config = config;
+    this.connection = connection;
 }
 
 //exec callback function
 API.prototype.sql = function(sql,callback){
-    this.config.connection.query(sql,
-        function (error, results, fields){
-            if (error) throw error;
-
-            var value;
-
-            if(results[0] != undefined){
-                var match = new RegExp(right);
-                value = (match.exec(results[0].Rights)!=null);
-
-                callback(value);
-            }else{
-                value = false;
-
-                callback(value);
-            }
-        });
+    this.connection.query(sql,callback);
 }
