@@ -12,21 +12,44 @@ function API(config){
 
 //exec callback function
 API.prototype.isAvailable = function(ID,right,callback){
-    this.config.connection.query('SELECT * FROM RightsTable',
-        function (error, results, fields){
-            if (error) throw error;
+    var sql_string = 'SELECT * FROM RightsTable WHERE ID=' + ID;
 
-            var value;
+    this.config.modules['saferman'].sql(sql_string,function(results){
+        var value;
 
-            if(results[0] != undefined){
-                var match = new RegExp(right);
-                value = (match.exec(results[0].Rights)!=null);
+        if(results[0] != undefined){
+            var match = new RegExp(right);
+            value = (match.exec(results[0].Rights)!=null);
 
+            if(callback!=undefined)
                 callback(value);
-            }else{
-                value = false;
+        }else{
+            value = false;
 
+
+            if(callback!=undefined)
                 callback(value);
-            }
-        });
+        }
+    });
+}
+
+API.prototype.Add = function(ID,right){
+    this.config.modules['saferman'].sql("UPDATE RightsTable SET rights='write' WHERE ID=0");
+}
+
+API.prototype.Delete = function(ID,right){
+    this.config.modules['saferman'].sql('SELECT * FROM RightsTable',function(results){
+        var value;
+
+        if(results[0] != undefined){
+            var match = new RegExp(right);
+            value = (match.exec(results[0].Rights)!=null);
+
+            callback(value);
+        }else{
+            value = false;
+
+            callback(value);
+        }
+    });
 }

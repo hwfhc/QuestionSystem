@@ -4,21 +4,19 @@ var express = require('express');
 var config = {
     app: express(),
     directory: '/home/firewaterge/Repositories/GuildHall/public',
-    modules: [],
-    connection : connection
+    modules: []
 };
+
 
 //module load area
 config.modules['sign_module'] = (require('./sign_module'))(config);
 config.modules['rights_management'] = (require('./rights_management'))(config);
 config.modules['saferman'] = (require('./saferman'))(config);
 
-//call function of the module in this way
-
-/*function test(result){
-    console.log(result);
-}*/
-//config.modules['rights_management'].isAvailable(1,'hehe',test);
+config.modules['rights_management'].isAvailable(0,'write',function(value){
+    console.log(value);
+});
+//config.modules['rights_management'].Add(0,'publish');
 
 //start server, and listen to port
 var server = config.app.listen(8080,function(){
