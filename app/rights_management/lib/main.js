@@ -38,6 +38,13 @@ API.prototype.Add = function(ID,right){
     var config = this.config;
 
     //check rights string
+    if(right != 'publish'
+        && right != 'answer'
+        && right != 'view'
+        && right != 'view_personal_infromation'
+    ){
+        return;
+    }
 
     //get rights string
     var sql_string = 'SELECT Rights FROM RightsTable WHERE ID=' + ID;

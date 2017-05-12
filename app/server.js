@@ -16,7 +16,7 @@ config.modules['saferman'] = (require('./saferman'))(config);
 /*config.modules['rights_management'].isAvailable(0,'asd',function(value){
     console.log(value);
 });*/
-config.modules['rights_management'].Add(0,'hhh');
+config.modules['rights_management'].Add(0,'publish');
 
 //start server, and listen to port
 var server = config.app.listen(8080,function(){
