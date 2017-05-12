@@ -23,7 +23,7 @@ CREATE TABLE ShadowTable(
 
 CREATE TABLE RightsTable(
      ID INT,
-     Rights VARCHAR(20)
+     Rights VARCHAR(50)
    );
 
 CREATE TABLE AskQuestionTable(

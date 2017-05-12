@@ -12,9 +12,11 @@ function API(config){
 
 //exec callback function
 API.prototype.isAvailable = function(ID,right,callback){
-    var sql_string = 'SELECT * FROM RightsTable WHERE ID=' + ID;
+    var config = this.config;
 
-    this.config.modules['saferman'].sql(sql_string,function(results){
+    var sql_string = 'SELECT Rights FROM RightsTable WHERE ID=' + ID;
+
+    config.modules['saferman'].sql(sql_string,function(results){
         var value;
 
         if(results[0] != undefined){
@@ -25,7 +27,6 @@ API.prototype.isAvailable = function(ID,right,callback){
                 callback(value);
         }else{
             value = false;
-
 
             if(callback!=undefined)
                 callback(value);
@@ -34,32 +35,28 @@ API.prototype.isAvailable = function(ID,right,callback){
 }
 
 API.prototype.Add = function(ID,right){
+    var config = this.config;
 
     //check rights string
 
     //get rights string
-    var sql_string = 'SELECT * FROM RightsTable WHERE ID=' + ID;
+    var sql_string = 'SELECT Rights FROM RightsTable WHERE ID=' + ID;
 
-    this.config.modules['saferman'].sql(sql_string,function(results){
-        var value;
+    config.modules['saferman'].sql(sql_string,function(results){
 
-        if(results[0] != undefined){
-            var match = new RegExp(right);
-            value = (match.exec(results[0].Rights)!=null);
+        var match = new RegExp(right);
+        var value = (match.exec(results[0].Rights)!=null);
 
-            if(callback!=undefined)
-                callback(value);
+        if(value){
+            //user has this right
         }else{
-            value = false;
-
-
-            if(callback!=undefined)
-                callback(value);
+            //user not has this right
+            //update rights string
+            sql_string = "UPDATE RightsTable SET Rights='" + results[0].Rights + "|" + right + "' WHERE ID=" + ID;
+            config.modules['saferman'].sql(sql_string);
         }
-    });
 
-    //update rights string
-    this.config.modules['saferman'].sql("UPDATE RightsTable SET rights='write' WHERE ID=0");
+    });
 }
 
 API.prototype.Delete = function(ID,right){
