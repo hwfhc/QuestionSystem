@@ -40,14 +40,10 @@
      </li>
      <li>public:存放前端页面
        <ul>
-       <li>page1:一个页面一个文件夹，页面统一命名
-         <ul>
-         <li>javascripts:存放js文件</li>
-         <li>css:存放css文件</li>
-         <li>imgs:存放图片等资源</li>
-         <li>page1.html:页面html文件</li>
-         </ul>
-         </li>
+       <li>css:存放所有css文件的文件夹，应有对应html页面前缀</li>
+       <li>javascripts:存放所有js文件的文件夹，应有对应html页面 </li>
+       <li>page1:存放某功能对应所有html文件的文件夹
+       </li>
        <li>page2</li>
        <li>......</li>
        </ul>
