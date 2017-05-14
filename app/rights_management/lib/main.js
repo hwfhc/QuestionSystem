@@ -15,19 +15,4 @@ API.prototype.isAvailable = require('./isAvailable.js');
 
 API.prototype.Add = require('./Add.js');
 
-API.prototype.Delete = function(ID,right){
-    this.config.modules['saferman'].sql('SELECT * FROM RightsTable',function(results){
-        var value;
-
-        if(results[0] != undefined){
-            var match = new RegExp(right);
-            value = (match.exec(results[0].Rights)!=null);
-
-            callback(value);
-        }else{
-            value = false;
-
-            callback(value);
-        }
-    });
-}
+API.prototype.Delete = require('./Delete.js');

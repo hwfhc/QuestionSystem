@@ -4,6 +4,6 @@ mysql --user=root --password=879574764 << eof
 
 USE QuestionSystem;
 
-INSERT INTO RightsTable (ID,Rights) VALUES (0,'publish');
+INSERT INTO RightsTable (ID,Rights) VALUES (0,'|publish');
 
 eof
