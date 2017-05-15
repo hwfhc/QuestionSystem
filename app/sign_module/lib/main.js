@@ -22,10 +22,21 @@ function start(config){
     return (new test());
 };
 
-function test(){
+function signIn(){
+
+}
+
+function signUp(){
+
+}
+function logOut(){
+
+}
+
+function API(){
     this.a = '23';
 }
 
-test.prototype.hehe = function(){
+API.prototype.hehe = function(){
     console.log('asdf');
 }
