@@ -4,7 +4,7 @@ function start(config){
     var app = config.app;
 
     app.get('/signPage', function(req, res){
-        res.sendFile(config.directory + '/signPage/index.html');
+        res.sendFile(config.directory + '/signPage/SignIn.html');
     });
 
     app.get('/signPage/signIn', function(req, res){
@@ -19,7 +19,7 @@ function start(config){
         res.sendFile(config.directory + '/index.html');
     });
 
-    return (new test());
+    return (new API());
 };
 
 function signIn(){

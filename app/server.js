@@ -14,7 +14,7 @@ var config = {
 //init common route
 config.app.get('/css/:file',function(req,res){
     console.log(directory + '/css/' + req.params['file']);
-    res.sendFile('/css/' + req.params['file']);
+    res.sendFile(directory + '/css/' + req.params['file']);
 });
 
 config.app.get('/javascripts/:file',function(req,res){
