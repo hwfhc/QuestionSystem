@@ -10,39 +10,43 @@ var config = {
 config.modules['rights_management'] = (require(directory + './rights_management'))(config);
 config.modules['saferman'] = (require(directory + './saferman'))(config);
 
-//test_1
+describe('isAvailable',function(){
 
-config.modules['rights_management'].isAvailable(0,'publish',function(value){
+    //test_1
+    it('sql publish',function(){
+        config.modules['rights_management'].isAvailable(0,'publish',function(value){
+            expect(value).to.be.a('boolean');
+            expect(value).to.be.equal(true);
 
-    //test_1 area
-    expect(value).to.be.a('boolean');
-    expect(value).to.be.equal(true);
-});
-
-//test_2
-
-config.modules['rights_management'].isAvailable(0,'answer',function(value){
-
-    //test_2 area
-    expect(value).to.be.a('boolean');
-    expect(value).to.be.equal(false);
-});
-
-//test_3
-
-config.modules['rights_management'].isAvailable(0,'view',function(value){
-
-    //test_3 area
-    expect(value).to.be.a('boolean');
-    expect(value).to.be.equal(true);
-});
+        });
+    });
 
 
-//test_4
-//
-config.modules['rights_management'].isAvailable(0,'ew',function(value){
+    //test_2
+    it('sql answer',function(){
+        config.modules['rights_management'].isAvailable(0,'answer',function(value){
+            expect(value).to.be.a('boolean');
+            expect(value).to.be.equal(false);
+        });
+    });
 
-    //test_4 area
-    expect(value).to.be.a('boolean');
-    expect(value).to.be.equal(false);
+
+    //test_3
+    it('sql view',function(){
+        config.modules['rights_management'].isAvailable(0,'view',function(value){
+            expect(value).to.be.a('boolean');
+            expect(value).to.be.equal(true);
+        });
+    });
+
+
+    //test_4
+    it('sql ew',function(){
+        config.modules['rights_management'].isAvailable(0,'ew',function(value){
+            expect(value).to.be.a('boolean');
+            expect(value).to.be.equal(false);
+        });
+    });
+
+
 });
