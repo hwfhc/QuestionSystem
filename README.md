@@ -30,6 +30,12 @@
      </li>
      <li>app:存放后台代码
       <ul>
+      <li>node_modules:存放功能模块，如rights_management等
+             <ul>
+             <li>rights_management:负责管理 用户的权限</li>
+             <li>......</li>
+             </ul>
+      </li>
       <li>server.js:接受浏览器请求并调用相应函数,相当于一个中转站，并在此处定义一些全局变量
         <ul>
         <li>AJAX请求为/action/*</li>
@@ -49,10 +55,9 @@
        </ul>
      </li>
      <li>tools:存放辅助开发的脚本 </li>
-     <li>node_modules:存放第三方模块，如express，中间件等,存放功能性模块，如Sign模块负责登陆和注册)
+     <li>node_modules:存放第三方模块，如express，中间件等)
        <ul>
        <li>express:使用express框架</li>
-       <li>Sign:负责登陆和注册与数据库的交互</li>
        <li>......</li>
        </ul>
      </li>
