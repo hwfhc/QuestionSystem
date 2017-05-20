@@ -24,9 +24,9 @@ config.app.get('/javascripts/:file',function(req,res){
 
 
 //module load area
-config.modules['sign_module'] = (require('./sign_module'))(config);
-config.modules['rights_management'] = (require('./rights_management'))(config);
-config.modules['saferman'] = (require('./saferman'))(config);
+config.modules['sign_module'] = (require('sign_module'))(config);
+config.modules['rights_management'] = (require('rights_management'))(config);
+config.modules['saferman'] = (require('saferman'))(config);
 
 config.modules['rights_management'].Delete(0,'publish');
 

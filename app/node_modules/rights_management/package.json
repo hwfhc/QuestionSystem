@@ -1,0 +1,13 @@
+{
+  "name": "rights_management",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+
+  "scripts": {
+    "test": "mocha"
+  },
+
+  "author": "",
+  "license": "ISC"
+}
