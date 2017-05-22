@@ -1,6 +1,7 @@
 ## 数据库存储结构
 + PersonalInformation:  
-个人信息表，存储所有用户的信息
+个人信息表，存储所有用户的信息  
+personalInformation_module
 
   + ID(int):用户的序号
   + Name(string):用户的昵称
@@ -11,7 +12,9 @@
 ---
 
 + ShadowTable:  
-密码表，存储所有用户的密码
+密码表，存储所有用户的密码  
+sign_module
+
 
   + ID(int):用户的序号
   + Shadow(string):仅限英文和数字
@@ -19,7 +22,8 @@
 ---
 
 + RightsTable:  
-权限表，存储所有用户的权限
+权限表，存储所有用户的权限  
+rights_management
 
   + ID(int):用户的序号
   + Rights(string):用户的权限，用|分割，如：publish|view
@@ -71,8 +75,9 @@
 
 ---
 
-+ SignTable:  
-记录用户登录状态
++ SessionTable:  
+记录用户登录状态  
+sign_module
 
   + ID(int):用户的序号
   + state(int):登录状态，值始终大于0表示处于登录状态。一定时间间隔后-1，用户每次与服务器交互本值重置。当为0时从列表删除此项，需要重新登录

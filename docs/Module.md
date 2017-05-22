@@ -23,10 +23,9 @@
  + view_personal_information:查看他人信息
  + admin:超级权限
 
-依赖：
- + tag_set
-
 方法：
+ + initRights(ID):  
+
  + isAvailable(ID,right):  
 判断某用户是否拥有某个权限
     + true：用户存在且拥有该权限
@@ -164,6 +163,7 @@
 
 方法：
 + start():初始化模块，挂载模块拥有接口，返回一个实例对象
++ initUser(Name):return ID
 + isSignIn():
 获取发来的http中的cookie和session数据，若无此数据则判断未登录，发回请先登录页面
 + whoIs(Name):
