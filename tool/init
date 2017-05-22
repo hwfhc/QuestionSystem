@@ -9,7 +9,7 @@ CREATE DATABASE QuestionSystem;
 USE QuestionSystem;
 
 CREATE TABLE PersonalInformation(
-     ID INT,
+     ID INT not null primary key,
      NAME VARCHAR(20),
      Graph INT,
      PhoneNumber INT,
