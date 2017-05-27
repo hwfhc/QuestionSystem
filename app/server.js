@@ -28,9 +28,6 @@ config.modules['sign_module'] = (require('sign_module'))(config);
 config.modules['rights_management'] = (require('rights_management'))(config);
 config.modules['saferman'] = (require('saferman'))(config);
 
-
-config.modules['rights_management'].initRightsOfUser(1);
-
 //start server, and listen to port
 var server = config.app.listen(8080,function(){
     console.log('server start...');
