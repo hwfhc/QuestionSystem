@@ -26,9 +26,10 @@ config.app.get('/javascripts/:file',function(req,res){
 //module load area
 config.modules['sign_module'] = (require('sign_module'))(config);
 config.modules['rights_management'] = (require('rights_management'))(config);
+config.modules['personalinformation_module'] = (require('personalinformation_module'))(config);
 config.modules['saferman'] = (require('saferman'))(config);
 
-config.modules['rights_management'].Delete(0,'publi');
+config.modules['personalinformation_module'].initUser('fea');
 
 //start server, and listen to port
 var server = config.app.listen(8080,function(){
