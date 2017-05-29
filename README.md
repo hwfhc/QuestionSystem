@@ -48,11 +48,10 @@
        <ul>
        <li>css:存放所有css文件的文件夹，应有对应html页面前缀</li>
        <li>javascripts:存放所有js文件的文件夹，应有对应html页面 </li>
-       <li>page1:存放某功能对应所有html文件的文件夹
-       </li>
-       <li>page2</li>
        <li>......</li>
        </ul>
+     </li>
+     <li>views:存放所有html文件 
      </li>
      <li>tools:存放辅助开发的脚本 </li>
      <li>node_modules:存放第三方模块，如express，中间件等)
