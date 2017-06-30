@@ -1,0 +1,51 @@
+project1(工作室答题系统)
+   <ul>
+     <li>docs:存放说明文档
+      <ul>
+      <li>ProductRequirements.md:需求文档</li>
+      <li>PageList.md:对每个页面进行说明，注明页面负责人</li>
+      <li>Module.md:说明模块，注明负责人</li>    
+      <li>DBtable.md:说明mysql数据库中的所有表</li>
+      </ul>
+     </li>
+     <li>app:存放后台代码
+      <ul>
+      <li>node_modules:存放功能模块，如rights_management等
+             <ul>
+             <li>rights_management:负责管理 用户的权限</li>
+             <li>......</li>
+             </ul>
+      </li>
+      <li>server.js:接受浏览器请求并调用相应函数,相当于一个中转站，并在此处定义一些全局变量
+        <ul>
+        <li>AJAX请求为/action/*</li>
+        <li>对于页面的请求为/page.html、/page/javascripts/file.js、/page/css/file.css</li>
+        </ul>
+      </li>
+      </ul>
+     </li>
+     <li>public:
+       <ul>
+       <li>css:存放所有css文件的文件夹，应有对应html页面前缀</li>
+       <li>javascripts:存放所有js文件的文件夹，应有对应html页面 </li>
+       <li>......</li>
+       </ul>
+     </li>
+     <li>views:存放所有html文件 
+     </li>
+     <li>routes:存放路由文件
+       <ul>
+       <li>main.js:运行路由代码</li>
+       <li>signPage.js:存放关于signPage页面的路由代码，由main.js调用</li>
+       <li>......</li>
+       </ul>
+     </li>
+     <li>tools:存放辅助开发的脚本 </li>
+     <li>node_modules:存放第三方模块，如express，中间件等)
+       <ul>
+       <li>express:使用express框架</li>
+       <li>......</li>
+       </ul>
+     </li>
+     <li>main.js:node程序启动代码</li>
+   </ul>
