@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 
 
 //init global config
@@ -9,6 +10,8 @@ var config = {
     directory: directory,
     modules: []
 };
+
+
 
 commonRouteInit();
 moduleInit();
