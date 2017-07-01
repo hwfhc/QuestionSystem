@@ -16,9 +16,11 @@ app.use(session({
 app.get('/index',function(req,res){
     if(req.session.isVisit){
         req.session.isVisit = req.session.isVisit + 1;
+        console.log(req.session);
         res.send('sd: ' + req.session.isVisit);
     }else{
         req.session.isVisit=1;
+        console.log(req.session);
         res.send('sd: ' + req.session.isVisit);
     }
 });

@@ -3,7 +3,7 @@ var session = require('express-session');
 
 
 //init global config
-var directory = '/home/firewaterge/Repositories/GuildHall/public';
+var directory = '/home/firewaterge/Repositories/GuildHall';
 
 var config = {
     app: express(),
@@ -24,15 +24,7 @@ var server = config.app.listen(8080,function(){
 
 
 function commonRouteInit(){
-
-    config.app.get('/css/:file',function(req,res){
-        console.log(directory + '/css/' + req.params['file']);
-        res.sendFile(directory + '/css/' + req.params['file']);
-    });
-
-    config.app.get('/javascripts/:file',function(req,res){
-        res.sendFile(root + '/javascripts/' + req.params['file']);
-    });
+    (require('../routes/main.js')(config));
 }
 
 function moduleInit(){
