@@ -8,6 +8,9 @@ app = express();
 app.use(session({
     store: new FileStore(),
     secret: 'hehe',
+    cookie:{
+        maxAge: 30000
+    }
 }));
 
 app.get('/index',function(req,res){
