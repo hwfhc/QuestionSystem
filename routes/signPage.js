@@ -8,6 +8,10 @@ function init(config){
         res.sendFile(directory + '/views/signPage/SignUp.html');
     });
 
+    app.get('/signPage2',function(req,res){
+        res.sendFile(directory + '/views/signPage/SignIn.html');
+    });
+
     app.post('/signPage/signIn', function(req, res){
         res.sendFile(directory + '/index.html');
     });
