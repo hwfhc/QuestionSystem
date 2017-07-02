@@ -1,6 +1,13 @@
 var express = require('express');
 var session = require('express-session');
 
+var FileStore = require('session-file-store')(session);
+var bodyParser = require('body-parser');//用于处理表单数据
+var multipart = require('connect-multiparty');//用于处理AJAX表单
+
+var multipartMiddleware = multipart();
+
+
 
 //init global config
 var directory = '/home/firewaterge/Repositories/GuildHall';
@@ -11,9 +18,11 @@ var config = {
     modules: []
 };
 
+config.app.use(bodyParser.urlencoded({ extended: false }));
 
 
-commonRouteInit();
+initSession();
+initRoutes();
 moduleInit();
 
 //start server, and listen to port
@@ -22,8 +31,18 @@ var server = config.app.listen(8080,function(){
 });
 
 
+function initSession(){
 
-function commonRouteInit(){
+    config.app.use(session({
+        store: new FileStore(),
+        secret: 'hehe',
+        cookie:{
+            maxAge: 30000
+        }
+    }));
+}
+
+function initRoutes(){
     (require('../routes/main.js')(config));
 }
 
