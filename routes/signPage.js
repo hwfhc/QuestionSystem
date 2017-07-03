@@ -5,7 +5,11 @@ function init(config){
     var directory = config.directory;
 
     app.get('/signPage',function(req,res){
-        res.sendFile(directory + '/views/signPage/SignUp.html');
+        if(req.session.ID == undefined){
+            res.sendFile(directory + '/views/signPage/SignUp.html');
+        }else{
+            res.send('sd: ' + req.session.ID);
+        }
     });
 
     app.get('/signPage2',function(req,res){
@@ -13,7 +17,17 @@ function init(config){
     });
 
     app.post('/signPage/signIn', function(req, res){
-        res.sendFile(directory + '/index.html');
+        var username = req.body.username;
+        var password = req.body.password;
+
+        config.modules['sign_module'].signIn(username,password,req,function(){
+            if(req.session.ID != undefined){
+                res.sendFile(directory + '/views/jump.html');
+            }else{
+                console.log('I should send fail text');
+                res.send('wdad');
+            }
+        });
     });
 
     app.post('/signPage/signUP', function(req, res){
