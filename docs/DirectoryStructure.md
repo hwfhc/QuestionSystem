@@ -26,6 +26,7 @@ project1(工作室答题系统)
      </li>
      <li>public:
        <ul>
+       <li>less:存放所有less文件的文件夹，应有对应html页面前缀</li>
        <li>css:存放所有css文件的文件夹，应有对应html页面前缀</li>
        <li>javascripts:存放所有js文件的文件夹，应有对应html页面 </li>
        <li>......</li>
