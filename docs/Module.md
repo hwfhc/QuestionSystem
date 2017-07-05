@@ -74,7 +74,6 @@
 
 
 方法：
-+ start():初始化模块，挂载模块拥有接口，返回一个实例对象
 + publishAskQuestion(title,description,score,time,author):  
 发布一个问答题(直接连接到数据库)
 
@@ -119,8 +118,6 @@
 判断是否给分，post传递数据，ID(用户ID),ID(题目的序号),judge(布尔值，指示是否给分)
 
 方法：
-+ start():初始化模块，挂载模块拥有接口，返回一个实例对象
-
 + GetQuestionList():  
 获取所有题目的列表
 
@@ -141,7 +138,6 @@
 获取用户推送的答案，post方法
 
 方法：
-+ start():初始化模块，挂载模块拥有接口，返回一个实例对象
 + postAnswer(ID,userID,answer):  
 在回答表中增添一个回答
 
@@ -162,10 +158,9 @@
 获取个人的信息，返回json字符串
 
 方法：
-+ start():初始化模块，挂载模块拥有接口，返回一个实例对象
-+ initUser(Name):return ID
-+ isSignIn():
-获取发来的http中的cookie和session数据，若无此数据则判断未登录，发回请先登录页面
++ initUser(Name,password):初始化用户,用户ID从1开始，更改ShadowTable,PersonalInformation,RightsTable(调用rights_management的initRightsOfUser方法)  
+
++ ifUsernameMatchPasswordGetID(Name,password,callback):传入用户名和密码，如果匹配则返回用户ID，否则返回false,返回值传入回调函数
 + whoIs(Name):
 传入用户昵称，获取用户的ID
 
@@ -189,7 +184,6 @@
 
 
 方法：
-+ start():初始化模块，挂载模块拥有接口，返回一个实例对象
 + signUp(name,password,repassword,phone_number):  
 注册一个用户，写入数据到ShadowTable、PersonalInformation表、呼叫rights_management模块初始化该用户的权限
   
@@ -206,5 +200,7 @@
   + password:密码
 
 
++ isSignIn(req):  
+判断request中的session数据是否为登录状态
 + logOut():  
-根据http中的session信息，清除用户的session和cookie信息
+清除用户的session和cookie信息
