@@ -10,13 +10,15 @@ function init(config){
         if(isSignIn){
             res.send('sd: ' + req.session.ID);
         }else{
-            res.sendFile(directory + '/views/signPage/SignUp.html');
+            res.sendFile(directory + '/views/signPage.html');
         }
     });
 
     app.post('/signPage/signIn', function(req, res){
         var username = req.body.username;
         var password = req.body.password;
+        console.log(username);
+        console.log(password);
 
         config.modules['sign_module'].signIn(username,password,req,function(){
             var isSignIn = config.modules['sign_module'].isSignIn(req);

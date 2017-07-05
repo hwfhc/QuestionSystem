@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 
-<link rel="stylesheet" type="text/css" href="SignIn and SignUp.css">
+<link rel="stylesheet" type="text/css" href="/css/signPage.css">
 
 <title>SignIn</title>
 
@@ -37,10 +37,10 @@ function tran2(){
 
 	<div id="SignIn">   
 
-		<form name="form" method="post" action="" onsubmit="">
+		<form name="form" method="post" action="/signPage/signIn">
 	  
 		    <span id="mail">邮箱/用户名</span>
-		    <input type="text" required="required" name="mail"></input>
+		    <input type="text" required="required" name="username"></input>
 		    
 		    <span id="password">密码</span>
 		    <a id="forget" href="">忘记密码</a>
@@ -62,7 +62,7 @@ function tran2(){
 	</div>
 
 	<div id="SignUp">
-	  <form name="form" method="post" action="">
+	  <form name="form" method="post" action="/signPage/signUp">
 
 	    <span class="signup">*用户名</span>
 	    <input type="text" required="required" name="username"></input>
