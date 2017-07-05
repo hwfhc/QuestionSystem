@@ -5,15 +5,13 @@ function init(config){
     var directory = config.directory;
 
     app.get('/signPage',function(req,res){
-        if(req.session.ID == undefined){
-            res.sendFile(directory + '/views/signPage/SignUp.html');
-        }else{
-            res.send('sd: ' + req.session.ID);
-        }
-    });
+        var isSignIn = config.modules['sign_module'].isSignIn(req);
 
-    app.get('/signPage2',function(req,res){
-        res.sendFile(directory + '/views/signPage/SignIn.html');
+        if(isSignIn){
+            res.send('sd: ' + req.session.ID);
+        }else{
+            res.sendFile(directory + '/views/signPage/SignUp.html');
+        }
     });
 
     app.post('/signPage/signIn', function(req, res){
@@ -21,12 +19,15 @@ function init(config){
         var password = req.body.password;
 
         config.modules['sign_module'].signIn(username,password,req,function(){
-            if(req.session.ID != undefined){
+            var isSignIn = config.modules['sign_module'].isSignIn(req);
+
+            if(isSignIn){
                 res.sendFile(directory + '/views/jump.html');
             }else{
                 console.log('I should send fail text');
                 res.send('wdad');
             }
+
         });
     });
 
@@ -38,7 +39,8 @@ function init(config){
     });
 
     app.get('/signPage/logOut', function(req, res){
-        res.sendFile(directory + '/index.html');
+        config.modules['sign_module'].logOut(req);
+        res.sendFile(directory + '/views/jump.html');
     });
 
 }
