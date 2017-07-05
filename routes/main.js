@@ -15,6 +15,10 @@ function initRoutes(config){
         res.sendFile(directory + '/public/javascripts/' + req.params['file']);
     });
 
+    app.get('/picture/:file',function(req,res){
+        res.sendFile(directory + '/public/picture/' + req.params['file']);
+    });
 
     (require('./signPage'))(config);
+    (require('./personalHomePage'))(config);
 }

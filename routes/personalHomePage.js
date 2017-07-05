@@ -4,17 +4,17 @@ function init(config){
     var app = config.app;
     var directory = config.directory;
 
-    app.get('/signPage',function(req,res){
+    app.get('/personalHomePage',function(req,res){
         var isSignIn = config.modules['sign_module'].isSignIn(req);
 
         if(isSignIn){
             res.sendFile(directory + '/views/personalHomePage.html');
         }else{
-            res.sendFile(directory + '/views/signPage.html');
+            res.sendFile(directory + '/views/pleaseSignInFirst.html');
         }
     });
 
-    app.post('/signPage/signIn', function(req, res){
+    app.post('/personalHomePage/getPersonalInformation', function(req, res){
         var username = req.body.username;
         var password = req.body.password;
         console.log(username);
@@ -24,26 +24,13 @@ function init(config){
             var isSignIn = config.modules['sign_module'].isSignIn(req);
 
             if(isSignIn){
-                res.sendFile(directory + '/views/signInSuccess.html');
+                res.sendFile(directory + '/views/jump.html');
             }else{
                 console.log('I should send fail text');
-                res.sendFile(directory + '/views/signInFail.html');
+                res.send('wdad');
             }
 
         });
     });
 
-    app.post('/signPage/signUP', function(req, res){
-        var username = req.body.username;
-        var password = req.body.password;
-
-        config.modules['sign_module'].signUp(username,password);
-    });
-
-    app.get('/signPage/logOut', function(req, res){
-        config.modules['sign_module'].logOut(req);
-        res.sendFile(directory + '/views/jump.html');
-    });
-
 }
-
