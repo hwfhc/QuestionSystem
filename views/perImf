@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>个人信息</title>
+        <link href="perImf.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="perImf.js"></script>
+    </head>
+    <body>
+        <div id="header">
+          <div id="logo">
+            <img src="logo.jpg" alt="logo"/>
+          </div>
+          <div id="user">
+              <img src="face.jpg" alt="face"/>
+          </div>
+        </div>
+        <div id="main">
+          <div id="left">
+            <div id="ti">凌睿工作室答题系统</div>
+            <ul>
+              <li>首页</li>
+              <li>题目列表</li>
+              <li>题目发布</li>
+              <li>个人信息</li>
+            </ul>
+          </div>
+          <div id="right">
+            <div id="userimformation">
+              <div id="uiheader"></div>
+              <div id="uimain">
+                <div id="uileft">
+                  <div id="face">
+                    <img src="face.jpg" alt="face"/>
+                  </div>
+                  <div id="username">用户名</div>
+                </div>
+            </div>
+              <div id="uiright"></div><!--这里是一个空的div框框-->
+            </div>
+          </div>
+        </div>
+    </body>
+</html>
