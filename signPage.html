@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="SignIn and SignUp.css">
+
+<title>SignIn</title>
+
+<script>
+function tran1(){
+	var oWrap1=document.getElementById('wrap1'),
+	oWrap2=document.getElementById('wrap2');
+
+		oWrap1.style.display='none';
+		oWrap2.style.display='block';
+}
+function tran2(){
+	var oWrap1=document.getElementById('wrap1'),
+	oWrap2=document.getElementById('wrap2');
+
+		oWrap1.style.display='block';
+		oWrap2.style.display='none';
+}
+</script>
+
+</head>
+
+<body>
+<div id="wrap1">
+
+	<div id="header">
+	  <span id="span1">登陆</span>                                   
+	  <span id="span2">Log in</span>
+	</div>
+
+	<div id="SignIn">   
+
+		<form name="form" method="post" action="" onsubmit="">
+	  
+		    <span id="mail">邮箱/用户名</span>
+		    <input type="text" required="required" name="mail"></input>
+		    
+		    <span id="password">密码</span>
+		    <a id="forget" href="">忘记密码</a>
+		    <input type="password" required="required" name="password"></input>
+		    
+		    <button type="submit" id="button" name="submit" value="submit">登录</button>
+		    
+		    <div id="footer">还没有账号？&nbsp&nbsp <a onclick="tran1();">立即注册</a></div>
+		</form>
+	 
+	</div>
+
+</div>
+
+<div id="wrap2" style="display:none">
+	<div id="header">
+	  <span id="span1">注册</span>
+	  <span id="span2">Sign in</span>
+	</div>
+
+	<div id="SignUp">
+	  <form name="form" method="post" action="">
+
+	    <span class="signup">*用户名</span>
+	    <input type="text" required="required" name="username"></input>
+
+	    <span>*密码</span>
+	    <input type="password" required="required" name="password"></input>
+
+	    <span>*真实姓名</span>
+	    <input type="text" required="required" name="realname"></input>
+
+	    <span>手机号码</p>
+	    <input type="password" name="phonenumber"></input>
+
+	    <span>邮箱</span>
+	    <input type="text" name="mail"></input>
+
+	    <button id="button" type="submit" value="submit">注册</button>
+
+	    <div id="footer">
+	      <span style="display:block; float:left; font-family:myfont1; font-size:14px">*为必填项</span>
+	      <a onclick="tran2();" style="color:rgb(133,201,192); text-decoration:none; display:block; float:right; font-family:myfont1; font-size:14px">已有账号</a>
+	    </div>
+
+	  </form>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+@charset "utf-8";
+
+@font-face{
+  font-family:myfont1;
+  src: url('C:/Users/GRANT/Desktop/汉仪旗黑-40S5.0.ttf');}
+@font-face{
+  font-family:myfont2;
+  src: url('C:/Users/GRANT/Desktop/HYQiHei-50S.otf');}
+@font-face{
+  font-family:myfont3;
+  src: url('C:/Users/GRANT/Desktop/HelveticaNeueLTPro-Th.otf');}
+
+body {
+  background: #ffffff;
+}
+#wrap1 #header {
+  text-align: center;
+  width: 366px;
+  height: 40px;
+  margin: 0px auto;
+  margin-top: 150px;
+}
+#wrap1 #header #span1 {
+  display: block;
+  float: left;
+  font-size: 30px;
+  font-family: myfont2;
+  color: #434343;
+}
+#wrap1 #header #span2 {
+  display: block;
+  float: right;
+  font-size: 24px;
+  font-family: myfont3;
+  color: #434343;
+}
+#SignIn {
+  width: 366px;
+  height: 300px;
+  background-color: #ffffff;
+  border: gray 1px ridge;
+  padding: 30px;
+  margin: 3px auto;
+}
+#SignIn input {
+  width: 358px;
+  height: 35px;
+  background-color: #fafafa;
+  border: #CCC 1px solid;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+#SignIn #button {
+  width: 366px;
+  display: block;
+  padding: 9px 14px;
+  border-radius: 5px;
+  background-color: #6fb98a;
+  min-height: 20px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: myfont1;
+  line-height: normal;
+  margin-top: 10px;
+  margin-bottom: 45px;
+}
+#SignIn #mail {
+  font-family: myfont1;
+  color: #434343;
+  font-size: 14px;
+}
+#SignIn #password {
+  display: block;
+  float: left;
+  font-family: myfont1;
+  font-size: 14px;
+}
+#SignIn #forget {
+  color: #85c9c0;
+  text-decoration: none;
+  display: block;
+  font-family: myfont1;
+  float: right;
+  font-size: 12px;
+}
+#SignIn #footer {
+  width: 180px;
+  float: right;
+  font-family: myfont1;
+  font-size: 14px;
+}
+#SignIn #footer a {
+  color: #85c9c0;
+  text-decoration: none;
+}
+
+
+#wrap2 #header {
+  width: 366px;
+  height: 40px;
+  text-align: center;
+  margin: 0px auto;
+  margin-top: 30px;
+}
+#wrap2 #header #span1 {
+  display: block;
+  float: left;
+  font-size: 30px;
+  font-family: myfont2;
+  color: #434343;
+}
+#wrap2 #header #span2 {
+  display: block;
+  float: right;
+  font-size: 24px;
+  font-family: myfont3;
+  color: #434343;
+}
+#SignUp {
+  width: 366px;
+  height: 520px;
+  background-color: #ffffff;
+  border: gray 1px ridge;
+  padding: 30px;
+  margin: 3px auto;
+}
+#SignUp .signup {
+  display: block;
+  font-family: myfont1;
+  float: left;
+  color: #434343;
+  font-size: 14px;
+}
+#SignUp input {
+  width: 366px;
+  height: 30px;
+  background-color: #fafafa;
+  padding: 4px;
+  border: #CCC 1px solid;
+  border-radius: 4px;
+  margin-bottom: 25px;
+  font-size: 17px;
+}
+#SignUp #button {
+  width: 374px;
+  min-height: 30px;
+  display: block;
+  padding: 9px 14px;
+  border-radius: 5px;
+  background-color: #6fb98a;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: myfont1;
+  line-height: normal;
+  margin-bottom: 40px;
+}
