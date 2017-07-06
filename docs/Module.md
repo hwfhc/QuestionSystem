@@ -204,3 +204,14 @@
 判断request中的session数据是否为登录状态
 + logOut():  
 清除用户的session和cookie信息
+
+---
+
+### **saferman**（SQL模块）
+运行检测sql的模块(直接连接到数据库)
+
+
+方法：
++ sql(sql_string,callback):  
+执行sql_string语句，并把结果作为callback的参数（callback不为空时才运行）
+ 
