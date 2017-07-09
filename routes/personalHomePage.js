@@ -17,8 +17,8 @@ function init(config){
     app.post('/personalHomePage/getPersonalInformation', function(req, res){
         var username = req.body.username;
         var password = req.body.password;
-        console.log(username);
-        console.log(password);
+        //console.log(username);
+        //console.log(password);
 
         config.modules['sign_module'].signIn(username,password,req,function(){
             var isSignIn = config.modules['sign_module'].isSignIn(req);
@@ -26,7 +26,7 @@ function init(config){
             if(isSignIn){
                 res.sendFile(directory + '/views/jump.html');
             }else{
-                console.log('I should send fail text');
+                //console.log('I should send fail text');
                 res.send('wdad');
             }
 
