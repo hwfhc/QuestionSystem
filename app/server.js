@@ -14,6 +14,8 @@ initMiddleware(config);
 initRoutes(config);
 initModule(config);
 
+//config.modules['sign_module'].signUp('abc_',123);
+
 //start server, and listen to port
 var server = config.app.listen(8080,function(){
     console.log('server start...');
