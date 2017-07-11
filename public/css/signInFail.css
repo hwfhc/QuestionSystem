@@ -1,0 +1,34 @@
+body{
+  padding-top: 100px;
+  background-color: #FAFAFA;
+  font-family: 微软雅黑;
+  text-align: center;
+  width: auto;
+}
+
+#word{
+  width:200px;
+  height: 100px;
+  margin: 100px auto;
+  color:red;
+}
+
+#butt{
+  width:200px;
+  height: 100px;
+  margin: 200px auto;
+  line-height: 100px;
+  color:#9DCFAF;
+  border: 1px solid #9DCFAF;
+  background: #FAFAFA;
+}
+
+#butt:hover{
+  width:200px;
+  height: 100px;
+  margin: 200px auto;
+  line-height: 100px;
+  color:#FAFAFA;
+  border: 1px solid #9DCFAF;
+  background: #9DCFAF;
+}
