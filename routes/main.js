@@ -7,6 +7,16 @@ function initRoutes(config){
     var directory = config.directory;
 
 
+    app.get('/',function(req,res){
+        var isSignIn = config.modules['sign_module'].isSignIn(req);
+
+        if(isSignIn){
+            res.sendFile(directory + '/views/personalHomePage.html');
+        }else{
+            res.sendFile(directory + '/views/pleaseSignInFirst.html');
+        }
+    });
+
     app.get('/css/:file',function(req,res){
         res.sendFile(directory + '/public/css/' + req.params['file']);
     });
