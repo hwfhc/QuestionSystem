@@ -108,6 +108,9 @@
 + /questionList:  
 请求显示题目列表的页面
 
++ /questionList/getQuestionList: 
+获取所有题目列表的接口
+
 + /questionList/questionDetail?title= &type= :  
 请求显示题目详情的页面
 
