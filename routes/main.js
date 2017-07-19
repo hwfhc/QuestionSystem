@@ -31,4 +31,5 @@ function initRoutes(config){
 
     (require('./signPage'))(config);
     (require('./personalHomePage'))(config);
+    (require('./questionList'))(config);
 }
