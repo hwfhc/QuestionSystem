@@ -7,14 +7,28 @@ function initRoutes(config){
     var directory = config.directory;
 
 
-    app.get('/',function(req,res){
-        var isSignIn = config.modules['sign_module'].isSignIn(req);
 
-        if(isSignIn){
-            res.sendFile(directory + '/views/personalHomePage.html');
+    app.use(function (req,res,next){
+        if(req.path==='/'||
+            req.path==='/personalHomePage'||
+            req.path==='/questionList')
+        {
+
+            var isSignIn = config.modules['sign_module'].isSignIn(req);
+
+            if(isSignIn){
+                next();
+            }else{
+                res.sendFile(directory + '/views/pleaseSignInFirst.html');
+            }
+
         }else{
-            res.sendFile(directory + '/views/pleaseSignInFirst.html');
+            next();
         }
+    });
+
+    app.get('/',function(req,res){
+        res.sendFile(directory + '/views/personalHomePage.html');
     });
 
     app.get('/css/:file',function(req,res){
