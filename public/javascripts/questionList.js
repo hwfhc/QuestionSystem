@@ -1,6 +1,6 @@
 var myJSON = '{ \
   "list":[\
-  {"name":"css3题目","link":123},\
+  {"name":"css3题目","link":"/questionDetail"},\
   {"name":"es6题目","link":123},\
   {"name":"http题目","link":123}\
 ]}';
