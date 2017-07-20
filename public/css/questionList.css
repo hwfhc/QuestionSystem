@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body,
+html {
+  background-color: white;
+  font-family: 微软雅黑;
+  text-align: center;
+  height: 100%;
+}
+#header {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  box-shadow: 0 0.5px 3px grey;
+}
+#header .logo {
+  height: 85px;
+  margin-left: 10%;
+}
+#header .user {
+  height: 85px;
+  margin-left: 50%;
+}
+#main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+#left {
+  min-height: 100%;
+  min-width: 300px;
+  width: 25%;
+  height: 100%;
+  background-color: #6fb98a;
+  color: white;
+}
+#left .item {
+  display: block;
+  height: 50px;
+  width: 200px;
+  margin: 5px 20px;
+  list-style-type: none;
+  font-size: 16px;
+  line-height: 50px;
+}
+#left .item a {
+  text-decoration: none;
+  color: white;
+}
+#left .title {
+  margin: 80px 5% 10px 5%;
+  height: 100px;
+  width: 250px;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 100px;
+  overflow: hidden;
+  border-bottom: 1px solid white;
+}
+#right {
+  min-width: 600px;
+  width: 74%;
+}
+#userimformation {
+  margin: 4%;
+  width: 90%;
+  box-shadow: 0 0.5px 10px grey;
+  overflow: hidden;
+}
+#userimformation .uiheader {
+  background-color: #6fb98a;
+  width: auto;
+  height: 20px;
+}
+#userimformation .uimain {
+  min-height: 500px;
+}
+#userimformation .uimain table {
+  border-collapse: collapse;
+  width: 100%;
+}
+#userimformation .uimain th,
+#userimformation .uimain td {
+  text-align: left;
+  padding-left: 40px;
+  border-bottom: 1px solid black;
+}
+#userimformation .uimain th a,
+#userimformation .uimain td a {
+  text-decoration: none;
+  color: black;
+}
+#userimformation .uimain th {
+  height: 50px;
+}
+#userimformation .uimain td {
+  height: 40px;
+}

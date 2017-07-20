@@ -8,7 +8,7 @@ function init(config){
         var isSignIn = config.modules['sign_module'].isSignIn(req);
 
         if(isSignIn){
-            res.sendFile(directory + '/views/personalHomePage.html');
+            res.sendFile(directory + '/views/questionList.html');
         }else{
             res.sendFile(directory + '/views/signPage.html');
         }
