@@ -14,7 +14,7 @@ function init(config){
         }
     });
 
-    app.post('/questionList/getQuestionList', function(req, res){
+    app.get('/questionList/getQuestionList', function(req, res){
         var username = req.body.username;
         var password = req.body.password;
         //console.log(username);
@@ -33,12 +33,18 @@ function init(config){
         });
     });
 
-    app.post('/questionList/signUP', function(req, res){
+    app.get('/questionList/questionDetail', function(req, res){
         var username = req.body.username;
         var password = req.body.password;
 
         config.modules['sign_module'].signUp(username,password);
     });
 
+    app.get('/questionList/viewAnswer', function(req, res){
+        var username = req.body.username;
+        var password = req.body.password;
+
+        config.modules['sign_module'].signUp(username,password);
+    });
 }
 
