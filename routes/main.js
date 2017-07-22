@@ -6,8 +6,6 @@ function initRoutes(config){
     var app = config.app;
     var directory = config.directory;
 
-
-
     app.use(function (req,res,next){
         if(req.path==='/'||
             req.path==='/personalHomePage'||
