@@ -5,7 +5,7 @@ function init(config){
     var directory = config.directory;
 
     app.get('/personalHomePage',function(req,res){
-            res.sendFile(directory + '/views/personalHomePage.html');
+        res.sendFile(directory + '/views/personalHomePage.html');
     });
 
     app.post('/personalHomePage/getPersonalInformation', function(req, res){

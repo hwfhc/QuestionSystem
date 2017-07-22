@@ -53,7 +53,7 @@ function initMiddleware(config){
 }
 
 function initRoutes(config){
-    (require('../routes/main.js')(config));
+    (require('../routes/index.js')(config));
 }
 
 function initModule(config){

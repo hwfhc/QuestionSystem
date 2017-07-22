@@ -28,10 +28,7 @@ function init(config){
     });
 
     app.get('/questionList/questionDetail', function(req, res){
-        var username = req.body.username;
-        var password = req.body.password;
-
-        config.modules['sign_module'].signUp(username,password);
+        res.sendFile(directory + '/views/questionDetail.html');
     });
 
     app.get('/questionList/viewAnswer', function(req, res){
