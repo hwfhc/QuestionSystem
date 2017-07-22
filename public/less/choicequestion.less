@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body,html {
+  background-color: white;
+  font-family: 微软雅黑;
+  text-align: center;
+  height: 100%;
+}
+#header {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  box-shadow: 0 0.5px 3px grey;
+
+  .logo {
+    height: 85px;
+    margin-left: 10%;
+  }
+
+  .user {
+    height: 85px;
+    margin-left: 50%;
+  }
+}
+
+#main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+#left {
+  min-width: 300px;
+  width: 25%;
+  height: 100%;
+  background-color: #6fb98a;
+  color: white;
+
+  .item {
+    display: block;
+    height: 50px;
+    width: 200px;
+    margin: 5px 20px;
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 50px;
+  }
+
+  .item a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .title {
+    margin: 80px 5% 10px 5%;
+    height: 100px;
+    width: 250px;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 100px;
+    overflow: hidden;
+    border-bottom: 1px solid white;
+  }
+}
+
+#right {
+  min-width: 600px;
+  width: 74%;
+}
+#userimformation {
+  margin: 4%;
+  width: 90%;
+  box-shadow: 0 0.5px 10px grey;
+  overflow: hidden;
+
+  .uiheader {
+    background-color: #6fb98a;
+    width: auto;
+    height: 20px;
+  }
+  
+  .uimain {
+    min-height: 600px;
+    margin: 3%;
+    width: 94%;
+    box-shadow: 0 0.5px 10px grey;
+
+    .questionnumber{
+      width: auto;
+      height: 50px;
+      line-height: 50px;
+      font-size: 20px;
+      color: #6fb98a;
+      text-align: left;
+    }
+    .questioncontent{
+      width: auto;
+      height: 100px;
+      line-height: 100px;
+      font-size: 20px;
+      text-align: left;
+    }
+    .replyzone{
+      width: 844px;
+      height: 390px;
+      background-color: #f5f5f5;
+
+      .zoneleft{
+        width: 20px;
+        height: 375px;
+        margin: 0px 32px;
+        padding-top: 15px;
+        float: left;
+
+        .img{
+          display: block;
+          margin: 5px 0px;
+          height: 50px;
+          width: 20px;
+          list-style-type: none;
+        }
+      }
+
+      .zoneright{
+        width: 760px;
+        height: 390px;
+        float: left;
+
+        .lili{
+          display: block;
+          height: 50px;
+          width: 200px;
+          margin: 5px 0px;
+          list-style-type: none;
+          font-size: 16px;
+          text-align: left;
+          line-height: 50px;
+        }
+      }
+    }
+
+    .uifooter{
+      height: 60px;
+
+      .next{
+        margin: 10px;
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #6fb98a;
+        font-size: 20px;
+        color: white;
+        float: right;
+
+        a{
+          text-decoration: none;
+          color: white;
+        }
+      }
+
+      .submit{
+        margin: 10px;
+        width:100px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #eeeeee;
+        font-size: 20px;
+        float: right;
+      }
+    }
+  }
+}
