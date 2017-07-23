@@ -47,4 +47,5 @@ function initRoutes(config){
     (require('./questionDetail'))(config);
     (require('./answerPage'))(config);
     (require('./publishPage'))(config);
+    (require('./answerDetail'))(config);
 }
