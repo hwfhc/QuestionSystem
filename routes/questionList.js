@@ -27,10 +27,6 @@ function init(config){
         });
     });
 
-    app.get('/questionList/questionDetail', function(req, res){
-        res.sendFile(directory + '/views/questionDetail.html');
-    });
-
     app.get('/questionList/viewAnswer', function(req, res){
         var username = req.body.username;
         var password = req.body.password;
