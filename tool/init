@@ -25,25 +25,26 @@ CREATE TABLE PersonalInformation(
    );
 
 CREATE TABLE ShadowTable(
-     ID INT,
+     ID INT not null primary key,
      Shadow VARCHAR(20)
    );
 
 CREATE TABLE RightsTable(
-     ID INT,
+     ID INT not null primary key,
      Rights VARCHAR(50)
    );
 
 CREATE TABLE AskQuestionTable(
-     ID INT,
-     description VARCHAR(20),
+     ID INT not null primary key,
+     title VARCHAR(200),
+     description VARCHAR(1000),
      score INT,
      time VARCHAR(20),
-     author INT
+     authorID INT
    );
 
 CREATE TABLE MultipleChoiceTable(
-     ID INT,
+     ID INT not null primary key,
      description VARCHAR(20),
      choices VARCHAR(20),
      correct INT,
@@ -53,7 +54,7 @@ CREATE TABLE MultipleChoiceTable(
    );
 
 CREATE TABLE AnswerTable(
-     ID INT,
+     ID INT not null primary key,
      title VARCHAR(20),
      type VARCHAR(20),
      userID INT,
@@ -62,14 +63,8 @@ CREATE TABLE AnswerTable(
    );
 
 CREATE TABLE QuestionTable(
-     ID INT,
+     ID INT not null primary key,
      title VARCHAR(20),
      type VARCHAR(20)
    );
-
-CREATE TABLE SignTable(
-     ID INT,
-     state INT
-   );
-
 eof
