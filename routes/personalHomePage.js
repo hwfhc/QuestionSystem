@@ -8,8 +8,13 @@ function init(config){
         res.sendFile(directory + '/views/personalHomePage.html');
     });
 
-    app.post('/personalHomePage/getPersonalInformation', function(req, res){
-        var username = req.body.username;
+    app.get('/personalHomePage/getPersonalInformation', function(req, res){
+        var personalHomePage = {
+            username : 'abda'
+        };
+
+        res.send(JSON.stringify(personalHomePage));
+       /* var username = req.body.username;
         var password = req.body.password;
         //console.log(username);
         //console.log(password);
@@ -24,7 +29,7 @@ function init(config){
                 res.send('wdad');
             }
 
-        });
+        });*/
     });
 
 }

@@ -1,17 +1,22 @@
-var myJSON = '{ \
-  "list":[\
-  {"name":"css3题目","link":"/questionDetail"},\
-  {"name":"es6题目","link":123},\
-  {"name":"http题目","link":123}\
-]}';
+function addItemToQuesiontList(){
+    let questionList;
+    let questionTable = document.getElementById('questionTable');
 
-function addItemOfQuesiontList(){
-  let questionList = JSON.parse(myJSON).list;
-  let questionTable = document.getElementById('questionTable');
+    var xhttp = new XMLHttpRequest();
 
-  for(let i=0;i < questionList.length;i++){
-    questionTable.innerHTML += '<tr><td><a href="' + questionList[i].link + '">' + questionList[i].name + '</a></td></tr>';
-  }
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            questionList = JSON.parse(this.responseText).list;
+
+            for(let i=0;i < questionList.length;i++){
+                questionTable.innerHTML += '<tr><td><a href="' + questionList[i].link + '">' + questionList[i].name + '</a></td></tr>';
+            }
+        }
+    }
+
+    xhttp.open('GET','/questionList/getQuestionList',true);
+    xhttp.send();
+
 }
 
-addItemOfQuesiontList();
+addItemToQuesiontList();
