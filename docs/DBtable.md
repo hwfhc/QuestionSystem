@@ -67,20 +67,11 @@ rights_management
 ---
 
 + QuestionTable:  
-所有题目回答的列表
+所有题目的列表
 
   + ID(int):题目的序号
   + title(string):题目的标题
   + type(string):题目的类型
-
----
-
-+ SessionTable:  
-记录用户登录状态  
-sign_module
-
-  + ID(int):用户的序号
-  + state(int):登录状态，值始终大于0表示处于登录状态。一定时间间隔后-1，用户每次与服务器交互本值重置。当为0时从列表删除此项，需要重新登录
 
 ---
 
