@@ -14,10 +14,13 @@ initMiddleware(config);
 initRoutes(config);
 initModule(config);
 
-config.modules['publish_module'].publishAskQuestion(
+/*config.modules['publish_module'].publishAskQuestion(
 'WTF',
 'this is a test question',
     12);
+*/
+config.modules['answer_module'].answerAskQuestion('aaaaaa',1);
+
 
 //start server, and listen to port
 var server = config.app.listen(8080,function(){
@@ -66,6 +69,7 @@ function initModule(config){
     config.modules['personalinformation_module'] = (require('personalinformation_module'))(config);
     config.modules['saferman'] = (require('saferman'))(config);
     config.modules['publish_module'] = (require('publish_module'))(config);
+    config.modules['answer_module'] = (require('answer_module'))(config);
 }
 
 

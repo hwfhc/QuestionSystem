@@ -55,10 +55,9 @@ CREATE TABLE MultipleChoiceTable(
 
 CREATE TABLE AnswerTable(
      ID INT not null primary key,
-     title VARCHAR(20),
-     type VARCHAR(20),
+     questionID INT,
      userID INT,
-     answer VARCHAR(20),
+     answer VARCHAR(1000),
      state INT
    );
 

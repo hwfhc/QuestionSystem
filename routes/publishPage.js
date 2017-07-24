@@ -12,7 +12,7 @@ function init(config){
         var title = req.body.title;
         var description = req.body.description;
 
-        config.modules['publish_module'].publishAskQuestion(title,description,5,function(){
+        config.modules['publish_module'].publishAskQuestion(title,description,5,0,function (){
             res.sendFile(directory + '/views/signInSuccess.html');
         });
     });
