@@ -5,16 +5,19 @@ function init(config){
     var directory = config.directory;
 
     app.get('/questionDetail', function(req, res){
+        req.session.questionID = req.query.ID;
         res.sendFile(directory + '/views/questionDetail.html');
     });
 
-    app.get('/questionDetail/getScore', function(req, res){
+    app.get('/questionDetail/getQuestionDetail', function(req, res){
         var score = {
             total_score : 5,
             your_score : 4
         };
 
-        res.send(JSON.stringify(score));
+        config.modules['view_module'].getQuestionDetail(req.session.questionID,function(results){
+            res.send(results);
+        })
     });
 
 }

@@ -14,12 +14,12 @@ initMiddleware(config);
 initRoutes(config);
 initModule(config);
 
-/*config.modules['publish_module'].publishAskQuestion(
+config.modules['publish_module'].publishAskQuestion(
 'WTF',
 'this is a test question',
     12);
-*/
-config.modules['answer_module'].answerAskQuestion('aaaaaa',1);
+
+//config.modules['answer_module'].answerAskQuestion('aaaaaa',1);
 
 
 //start server, and listen to port
@@ -52,7 +52,7 @@ function initMiddleware(config){
             store: new FileStore(),
             secret: 'hehe',
             cookie:{
-                maxAge: 30000
+                maxAge: 300000
             }
         }));
     }
@@ -70,6 +70,7 @@ function initModule(config){
     config.modules['saferman'] = (require('saferman'))(config);
     config.modules['publish_module'] = (require('publish_module'))(config);
     config.modules['answer_module'] = (require('answer_module'))(config);
+    config.modules['view_module'] = (require('view_module'))(config);
 }
 
 

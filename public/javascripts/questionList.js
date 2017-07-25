@@ -6,10 +6,10 @@ function addItemToQuesiontList(){
 
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            questionList = JSON.parse(this.responseText).list;
+            questionList = JSON.parse(this.responseText);
 
             for(let i=0;i < questionList.length;i++){
-                questionTable.innerHTML += '<tr><td><a href="' + questionList[i].link + '">' + questionList[i].name + '</a></td></tr>';
+                questionTable.innerHTML += '<tr><td><a href="/questionDetail?ID=' + questionList[i].ID + '">' + questionList[i].title + '</a></td></tr>';
             }
         }
     }

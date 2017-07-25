@@ -9,13 +9,9 @@ function init(config){
     });
 
     app.get('/questionList/getQuestionList', function(req, res){
-        var questionList = {list : [
-            {name:'css3 question',link:'/questionDetail'},
-            {name:'es6 question',link:'/questionDetail'},
-            {name:'http question',link:'/questionDetail'},
-        ]}
-
-        res.send(JSON.stringify(questionList));
+        config.modules['view_module'].getQuestionList(function(results){
+            res.send(results);
+        })
 
         /* var username = req.body.username;
         var password = req.body.password;

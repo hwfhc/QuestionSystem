@@ -1,0 +1,77 @@
+#!/bin/bash
+
+mysql --user=root --password=879574764 << eof
+
+#delete QuestionSystem database
+
+DROP DATABASE QuestionSystem;
+
+eof
+
+mysql --user=root --password=879574764 << eof
+
+#init QuestionSystem database
+
+CREATE DATABASE QuestionSystem;
+
+USE QuestionSystem;
+
+CREATE TABLE PersonalInformation(
+     ID INT NOT NULL AUTO_INCREMENT,
+     Name VARCHAR(20) NOT NOLL,
+     Graph INT,
+     PhoneNumber INT,
+     Score INT,
+     PRIMARY KEY (ID)
+   );
+
+CREATE TABLE ShadowTable(
+     ID INT NOT NULL AUTO_INCREMENT,
+     Shadow VARCHAR(20) NOT NULL,
+     PRIMARY KEY (ID)
+   );
+
+CREATE TABLE RightsTable(
+     ID INT NOT NULL AUTO_INCREMENT,
+     Rights VARCHAR(50) NOT NULL,
+     PRIMARY KEY (ID) 
+   );
+
+CREATE TABLE AskQuestionTable(
+     ID INT NOT NULL AUTO_INCREMENT,
+     title VARCHAR(200) NOT NULL,
+     description VARCHAR(1000) NOT NULL,
+     score INT NOT NULL,
+     time VARCHAR(20),
+     authorID INT NOT NULL,
+     PRIMARY KEY (ID)
+   );
+
+CREATE TABLE MultipleChoiceTable(
+     ID INT NOT NULL AUTO_INCREMENT,
+     description VARCHAR(20),
+     choices VARCHAR(20) NOT NULL,
+     correct INT NOT NULL,
+     score INT NOT NULL,
+     time VARCHAR(20) NOT NULL,
+     author INT NOT NULL,
+     PRIMARY KEY (ID)
+   );
+
+CREATE TABLE AnswerTable(
+     ID INT NOT NULL AUTO_INCREMENT,
+     questionID INT NOT NULL,
+     userID INT NOT NULL,
+     answer VARCHAR(1000) NOT NULL ,
+     state INT CHECK(STATE>0 AND STATE<3),
+     PRIMARY KEY (ID)
+   );
+
+CREATE TABLE QuestionTable(
+     ID INT NOT NULL AUTO_INCREMENT,
+     title VARCHAR(200) NOT NULL,
+     type VARCHAR(20) NOT NULL,
+     PRIMARY KEY (ID)
+   );
+
+eof
