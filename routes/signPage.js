@@ -37,7 +37,9 @@ function init(config){
         var username = req.body.username;
         var password = req.body.password;
 
-        config.modules['sign_module'].signUp(username,password);
+        config.modules['sign_module'].signUp(username,password,function(){
+            res.sendFile(directory + '/views/signInSuccess.html');
+        });
     });
 
     app.get('/signPage/logOut', function(req, res){
