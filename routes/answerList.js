@@ -9,7 +9,7 @@ function init(config){
     });
 
     app.get('/answerList/getAnswerList',function(req,res){
-        config.modules['view_module'].getAnswerList(function(results){
+        config.modules['view_module'].getAnswerList(req.session.questionID,function(results){
             res.send(results);
         })
     });
