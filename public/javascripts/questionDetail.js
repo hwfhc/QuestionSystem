@@ -3,6 +3,7 @@ function getQuestionDetail(){
     var your_score = document.getElementById('your_score');
     //var title = document.getElementById('title');
     var description = document.getElementById('description');
+    var author_name = document.getElementById('author_name');
 
     var xhttp = new XMLHttpRequest();
 
@@ -10,10 +11,12 @@ function getQuestionDetail(){
         if(this.readyState == 4 && this.status == 200){
             var data = JSON.parse(this.responseText);
 
-            total_score.innerHTML = data[0].score;
-            your_score.innerHTML = data[0].score;
+            total_score.innerHTML = data.score;
+            your_score.innerHTML = data.score;
             //title.innerHTML = data[0].title;
-            description.innerHTML = data[0].description;
+            //
+            description.innerHTML = data.description;
+            author_name.innerHTML = data.author_name;
             //console.log(data);
         }
     }

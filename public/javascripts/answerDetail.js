@@ -24,6 +24,7 @@ function getAnswerDetail(){
     //var your_score = document.getElementById('your_score');
     //var title = document.getElementById('title');
     var answer = document.getElementById('answer');
+    var answer_username = document.getElementById('answer_username');
 
     var xhttp = new XMLHttpRequest();
 
@@ -34,7 +35,8 @@ function getAnswerDetail(){
             //total_score.innerHTML = data[0].score;
             //your_score.innerHTML = data[0].score;
             //title.innerHTML = data[0].title;
-            answer.innerHTML = data[0].answer;
+            answer.innerHTML = data.answer;
+            answer_username.innerHTML = 'answerman: ' +data.username;
             //console.log(data);
         }
     }

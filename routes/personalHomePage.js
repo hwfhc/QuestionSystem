@@ -9,27 +9,13 @@ function init(config){
     });
 
     app.get('/personalHomePage/getPersonalInformation', function(req, res){
-        var personalHomePage = {
-            username : 'abda'
-        };
+        let ID = req.session.ID
+        let dataToSended = {};
 
-        res.send(JSON.stringify(personalHomePage));
-       /* var username = req.body.username;
-        var password = req.body.password;
-        //console.log(username);
-        //console.log(password);
-
-        config.modules['sign_module'].signIn(username,password,req,function(){
-            var isSignIn = config.modules['sign_module'].isSignIn(req);
-
-            if(isSignIn){
-                res.sendFile(directory + '/views/jump.html');
-            }else{
-                //console.log('I should send fail text');
-                res.send('wdad');
-            }
-
-        });*/
+        config.modules['personalinformation_module'].getUsernameByID(ID,function(result){
+            dataToSended.username = result;
+            res.send(JSON.stringify(dataToSended));
+        });
     });
 
 }

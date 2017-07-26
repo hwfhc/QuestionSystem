@@ -1,7 +1,7 @@
 var express = require('express');
 
 //init global config
-var directory = '/home/firewaterge/Repositories/GuildHall';
+var directory = '/home/firewaterge/Repositories/QuestionSystem';
 
 var config = {
     app: express(),

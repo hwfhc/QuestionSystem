@@ -15,9 +15,26 @@ function init(config){
             your_score : 4
         };
 
-        config.modules['view_module'].getAnswerDetail(req.session.answerID,function(results){
-            res.send(results);
-        })
+
+        let dataToSended = {};
+        let userID;
+
+        let answerDetail = new Promise(function(resolve,reject){
+            config.modules['view_module'].getAnswerAndUserIDbyID(req.session.answerID,function(results){
+                dataToSended.answer = results.answer;
+                userID = results.userID;
+                resolve();
+            });
+        });
+
+        answerDetail.then(function(){
+            config.modules['personalinformation_module'].getUsernameByID(userID,function(result){
+                dataToSended.username = result;
+                res.send(JSON.stringify(dataToSended));
+            });
+
+        });
+
     });
 
 }
