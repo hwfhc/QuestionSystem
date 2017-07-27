@@ -10,18 +10,13 @@ function init(config){
     });
 
     app.get('/answerDetail/getAnswerDetail', function(req, res){
-        var score = {
-            total_score : 5,
-            your_score : 4
-        };
-
-
         let dataToSended = {};
         let userID;
 
         let answerDetail = new Promise(function(resolve,reject){
             config.modules['view_module'].getAnswerAndUserIDbyID(req.session.answerID,function(results){
                 dataToSended.answer = results.answer;
+                dataToSended.score = results.score;
                 userID = results.userID;
                 resolve();
             });
@@ -36,6 +31,16 @@ function init(config){
         });
 
     });
+
+    app.post('/answerDetail/setScore', function(req, res){
+            let score = req.body.score;
+            let questionID = req.session.questionID;
+
+            config.modules['answer_module'].setScoreByID(questionID,score,function(){
+                    res.sendFile(directory + '/views/signInSuccess.html');
+                    });
+            });
+
 
 }
 

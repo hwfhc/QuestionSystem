@@ -38,19 +38,9 @@ CREATE TABLE AskQuestionTable(
      ID INT not null primary key,
      title VARCHAR(200),
      description VARCHAR(1000),
-     score INT,
+     total_score INT,
      time VARCHAR(20),
      authorID INT
-   );
-
-CREATE TABLE MultipleChoiceTable(
-     ID INT not null primary key,
-     description VARCHAR(20),
-     choices VARCHAR(20),
-     correct INT,
-     score INT,
-     time VARCHAR(20),
-     author INT
    );
 
 CREATE TABLE AnswerTable(
@@ -58,12 +48,7 @@ CREATE TABLE AnswerTable(
      questionID INT,
      userID INT,
      answer VARCHAR(1000),
+     score INT,
      state INT
-   );
-
-CREATE TABLE QuestionTable(
-     ID INT not null primary key,
-     title VARCHAR(20),
-     type VARCHAR(20)
    );
 eof

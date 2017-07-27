@@ -10,25 +10,25 @@ function init(config){
     });
 
     app.get('/questionDetail/getQuestionDetail', function(req, res){
-        var score = {
-            total_score : 5,
-            your_score : 4
-        };
         let dataToSended = {};
         let authorID;
 
         config.modules['view_module'].getQuestionDetail(req.session.questionID,function(result){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
-            dataToSended.score = result.score;
+            dataToSended.total_score = result.total_score;
 
             authorID = result.authorID;
 
             config.modules['personalinformation_module'].getUsernameByID(authorID,function(result){
                 dataToSended.author_name = result;
 
-                res.send(JSON.stringify(dataToSended));
-            })
+                config.modules['view_module'].getScoreByUserID(req.session.ID,function(score){
+                    dataToSended.score = score;
+
+                    res.send(JSON.stringify(dataToSended));
+                });
+            });
         })
     });
 

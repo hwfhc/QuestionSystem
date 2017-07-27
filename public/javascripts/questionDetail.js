@@ -11,13 +11,11 @@ function getQuestionDetail(){
         if(this.readyState == 4 && this.status == 200){
             var data = JSON.parse(this.responseText);
 
-            total_score.innerHTML = data.score;
+            total_score.innerHTML = data.total_score;
             your_score.innerHTML = data.score;
             //title.innerHTML = data[0].title;
-            //
             description.innerHTML = data.description;
             author_name.innerHTML = data.author_name;
-            //console.log(data);
         }
     }
 

@@ -45,7 +45,7 @@ function initMiddleware(config){
             store: new FileStore(),
             secret: 'hehe',
             cookie:{
-                maxAge: 300000
+                maxAge: 3000000
             }
         }));
     }

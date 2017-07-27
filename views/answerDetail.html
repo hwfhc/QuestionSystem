@@ -46,9 +46,9 @@
                 <div class="score">
                   <div class="total_score" id="total_socre">该题总分 &nbsp; 5</div>
 
-                  <form action="we" id="answer_form">
+                  <form method="post" action="/answerDetail/setScore" id="answer_form">
                     <div class="your_score">您的给分 &nbsp;
-                      <input type="text" name="socre">
+                      <input type="text" required="required" name="score">
                     </div>
                     <div class="button_container"><button type="submit">提交</button></div>
                   </form>
