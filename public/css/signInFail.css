@@ -1,34 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 body{
-  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: #FAFAFA;
   font-family: 微软雅黑;
   text-align: center;
-  width: auto;
 }
-
-#word{
-  width:200px;
-  height: 100px;
-  margin: 100px auto;
-  color:red;
+#wrap {
+  width: 30%;
+  min-width: 300px;
+  margin: auto;
 }
-
-#butt{
-  width:200px;
+.fail{
+  width: 100%;
   height: 100px;
-  margin: 200px auto;
+  margin: 100px auto 40px;
+  color:#9DCFAF;
+}
+.click{
+  width:100%;
+  height: 100px;
   line-height: 100px;
+  margin: 0 auto;
+  padding: 20px 40px;
   color:#9DCFAF;
   border: 1px solid #9DCFAF;
   background: #FAFAFA;
 }
-
-#butt:hover{
-  width:200px;
-  height: 100px;
-  margin: 200px auto;
-  line-height: 100px;
+.click:hover{
   color:#FAFAFA;
-  border: 1px solid #9DCFAF;
   background: #9DCFAF;
 }
