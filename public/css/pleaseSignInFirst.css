@@ -1,32 +1,41 @@
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 #content {
   width: 292px;
   height: 330px;
-  height: auto;
-  margin: 0px auto;
-  margin-top: 200px;
+  margin: 0 auto;
   text-align: center;
 }
-#content #greydiv1 {
-  float: left;
-  background: gray;
+#content .greydiv_group {
+  display: flex;
+  justify-content: space-between;
+}
+#content .greydiv_group .greydiv {
   width: 48%;
   height: 20px;
+  background-color: grey;
 }
-#content #greydiv2 {
-  float: right;
-  background: gray;
-  width: 48%;
-  height: 20px;
+#content .please {
+  margin: 80px 0 120px 0;
 }
-#content #please {
-  margin-top: 80px;
-  margin-bottom: 120px;
-}
-#content #click {
-  border: 1px rgb(157,207,175) solid;
-  color: rgb(157,207,175);
+#content .click {
+  border: 1px #9dcfaf solid;
   line-height: 60px;
   width: 180px;
   height: 60px;
-  margin: 0px auto;
+  margin: 0 auto;
+}
+#content .click a {
+  text-decoration: none;
+  color: #9dcfaf;
 }
