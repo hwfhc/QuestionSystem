@@ -9,13 +9,17 @@ function init(config){
     });
 
     app.get('/personalHomePage/getPersonalInformation', function(req, res){
-        let ID = req.session.ID
+        let ID = getUserID();
         let dataToSended = {};
 
         config.modules['personalinformation_module'].getUsernameByID(ID,function(result){
             dataToSended.username = result;
             res.send(JSON.stringify(dataToSended));
         });
+
+        function getUserID(){
+            return req.session.ID;
+        }
     });
 
 }

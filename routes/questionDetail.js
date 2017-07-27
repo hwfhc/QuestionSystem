@@ -6,14 +6,32 @@ function init(config){
 
     app.get('/questionDetail', function(req, res){
         req.session.questionID = req.query.ID;
-        res.sendFile(directory + '/views/questionDetail.html');
+        let questionID = getQuestionID();
+
+        if(questionID){
+            res.sendFile(directory + '/views/questionDetail.html');
+        }else{
+            res.redirect('/personalHomePage');
+        }
+
+
+        function getQuestionID(){
+            return req.session.questionID;
+        }
     });
 
     app.get('/questionDetail/getQuestionDetail', function(req, res){
         let dataToSended = {};
+
+        let questionID = getQuestionID();
         let authorID;
 
-        config.modules['view_module'].getQuestionDetail(req.session.questionID,function(result){
+        if(!questionID){
+            res.redirect('/personalHomePage');
+            return;
+        }
+
+        config.modules['view_module'].getQuestionDetail(questionID,function(result){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.total_score = result.total_score;
@@ -30,6 +48,10 @@ function init(config){
                 });
             });
         })
+
+        function getQuestionID(){
+            return req.session.questionID;
+        }
     });
 
 }

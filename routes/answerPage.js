@@ -9,13 +9,30 @@ function init(config){
     });
 
     app.post('/answerPage/answerAskQuestion',function(req,res){
-        var answer = req.body.answer;
-        var questionID = req.session.questionID;
-        var userID = req.session.ID;
+        var answer = getAnswer();
+        var questionID = getQuestionID();
+        var userID = getUserID();
 
-        config.modules['answer_module'].answerAskQuestion(answer,questionID,userID,function(){
-            res.sendFile(directory + '/views/signInSuccess.html');
-        })
+        if(answer && questionID && userID){
+            config.modules['answer_module'].answerAskQuestion(answer,questionID,userID,function(){
+                res.sendFile(directory + '/views/signInSuccess.html');
+            });
+        }else{
+            res.redirect('/personalHomePage');
+        }
+
+
+        function getAnswer(){
+            return req.body.answer;
+        }
+
+        function getQuestionID(){
+            return req.session.questionID
+        }
+
+        function getUserID(){
+            return req.session.ID;
+        }
     });
 
 }
