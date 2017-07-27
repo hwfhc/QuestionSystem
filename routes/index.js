@@ -7,9 +7,16 @@ function initRoutes(config){
     var directory = config.directory;
 
     app.use(function (req,res,next){
-        if(req.path==='/'||
-            req.path==='/personalHomePage'||
-            req.path==='/questionList')
+        if(req.path!=='/signPage'&&
+            req.path!=='/css/signPage.css'&&
+            req.path!=='/pleaseSignInFirst'&&
+            req.path!=='/css/pleaseSignInFirst.css'&&
+            req.path!=='/signPage/signIn'&&
+            req.path!=='/signPage/signUp'&&
+            req.path!=='/css/signInSuccess.css'&&
+            req.path!=='/css/signInFail.css'&&
+            req.path!=='/picture/cross.jpg'&&
+            req.path!=='/picture/tick.jpg')
         {
 
             var isSignIn = config.modules['sign_module'].isSignIn(req);
