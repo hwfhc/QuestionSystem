@@ -1,169 +1,87 @@
-@charset "utf-8";
-
-@font-face{
-  font-family:myfont1;
-  src: url('C:/Users/GRANT/Desktop/汉仪旗黑-40S5.0.ttf');}
-@font-face{
-  font-family:myfont2;
-  src: url('C:/Users/GRANT/Desktop/HYQiHei-50S.otf');}
-@font-face{
-  font-family:myfont3;
-  src: url('C:/Users/GRANT/Desktop/HelveticaNeueLTPro-Th.otf');}
-
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
 body {
+  height: 100%;
+  width: 100%;
+}
+a,
+button {
+  cursor: pointer;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: #ffffff;
 }
-#wrap1 #header {
-  width: 27%;
-  min-width: 366px;
-  height: 40px;
-  margin: 0 auto;
-  margin-top: 150px;
-  display: flex;
-  flex-wrap: wrap;
+.wrap {
+  width: 30%;
+  min-width: 300px;
+  margin: auto;
 }
-#wrap1 #header #span1 {
-  display: block;
-  width: 50%;
+.wrap .header {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.wrap .header span {
   font-size: 30px;
   line-height: 40px;
-  font-family: myfont2;
   color: #434343;
 }
-#wrap1 #header #span2 {
-  display: block;
-  width: 50%;
-  font-size: 24px;
-  line-height: 40px;
-  text-align: right;
-  font-family: myfont3;
-  color: #434343;
-}
-#SignIn {
-  width: 27%;
-  min-width: 366px;
-  padding: 30px;
-  margin: 0 auto;
+.container {
+  padding: 25px;
   background-color: #ffffff;
-  border: gray 1px ridge;
+  border: 1px solid grey;
 }
-#SignIn input {
-  width: 358px;
+.container .username {
+  display: block;
+  color: #434343;
+  font-size: 14px;
+}
+.container input {
+  display: block;
   height: 36px;
+  margin-bottom: 30px;
+  width: 100%;
   background-color: #fafafa;
   border: #CCC 1px solid;
-  padding: 4px;
-  margin-bottom: 30px;
   border-radius: 4px;
   font-size: 22px;
+  padding: 4px;
 }
-#SignIn #button {
-  width: 366px;
-  display: block;
-  padding: 9px 14px;
-  border-radius: 5px;
-  background-color: #6fb98a;
-  min-height: 20px;
-  color: #ffffff;
-  font-size: 14px;
-  font-family: myfont1;
-  line-height: normal;
-  margin-top: 10px;
-  margin-bottom: 45px;
+.container .line {
+  display: flex;
+  justify-content: space-between;
 }
-#SignIn #mail {
-  font-family: myfont1;
-  color: #434343;
+.container .line .password {
   font-size: 14px;
 }
-#SignIn #password {
-  display: block;
-  float: left;
-  font-family: myfont1;
-  font-size: 14px;
-}
-#SignIn #forget {
+.container .line .forget {
   color: #85c9c0;
   text-decoration: none;
-  display: block;
-  font-family: myfont1;
-  float: right;
   font-size: 12px;
 }
-#SignIn #footer {
-  width: 180px;
-  float: right;
-  font-family: myfont1;
-  font-size: 14px;
-}
-#SignIn #footer a {
-  color: #85c9c0;
-  text-decoration: none;
-}
-
-
-
-#wrap2 #header {
-  width: 27%;
-  min-width: 366px;
-  height: 40px;
-  margin: 0 auto;
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-}
-#wrap2 #header #span1 {
+.container .button {
   display: block;
-  width: 50%;
-  font-size: 30px;
-  line-height: 40px;
-  font-family: myfont2;
-  color: #434343;
-}
-#wrap2 #header #span2 {
-  display: block;
-  width: 50%;
-  font-size: 24px;
-  line-height: 40px;
-  text-align: right;
-  font-family: myfont3;
-  color: #434343;
-}
-#SignUp {
-  width: 366px;
-  height: 520px;
-  background-color: #ffffff;
-  border: gray 1px ridge;
-  padding: 30px;
-  margin: 3px auto;
-}
-#SignUp .signup {
-  display: block;
-  font-family: myfont1;
-  float: left;
-  color: #434343;
-  font-size: 14px;
-}
-#SignUp input {
-  width: 366px;
-  height: 30px;
-  background-color: #fafafa;
-  padding: 4px;
-  border: #CCC 1px solid;
-  border-radius: 4px;
-  margin-bottom: 25px;
-  font-size: 17px;
-}
-#SignUp #button {
-  width: 374px;
-  min-height: 30px;
-  display: block;
+  width: 100%;
   padding: 9px 14px;
+  margin: 10px auto 45px auto;
   border-radius: 5px;
   background-color: #6fb98a;
   color: #ffffff;
   font-size: 14px;
-  font-family: myfont1;
-  line-height: normal;
-  margin-bottom: 40px;
+  border: none;
+}
+.container footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.container footer a {
+  text-decoration: none;
+  color: #85c9c0;
 }

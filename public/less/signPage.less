@@ -1,170 +1,107 @@
-body {
+*{
+  margin: 0;
+  padding: 0;
+}
+html,body{
+  height: 100%;
+  width: 100%;
+}
+a,button{
+  cursor: pointer;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   background: #ffffff;
 }
 
-#wrap1{
-  #header {
-    width: 27%;
-    min-width: 366px;
-    height: 40px;
-    margin: 0 auto;
-    margin-top: 150px;
-    display: flex;
-    flex-wrap: wrap;
+.wrap{
+  width: 30%;
+  min-width: 300px;
+  margin: auto;
 
-    #span1 {
-      display: block;
-      width: 50%;
+  .header {
+    height: 40px;
+
+    display: flex;
+    justify-content: space-between;
+
+    span{
       font-size: 30px;
       line-height: 40px;
-      font-family: myfont2;
       color: #434343;
     }
 
-    #span2 {
-      display: block;
-      width: 50%;
-      font-size: 24px;
-      line-height: 40px;
-      text-align: right;
-      font-family: myfont3;
-      color: #434343;
-    }
-  } 
+  }
 }
 
-#SignIn {
-  width: 27%;
-  min-width: 366px;
-  padding: 30px;
-  margin: 0 auto;
-  background-color: #ffffff;
-  border: gray 1px ridge;
+.container{
+  padding: 25px;
 
-  input {
-    width: 358px;
-    height: 36px;
-    background-color: #fafafa;
-    border: #CCC 1px solid;
-    padding: 4px;
-    margin-bottom: 30px;
-    border-radius: 4px;
-    font-size: 22px;
-  }
-  #button {
-    width: 366px;
+  background-color: #ffffff;
+  border: 1px solid grey;
+
+  .username{
     display: block;
-    padding: 9px 14px;
-    border-radius: 5px;
-    background-color: #6fb98a;
-    min-height: 20px;
-    color: #ffffff;
-    font-size: 14px;
-    font-family: myfont1;
-    line-height: normal;
-    margin-top: 10px;
-    margin-bottom: 45px;
-  }
-  #mail {
-    font-family: myfont1;
     color: #434343;
     font-size: 14px;
   }
-  #password {
+
+  input {
     display: block;
-    float: left;
-    font-family: myfont1;
+    height: 36px;
+    margin-bottom: 30px;
+    width: 100%;
+
+    background-color: #fafafa;
+    border: #CCC 1px solid;
+    border-radius: 4px;
+
+    font-size: 22px;
+    padding: 4px;
+  }
+
+  .line{
+    display: flex;
+    justify-content: space-between;
+
+    .password {
+      font-size: 14px;
+    }
+
+    .forget {
+      color: #85c9c0;
+      text-decoration: none;
+      font-size: 12px;
+    }
+  }
+
+  .button {
+    display: block;
+    width: 100%;
+    padding: 9px 14px;
+    margin: 10px auto 45px auto;
+
+    border-radius: 5px;
+    background-color: #6fb98a;
+
+    color: #ffffff;
     font-size: 14px;
+
+    border: none;
   }
-  #forget {
-    color: #85c9c0;
-    text-decoration: none;
-    display: block;
-    font-family: myfont1;
-    float: right;
-    font-size: 12px;
-  }
-  #footer {
-    width: 180px;
-    float: right;
-    font-family: myfont1;
+
+  footer {
+    display: flex;
+    justify-content: space-between;
     font-size: 14px;
 
     a {
-      color: #85c9c0;
       text-decoration: none;
+      color:rgb(133,201,192);
     }
-  }
-}
-
-
-#wrap2{
-  #header {
-    width: 27%;
-    min-width: 366px;
-    height: 40px;
-    margin: 0 auto;
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-
-    #span1 {
-      display: block;
-      width: 50%;
-      font-size: 30px;
-      line-height: 40px;
-      font-family: myfont2;
-      color: #434343;
-    }
-
-    #span2 {
-      display: block;
-      width: 50%;
-      font-size: 24px;
-      line-height: 40px;
-      text-align: right;
-      font-family: myfont3;
-      color: #434343;
-    }
-  }
-}
-
-#SignUp {
-  width: 366px;
-  height: 520px;
-  background-color: #ffffff;
-  border: gray 1px ridge;
-  padding: 30px;
-  margin: 3px auto;
-
-  .signup {
-    display: block;
-    font-family: myfont1;
-    float: left;
-    color: #434343;
-    font-size: 14px;
-  }
-  input {
-    width: 366px;
-    height: 30px;
-    background-color: #fafafa;
-    padding: 4px;
-    border: #CCC 1px solid;
-    border-radius: 4px;
-    margin-bottom: 25px;
-    font-size: 17px;
-  }
-  #button {
-    width: 374px;
-    min-height: 30px;
-    display: block;
-    padding: 9px 14px;
-    border-radius: 5px;
-    background-color: #6fb98a;
-    color: #ffffff;
-    font-size: 14px;
-    font-family: myfont1;
-    line-height: normal;
-    margin-bottom: 40px;
   }
 }

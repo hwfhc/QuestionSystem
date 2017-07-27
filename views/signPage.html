@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 
-<link rel="stylesheet" type="text/css" href="C:/Users/GRANT/Desktop/public/css/signPage.css">
+<link rel="stylesheet" type="text/css" href="css/signPage.css">
 
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
@@ -30,66 +30,67 @@ function tran2(){
 </head>
 
 <body>
-<div id="wrap1">
+<div id="wrap1" class="wrap">
 
-	<div id="header">
-	  <span id="span1">登陆</span>                                   
-	  <span id="span2">Log in</span>
+	<div class="header">
+	  <span>登陆</span>
+	  <span>Log in</span>
 	</div>
 
-	<div id="SignIn">   
+	<div class="container">
 
 		<form name="form" method="post" action="/signPage/signIn">
-	  
-		    <span id="mail">邮箱/用户名</span>
+
+		    <span class="username">邮箱/用户名</span>
 		    <input type="text" required="required" name="username"></input>
-		    
-		    <span id="password">密码</span>
-		    <a id="forget" href="">忘记密码</a>
+
+		    <div class="line">
+					<span class="password">密码</span>
+			    <a class="forget" href="">忘记密码</a>
+				</div>
+
 		    <input type="password" required="required" name="password"></input>
-		    
-		    <button type="submit" id="button" name="submit" value="submit">登录</button>
-		    
-		    <div id="footer">还没有账号？&nbsp&nbsp <a onclick="tran1();">立即注册</a></div>
+
+		    <button type="submit" class="button" name="submit" value="submit">登录</button>
+
+		    <footer><span>还没有账号？&nbsp&nbsp</span><a onclick="tran1();">立即注册</a></footer>
 		</form>
-	 
+
 	</div>
 
 </div>
 
-<div id="wrap2" style="display:none">
-	<div id="header">
-	  <span id="span1">注册</span>
-	  <span id="span2">Sign in</span>
+<div id="wrap2" class="wrap" style="display:none">
+	<div class="header">
+	  <span>注册</span>
+	  <span>Sign in</span>
 	</div>
 
-	<div id="SignUp">
+	<div class="container">
 	  <form name="form" method="post" action="/signPage/signUp">
 
-	    <span class="signup">*用户名</span>
+	    <span class="username">*用户名</span>
 	    <input type="text" required="required" name="username"></input>
 
 	    <span>*密码</span>
 	    <input type="password" required="required" name="password"></input>
 
-	    <span>真实姓名</span>
-	    <input type="text" name="realname"></input>
-
-	    <span>手机号码</p>
-	    <input type="password" name="phonenumber"></input>
+			<span>*重复密码</span>
+			<input type="password" required="required" name="repassword"></input>
 
 	    <span>邮箱</span>
 	    <input type="text" name="mail"></input>
 
-	    <button id="button" type="submit" value="submit">注册</button>
+	    <button class="button" type="submit" value="submit">注册</button>
 
-	    <div id="footer">
-	      <span style="display:block; float:left; font-family:myfont1; font-size:14px">*为必填项</span>
-	      <a onclick="tran2();" style="color:rgb(133,201,192); text-decoration:none; display:block; float:right; font-family:myfont1; font-size:14px">已有账号</a>
-	    </div>
+	    <footer>
+	      <span>*为必填项</span>
+	      <a onclick="tran2();">已有账号</a>
+	    </footer>
 
 	  </form>
 	</div>
 </div>
+
 </body>
 </html>
