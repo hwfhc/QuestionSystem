@@ -14,43 +14,48 @@ body {
   background: #ffffff;
 }
 #wrap1 #header {
-  text-align: center;
-  width: 366px;
+  width: 27%;
+  min-width: 366px;
   height: 40px;
-  margin: 0px auto;
+  margin: 0 auto;
   margin-top: 150px;
+  display: flex;
+  flex-wrap: wrap;
 }
 #wrap1 #header #span1 {
   display: block;
-  float: left;
+  width: 50%;
   font-size: 30px;
+  line-height: 40px;
   font-family: myfont2;
   color: #434343;
 }
 #wrap1 #header #span2 {
   display: block;
-  float: right;
+  width: 50%;
   font-size: 24px;
+  line-height: 40px;
+  text-align: right;
   font-family: myfont3;
   color: #434343;
 }
 #SignIn {
-  width: 366px;
-  height: 300px;
+  width: 27%;
+  min-width: 366px;
+  padding: 30px;
+  margin: 0 auto;
   background-color: #ffffff;
   border: gray 1px ridge;
-  padding: 30px;
-  margin: 3px auto;
 }
 #SignIn input {
   width: 358px;
-  height: 35px;
+  height: 36px;
   background-color: #fafafa;
   border: #CCC 1px solid;
   padding: 4px;
+  margin-bottom: 30px;
   border-radius: 4px;
   font-size: 22px;
-  margin-bottom: 30px;
 }
 #SignIn #button {
   width: 366px;
@@ -97,24 +102,30 @@ body {
 }
 
 
+
 #wrap2 #header {
-  width: 366px;
+  width: 27%;
+  min-width: 366px;
   height: 40px;
-  text-align: center;
-  margin: 0px auto;
+  margin: 0 auto;
   margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
 }
 #wrap2 #header #span1 {
   display: block;
-  float: left;
+  width: 50%;
   font-size: 30px;
+  line-height: 40px;
   font-family: myfont2;
   color: #434343;
 }
 #wrap2 #header #span2 {
   display: block;
-  float: right;
+  width: 50%;
   font-size: 24px;
+  line-height: 40px;
+  text-align: right;
   font-family: myfont3;
   color: #434343;
 }
