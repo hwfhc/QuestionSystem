@@ -5,44 +5,67 @@ function init(config){
     var directory = config.directory;
 
     app.get('/answerDetail', function(req, res){
-            let answerID = getAnswerID();
+        let answerID = getAnswerID();
 
-            if(!answerID){
+        if(!answerID){
             res.redirect('/personalHomePage');
-            }else{
+        }else{
             req.session.answerID = answerID;
             res.sendFile(directory + '/views/answerDetail.html');
-            }
+        }
 
 
-            function getAnswerID(){
+        function getAnswerID(){
             return req.query.ID;
-            }
-            });
+        }
+    });
 
     app.get('/answerDetail/getAnswerDetail', function(req, res){
-            let dataToSended = {};
-            let userIDofAnswer;
-            let answerID = getAnswerID();
+        let dataToSended = {};
+        let userIDofAnswer;
+        let answerID = getAnswerID();
+        let questionID;
 
-            if(!answerID){
+        if(!answerID){
             return;
-            }
+        }
 
         let answerDetail = new Promise(function(resolve,reject){
             config.modules['view_module'].getAnswerAndUserIDbyID(answerID,function(results){
                 dataToSended.answer = results.answer;
                 dataToSended.score = results.score;
+
+                questionID = results.questionID;
                 userIDofAnswer = results.userID;
                 resolve();
             });
         });
 
         answerDetail.then(function(){
-            config.modules['personalinformation_module'].getUsernameByID(userIDofAnswer,function(result){
-                dataToSended.username = result;
-                res.send(JSON.stringify(dataToSended));
+
+            let getUsername = new Promise(function(resolve,reject){
+                //console.log('userIDofAnswer is: '+userIDofAnswer);
+                config.modules['personalinformation_module'].getUsernameByID(userIDofAnswer,function(result){
+                    dataToSended.username = result;
+                    resolve();
+                });
             });
+
+            let getQuestionDetail = new Promise(function(resolve,reject){
+                //console.log('questionID is: '+questionID);
+                config.modules['view_module'].getQuestionDetail(questionID,function(result){
+                    dataToSended.title = result.title;
+                    dataToSended.description = result.description;
+                    resolve();
+                });
+            });
+
+            Promise.all([
+                getUsername,
+                getQuestionDetail
+            ]).then(function(){
+                res.send(JSON.stringify(dataToSended));
+            })
 
         });
 
@@ -53,26 +76,26 @@ function init(config){
     });
 
     app.post('/answerDetail/setScore', function(req, res){
-            let score = getScore();
-            let questionID = getQuestionID();
+        let score = getScore();
+        let answerID = getAnswerID();
 
-            if(score && questionID){
-            config.modules['answer_module'].setScoreByID(questionID,score,function(){
-                    res.sendFile(directory + '/views/signInSuccess.html');
-                    });
-            }else{
-            res.redirect('/personalHomePage');
-            }
-
-            function getScore(){
-            return req.body.score;
-            }
-
-            function getQuestionID(){
-            return req.session.questionID;
-            }
-
+        if(score && answerID){
+            config.modules['answer_module'].setScoreByID(answerID,score,function(){
+                res.sendFile(directory + '/views/signInSuccess.html');
             });
+        }else{
+            res.redirect('/personalHomePage');
+        }
+
+        function getScore(){
+            return req.body.score;
+        }
+
+        function getAnswerID(){
+            return req.session.answerID;
+        }
+
+    });
 
 }
 

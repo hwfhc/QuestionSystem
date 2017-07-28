@@ -5,13 +5,7 @@ function init(config){
     var directory = config.directory;
 
     app.get('/signPage',function(req,res){
-        var isSignIn = config.modules['sign_module'].isSignIn(req);
-
-        if(isSignIn){
-            res.sendFile(directory + '/views/personalHomePage.html');
-        }else{
-            res.sendFile(directory + '/views/signPage.html');
-        }
+        res.sendFile(directory + '/views/signPage.html');
     });
 
     app.post('/signPage/signIn', function(req, res){
