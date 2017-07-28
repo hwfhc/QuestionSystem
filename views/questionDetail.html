@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>题目详情</title>
-        <link href="css/questionDetail.css" rel="stylesheet" type="text/css" />
+        <link href="C:/Users/GRANT/Desktop/public/css/questionDetail.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="header">
@@ -31,17 +31,30 @@
           <div id="right">
             <div class="information">
               <div class="uiheader"></div>
-              <div id="description" class="question"></div>
-              <div class="message">
-                <span>该题总分: </span><span id="total_score">5</span><br><br>
-                <span>你的得分: </span><span id="your_score">5</span>
-                <div class="button_group">
-                  <a id="view" href="/answerList">查看回答</a>
-                  <a id="answer" href="/answerPage">回答题目</a>
-                </div>
-                <div id="author_name">
-                </div>
-              </div>
+              <div  class="container">
+
+				  <div class="question">
+				    <div class="header"></div>
+				    <div class="title" id="title">高中数学题</div>
+				    <pre class="description" id="description">这个题用普通的角度加加减减是算不出来的，因为有两个未知角相互影响。应该是需要一种更高级的解法......我是高中生。</pre>
+				    <div class="line"></div>
+				    <div class="answer" id="answer"></div>
+				  </div>
+
+	              <div class="message">
+	                <span>该题总分: </span><span id="total_score">5</span><br><br>
+	                <span>你的得分: </span><span id="your_score">5</span>
+	                <div class="button_group">
+	                  <a id="view" href="/answerList">查看回答</a>
+	                  <a id="answer" href="/answerPage">回答题目</a>
+	                </div>
+	                <div id="author_name">
+	                	<span>出题人：&nbsp; </span>
+	                	<span id="publish_man"></span>
+	                </div>
+	              </div>
+			  </div>
+
             </div>
           </div>
 
