@@ -25,6 +25,7 @@ function init(config){
 
         let questionID = getQuestionID();
         let authorID;
+        let userID = getUserID();
 
         if(!questionID){
             res.redirect('/personalHomePage');
@@ -41,13 +42,19 @@ function init(config){
             config.modules['personalinformation_module'].getUsernameByID(authorID,function(result){
                 dataToSended.author_name = result;
 
-                config.modules['view_module'].getScoreByUserID(req.session.ID,function(score){
-                    dataToSended.score = score;
+                config.modules['view_module'].getScoreByUserID(userID,function(result){
+                    dataToSended.score = result.score;
+                    dataToSended.answer = result.answer;
 
                     res.send(JSON.stringify(dataToSended));
                 });
             });
         })
+
+
+        function getUserID(){
+            return req.session.ID;
+        }
 
         function getQuestionID(){
             return req.session.questionID;

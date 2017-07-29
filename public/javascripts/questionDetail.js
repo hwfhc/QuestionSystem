@@ -1,9 +1,10 @@
 function getQuestionDetail(){
     var total_score = document.getElementById('total_score');
     var your_score = document.getElementById('your_score');
-    //var title = document.getElementById('title');
+    var title = document.getElementById('title');
     var description = document.getElementById('description');
-    var author_name = document.getElementById('author_name');
+    var answer = document.getElementById('answer');
+    var publish_man = document.getElementById('publish_man');
 
     var xhttp = new XMLHttpRequest();
 
@@ -13,9 +14,10 @@ function getQuestionDetail(){
 
             total_score.innerHTML = data.total_score;
             your_score.innerHTML = data.score;
-            //title.innerHTML = data[0].title;
+            title.innerHTML = data.title;
             description.innerHTML = data.description;
-            author_name.innerHTML = data.author_name;
+            answer.innerHTML = data.answer;
+            publish_man.innerHTML = data.author_name;
         }
     }
 

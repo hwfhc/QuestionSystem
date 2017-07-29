@@ -25,7 +25,7 @@ function getAnswerDetail(){
     var title = document.getElementById('title');
     var description = document.getElementById('description');
     var answer = document.getElementById('answer');
-    var answer_username = document.getElementById('answer_username');
+    var answer_man = document.getElementById('answer_man');
 
     var xhttp = new XMLHttpRequest();
 
@@ -38,7 +38,7 @@ function getAnswerDetail(){
             title.innerHTML = data.title;
             description.innerHTML = data.description;
             answer.innerHTML = data.answer;
-            answer_username.innerHTML = 'answerman: ' +data.username;
+            answer_man.innerHTML = data.username;
             //console.log(data);
         }
     }
