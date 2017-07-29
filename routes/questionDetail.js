@@ -42,7 +42,7 @@ function init(config){
             config.modules['personalinformation_module'].getUsernameByID(authorID,function(result){
                 dataToSended.author_name = result;
 
-                config.modules['view_module'].getScoreByUserID(userID,function(result){
+                config.modules['view_module'].getScoreByUserID(userID,questionID,function(result){
                     dataToSended.score = result.score;
                     dataToSended.answer = result.answer;
 
