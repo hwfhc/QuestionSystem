@@ -5,6 +5,7 @@ function init(config){
     var directory = config.directory;
 
     app.get('/signPage',function(req,res){
+        config.modules['sign_module'].logOut(req);
         res.sendFile(directory + '/views/signPage.html');
     });
 
