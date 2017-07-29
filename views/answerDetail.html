@@ -38,7 +38,7 @@
                 <div class="question">
                   <div class="header"></div>
                   <div class="title" id="title">高中数学题</div>
-                  <div class="description" id="description">这个题用普通的角度加加减减是算不出来的，因为有两个未知角相互影响。应该是需要一种更高级的解法......我是高中生。</div>
+                  <pre class="description" id="description">这个题用普通的角度加加减减是算不出来的，因为有两个未知角相互影响。应该是需要一种更高级的解法......我是高中生。</pre>
                   <div class="line"></div>
                   <div class="answer" id="answer"></div>
                 </div>
@@ -48,16 +48,20 @@
 
                   <form method="post" action="/answerDetail/setScore" id="answer_form">
                     <div class="your_score">您的给分 &nbsp;
-                      <input type="text" required="required" name="score">
+                      <input type="text" name="socre">
                     </div>
                     <div class="button_container"><button type="submit">提交</button></div>
                   </form>
 
                   <div class="your_score" id="get_socre">您的得分 &nbsp;  2</div>
-                  <div class="your_score" id="answer_username">answer &nbsp;  2</div>
+                  <div class="your_score" id="answer_username">
+                    <span>答题人：&nbsp; </span>
+                    <span id="answer_man">test_man</span>
+                  </div>
+
                 </div>
 
-             </div>
+              </div>
 
           </div>
          </div>
