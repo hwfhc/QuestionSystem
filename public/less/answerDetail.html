@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>个人主页</title>
+        <link href="css/answerDetail.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="header">
+          <div class="logo">
+            <img src="picture/logo.jpg" alt="logo"/>
+          </div>
+
+          <div class="user">
+              <img src="picture/face.jpg" alt="face"/>
+          </div>
+        </div>
+
+        <div id="main">
+
+          <div id="left">
+            <div class="title">凌睿工作室答题系统</div>
+            <ul>
+              <li class="item"><a href="">首页</a></li>
+              <li class="item"><a href="/questionList">题目列表</a></li>
+              <li class="item"><a href="">题目发布</a></li>
+              <li class="item"><a href="">个人信息</a></li>
+            </ul>
+          </div>
+
+          <div id="right">
+            <div id="userimformation">
+
+              <div class="uiheader"></div>
+
+              <div class="container">
+
+                <div class="question">
+                  <div class="header"></div>
+                  <div class="title" id="title">高中数学题</div>
+                  <pre class="description" id="description">这个题用普通的角度加加减减是算不出来的，因为有两个未知角相互影响。应该是需要一种更高级的解法......我是高中生。</pre>
+                  <div class="line"></div>
+                  <div class="answer" id="answer"></div>
+                </div>
+
+                <div class="score">
+                  <div class="total_score" id="total_socre">该题总分 &nbsp; 5</div>
+
+                  <form action="we" id="answer_form">
+                    <div class="your_score">您的给分 &nbsp;
+                      <input type="text" name="socre">
+                    </div>
+                    <div class="button_container"><button type="submit">提交</button></div>
+                  </form>
+
+                  <div class="your_score" id="get_socre">您的得分 &nbsp;  2</div>
+                  <div class="your_score" id="answer_username">
+                    <span>答题人：&nbsp; </span>
+                    <span id="answer_man">test_man</span>
+                  </div>
+
+                </div>
+
+              </div>
+
+          </div>
+         </div>
+
+        </div>
+    </body>
+    <script src='javascripts/answerDetail.js' type='text/javascript'></script>
+</html>
