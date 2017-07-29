@@ -46,10 +46,16 @@ function init(config){
                     dataToSended.score = result.score;
                     dataToSended.answer = result.answer;
 
+                    if(userID==authorID){
+                        dataToSended.isAuthor = true;
+                    }else{
+                        dataToSended.isAuthor = false;
+                    }
+
                     res.send(JSON.stringify(dataToSended));
                 });
             });
-        })
+        });
 
 
         function getUserID(){

@@ -1,3 +1,14 @@
+function hidden(){
+    var viewAnswer = document.getElementById('viewAnswer');
+    viewAnswer.style.display="none";
+}
+
+function displayViewAnswer(){
+    viewAnswer.style.display="inline-block";
+}
+
+hidden();
+
 function getQuestionDetail(){
     var total_score = document.getElementById('total_score');
     var your_score = document.getElementById('your_score');
@@ -18,6 +29,8 @@ function getQuestionDetail(){
             description.innerHTML = data.description;
             answer.innerHTML = data.answer;
             publish_man.innerHTML = data.author_name;
+
+            if(data.isAuthor) displayViewAnswer();
         }
     }
 

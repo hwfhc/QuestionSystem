@@ -22,12 +22,24 @@ function init(config){
     app.get('/answerList/getAnswerList',function(req,res){
         let questionID = getQuestionID();
 
-        if(questionID){
-            config.modules['view_module'].getAnswerList(req.session.questionID,function(results){
-                res.send(results);
-            })
-        }
 
+        let authorID;
+        let userID = getUserID();
+
+        config.modules['view_module'].getQuestionDetail(questionID,function(result){
+            authorID = result.authorID;
+
+            if(userID == authorID && questionID){
+                config.modules['view_module'].getAnswerList(req.session.questionID,function(results){
+                    res.send(results);
+                })
+            }
+        });
+
+
+        function getUserID(){
+            return req.session.ID;
+        }
 
         function getQuestionID(){
             return req.session.questionID;
