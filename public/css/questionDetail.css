@@ -78,13 +78,41 @@ a {
   width: auto;
   height: 20px;
 }
+#right .information .container {
+  min-height: 300px;
+  margin: 30px 20px 0 30px;
+}
 #right .information .question {
-  width: 90%;
-  padding: 20px 0;
-  margin: 20px auto 50px auto;
+  height: 60%;
+  border: solid #d2d2d2;
+  border-width: 1px 0px 0px 0px;
+  text-align: left;
+}
+#right .information .question .header {
+  background-color: #6fb98a;
+  width: 50px;
+  height: 4px;
+  margin-bottom: 20px;
+}
+#right .information .question .title {
+  margin: 20px;
+  font-size: 30px;
+}
+#right .information .question .description {
+  margin: 20px;
+  font-size:20px;
+  width:100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+#right .information .question .line {
+  border: 1px solid #d2d2d2;
+}
+#right .information .question .answer {
+  margin: 20px;
 }
 #right .information .message {
-  width: 90%;
+  width: 100%;
   padding: 20px 0;
   margin: auto;
   border-top: 2px solid #dedede;
