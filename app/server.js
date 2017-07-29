@@ -21,8 +21,6 @@ var server = config.app.listen(80,function(){
 });
 
 
-
-
 function initMiddleware(config){
 
     initFormPost();
