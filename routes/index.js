@@ -2,11 +2,31 @@ module.exports = initRoutes;
 
 
 function initRoutes(config){
+    let fs = require('fs');
+
+    const output = fs.createWriteStream('./stdout.log',{flags:'a'});
+    const errorOutput = fs.createWriteStream('./stderr.log',{flags:'a'});
+
+    const logger = new console.Console(output,errorOutput);
 
     var app = config.app;
     var directory = config.directory;
 
     app.use(function (req,res,next){
+        var match1 = new RegExp('css');
+        var match2 = new RegExp('javascripts');
+        var match3 = new RegExp('picture');
+        if(match1.exec(req.url)==null &&
+            match2.exec(req.url)==null &&
+            match3.exec(req.url)==null){
+
+            logger.log(
+                'IP ADDRESS: '+req.ip+
+                ';  METHOD: '+req.method+
+                ';  DATE: '+new Date()+
+                ';  URL: '+req.url);
+        }
+
         if(req.path!=='/signPage'&&
             req.path!=='/css/signPage.css'&&
             req.path!=='/pleaseSignInFirst'&&
@@ -18,7 +38,6 @@ function initRoutes(config){
             req.path!=='/picture/cross.jpg'&&
             req.path!=='/picture/tick.jpg')
         {
-
             var isSignIn = config.modules['sign_module'].isSignIn(req);
 
             if(isSignIn){
