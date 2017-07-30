@@ -22,18 +22,20 @@ function API(config,connection){
 }
 
 API.prototype.sql = function(sql,callback){
-    //console.log('saferman.sql execute');
+    //console.log('saferman.sql: execute');
     this.connection.query(sql,function(error,results){
+        //console.log('saferman.sql: results is: '+results.length);
         if(error) throw error;
 
         if(callback != undefined){
+            //console.log('saferman.sql: execute callback');
             callback(results);
         }
     });
 }
 
 API.prototype.format = function(sql,arr){
-    //console.log('saferman.format execute');
+    ////console.log('saferman.format execute');
     var sql_string = this.connection.format(sql,arr);
     return sql_string;
 }
