@@ -1,5 +1,3 @@
-var heapdump = require('heapdump');
-
 var express = require('express');
 var fs = require('fs');
 
