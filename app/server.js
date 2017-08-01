@@ -1,12 +1,16 @@
+var heapdump = require('heapdump');
+
 var express = require('express');
+var fs = require('fs');
 
 //init global config
-var directory = '/home/firewaterge/Repositories/QuestionSystem';
+var app = express();
 
 var config = {
-    app: express(),
-    directory: directory,
-    modules: []
+    app: app,
+    directory: '/home/firewaterge/Repositories/QuestionSystem',
+    modules: [],
+    logger: initLogger()
 };
 
 
@@ -20,6 +24,33 @@ var server = config.app.listen(80,function(){
     console.log('server start...');
 });
 
+function initLogger(){
+    let output = fs.createWriteStream('./stdout.log',{flags:'a'});
+    let errorOutput = fs.createWriteStream('./stderr.log',{flags:'a'});
+
+    let logger = new console.Console(output,errorOutput);
+
+    app.use(function (req,res,next){
+        var match1 = new RegExp('css');
+        var match2 = new RegExp('javascripts');
+        var match3 = new RegExp('picture');
+        if(match1.exec(req.url)==null &&
+            match2.exec(req.url)==null &&
+            match3.exec(req.url)==null){
+
+            logger.log(
+                'IP ADDRESS: '+req.ip+
+                ';  METHOD: '+req.method+
+                ';  DATE: '+new Date()+
+                ';  URL: '+req.url);
+        }
+
+        next();
+    });
+
+
+    return logger;
+}
 
 function initMiddleware(config){
 
@@ -50,7 +81,7 @@ function initMiddleware(config){
 }
 
 function initRoutes(config){
-    (require('../routes/index.js')(config));
+    require('../routes/index.js')(config);
 }
 
 function initModule(config){

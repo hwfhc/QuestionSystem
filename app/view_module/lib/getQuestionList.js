@@ -16,7 +16,10 @@ function getQuestionList(callback){
         let sql = 'SELECT ID,title FROM AskQuestionTable';
 
         config.modules['saferman'].sql(sql,function(results){
-            executeCallback(JSON.stringify(results));
+            executeCallback(results);
+
+            ////bug is here !!!
+            //executeCallback(JSON.stringify(results));
         });
 
     };
