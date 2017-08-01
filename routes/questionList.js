@@ -10,7 +10,7 @@ function init(config){
 
     app.get('/questionList/getQuestionList', function(req, res){
         config.modules['view_module'].getQuestionList(function(results){
-            res.send(results);
+            res.send(JSON.stringify(results));
         })
     });
 
