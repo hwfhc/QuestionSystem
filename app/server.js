@@ -18,8 +18,7 @@ initModule(config);
 
 
 //start server, and listen to port
-var server = config.app.listen(80,function(){
-    console.log('server start...');
+var server = config.app.listen(8080,function(){
 });
 
 function initLogger(){
