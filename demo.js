@@ -1,19 +1,36 @@
-const cpus = require('os').cpus();
-const http = require('http');
 const cluster = require('cluster');
+const fs = require('fs');
 
-if(cluster.isMaster){
-    console.log(`Master ${process.pid} is running`);
+cluster.setupMaster({
+    exec: 'main.js',
+});
 
-    for(let i=0;i<cpus.length;i++){
-        cluster.fork('./main.js');
-    }
+cluster.fork();
+cluster.fork();
+cluster.fork();
+cluster.fork();
 
-    cluster.on('exit',(worker,code,signal)=>{
-        console.log(`worker ${worker.process.pid} died`);
-    });
-}else{
-     console.log(`Worker ${process.pid} start`);
+cluster.on('exit',function(worker,code,signal){
+    console.log('worker %d died %s.restart...',
+        worker.process.pid,signal || code);
+
+    cluster.fork();
+
+});
+
+const logger = initLogger();
+
+function initLogger(){
+    let output = fs.createWriteStream('./stdout.log',{flags:'a'});
+    let errorOutput = fs.createWriteStream('./stderr.log',{flags:'a'});
+
+    let logger = new console.Console(output,errorOutput);
+
+    return logger;
 }
 
-console.log('complete');
+cluster.on('message',function(message){
+    console.log('get message:',message);
+//    logger.log(message);
+});
+
