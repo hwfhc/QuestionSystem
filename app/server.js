@@ -1,5 +1,4 @@
 var express = require('express');
-var fs = require('fs');
 
 //init global config
 var app = express();
@@ -7,8 +6,7 @@ var app = express();
 var config = {
     app: app,
     directory: '/home/firewaterge/Repositories/QuestionSystem',
-    modules: [],
-    logger: initLogger()
+    modules: []
 };
 
 
@@ -16,39 +14,9 @@ initMiddleware(config);
 initRoutes(config);
 initModule(config);
 
-
 //start server, and listen to port
-var server = config.app.listen(80,function(){
-    console.log('server start...');
+var server = config.app.listen(8080,function(){
 });
-
-function initLogger(){
-    let output = fs.createWriteStream('./stdout.log',{flags:'a'});
-    let errorOutput = fs.createWriteStream('./stderr.log',{flags:'a'});
-
-    let logger = new console.Console(output,errorOutput);
-
-    app.use(function (req,res,next){
-        var match1 = new RegExp('css');
-        var match2 = new RegExp('javascripts');
-        var match3 = new RegExp('picture');
-        if(match1.exec(req.url)==null &&
-            match2.exec(req.url)==null &&
-            match3.exec(req.url)==null){
-
-            logger.log(
-                'IP ADDRESS: '+req.ip+
-                ';  METHOD: '+req.method+
-                ';  DATE: '+new Date()+
-                ';  URL: '+req.url);
-        }
-
-        next();
-    });
-
-
-    return logger;
-}
 
 function initMiddleware(config){
 
