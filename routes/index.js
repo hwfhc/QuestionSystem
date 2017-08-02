@@ -17,13 +17,10 @@ function initRoutes(config){
             match2.exec(req.url)==null &&
             match3.exec(req.url)==null){
 
-console.log('exec');
-            process.send(
-                '{IP ADDRESS: '+req.ip+
-                ';  METHOD: '+req.method+
-                ';  DATE: '+new Date()+
-                ';  URL: '+req.url+'}'
-            );
+            let log = {
+                type:'view_log',
+                log: `IP ADDRESS:${req.ip};METHOD:${req.method};DATE:${new Date()};URL:${req.url}`};
+            process.send(log );
         }
 
         if(req.path!=='/signPage'&&
@@ -42,8 +39,7 @@ console.log('exec');
             if(isSignIn){
                 next();
             }else{
-                //res.sendFile(directory + '/views/pleaseSignInFirst.html');
-                res.sendFile('/home/firewaterge/Repositories/QuestionSystem/views/pleaseSignInFirst.html');
+                res.sendFile(directory + '/views/pleaseSignInFirst.html');
             }
 
         }else{

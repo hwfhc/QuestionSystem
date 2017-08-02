@@ -10,27 +10,35 @@ cluster.fork();
 cluster.fork();
 cluster.fork();
 
-cluster.on('exit',function(worker,code,signal){
-    console.log('worker %d died %s.restart...',
-        worker.process.pid,signal || code);
-
-    cluster.fork();
-
-});
-
 const logger = initLogger();
+const logger2 = initLogger2();
 
 function initLogger(){
     let output = fs.createWriteStream('./stdout.log',{flags:'a'});
-    let errorOutput = fs.createWriteStream('./stderr.log',{flags:'a'});
 
-    let logger = new console.Console(output,errorOutput);
+    let logger = new console.Console(output);
 
     return logger;
 }
 
-cluster.on('message',function(message){
-    console.log('get message:',message);
-//    logger.log(message);
+function initLogger2(){
+    let errorOutput = fs.createWriteStream('./stderr.log',{flags:'a'});
+
+    let logger = new console.Console(errorOutput);
+
+    return logger;
+}
+
+for(let id in cluster.workers){
+    cluster.workers[id].on('message',function(message){
+        logger.log(message.log);
+    });
+}
+
+cluster.on('exit',function(worker,code,signal){
+    logger2.log(`WORKER ${worker.process.pid} died FOR ${signal || code} IN ${new Date()};`);
+
+    cluster.fork();
+
 });
 
