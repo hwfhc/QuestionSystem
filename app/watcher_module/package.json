@@ -1,0 +1,14 @@
+{
+  "name": "publish_module",
+  "version": "1.0.0",
+  "description": "--- **isQuestion:**   发布题目到页面",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no question specified\" && exit 1"
+  },
+  "author": "lxl",
+  "license": "ISC"
+}
