@@ -14,7 +14,7 @@ const logger = initLogger();
 const logger2 = initLogger2();
 
 function initLogger(){
-    let output = fs.createWriteStream('./stdout.log',{flags:'a'});
+    let output = fs.createWriteStream('./logs/stdout.log',{flags:'a'});
 
     let logger = new console.Console(output);
 
@@ -22,7 +22,7 @@ function initLogger(){
 }
 
 function initLogger2(){
-    let errorOutput = fs.createWriteStream('./stderr.log',{flags:'a'});
+    let errorOutput = fs.createWriteStream('./logs/stderr.log',{flags:'a'});
 
     let logger = new console.Console(errorOutput);
 

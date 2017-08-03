@@ -37,6 +37,8 @@ function initMiddleware(config){
         var FileStore = require('session-file-store')(session);
 
         config.app.use(session({
+            resave: false,
+            saveUninitialized: false,
             store: new FileStore(),
             secret: 'hehe',
             cookie:{

@@ -48,7 +48,6 @@ function initRoutes(config){
     });
 
     app.get('/',function(req,res){
-        console.log('asdf');
         res.sendFile(directory + '/views/personalHomePage.html');
     });
 
