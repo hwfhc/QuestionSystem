@@ -5,7 +5,7 @@ var app = express();
 
 var config = {
     app: app,
-    directory: '/home/firewaterge/Repositories/QuestionSystem',
+    directory: '/usr/local/QuestionSystem',
     modules: []
 };
 

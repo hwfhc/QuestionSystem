@@ -13,7 +13,7 @@ cluster.fork();
 
 for(let id in cluster.workers){
     cluster.workers[id].on('message',function(message){
-        logger.log(message.log);
+        logger.console(message.log);
     });
 }
 
