@@ -51,7 +51,7 @@ function initRoutes(config){
         res.sendFile(directory + '/views/personalHomePage.html');
     });
 
-    app.get('/css/:file',function(req,res){
+   /* app.get('/css/:file',function(req,res){
         res.sendFile(directory + '/public/css/' + req.params['file']);
     });
 
@@ -61,7 +61,7 @@ function initRoutes(config){
 
     app.get('/picture/:file',function(req,res){
         res.sendFile(directory + '/public/picture/' + req.params['file']);
-    });
+    });*/
 
     (require('./signPage'))(config);
     (require('./personalHomePage'))(config);
