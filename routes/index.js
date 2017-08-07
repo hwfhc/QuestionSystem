@@ -20,7 +20,7 @@ function initRoutes(config){
             let log = {
                 type:'view_log',
                 log: `IP ADDRESS:${req.ip};METHOD:${req.method};DATE:${new Date()};URL:${req.url}`};
-            process.send(log );
+            process.send(log);
         }
 
         if(req.path!=='/signPage'&&
@@ -39,7 +39,9 @@ function initRoutes(config){
             if(isSignIn){
                 next();
             }else{
-                res.sendFile(directory + '/views/pleaseSignInFirst.html');
+                //res.sendFile(directory + '/views/pleaseSignInFirst.html');
+                res.setHeader('X-Accel-Redirect','/protected/pleaseSignInFirst.html');
+                res.end();
             }
 
         }else{
@@ -48,7 +50,9 @@ function initRoutes(config){
     });
 
     app.get('/',function(req,res){
-        res.sendFile(directory + '/views/personalHomePage.html');
+        //res.sendFile(directory + '/views/personalHomePage.html');
+        res.setHeader('X-Accel-Redirect','/protected/personalHomePage.html');
+        res.end();
     });
 
    /* app.get('/css/:file',function(req,res){

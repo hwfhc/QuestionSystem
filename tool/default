@@ -50,8 +50,13 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
-        proxy_cache test;
-        proxy_cache_valid 200 302 304 24h;
+        #proxy_cache test;
+        #proxy_cache_valid 200 302 304 24h;
+    }
+
+    location /protected/ {
+        internal;
+        alias /usr/local/QuestionSystem/views/;
     }
 
     location /css/ {
