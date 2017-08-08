@@ -25,7 +25,10 @@ API.prototype.sql = function(sql,callback){
     //console.log('saferman.sql: execute');
     this.connection.query(sql,function(error,results){
         //console.log('saferman.sql: results is: '+results.length);
-        if(error) throw error;
+        if(error){
+            console.log(err);
+            console.log(err.stack);
+        };
 
         if(callback != undefined){
             //console.log('saferman.sql: execute callback');
