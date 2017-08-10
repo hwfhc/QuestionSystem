@@ -9,8 +9,4 @@ function API(config){
     this.config = config;
 }
 
-API.prototype.initUser = require('./initUser.js');
-
-API.prototype.ifUsernameMatchPasswordGetID = require('./ifUsernameMatchPasswordGetID.js');
-
 API.prototype.getUsernameByID = require('./getUsernameByID.js');

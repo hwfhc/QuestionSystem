@@ -10,8 +10,3 @@ function API(config){
 }
 
 API.prototype.publishAskQuestion = require('./publishAskQuestion.js');
-
-//API.prototype.publishMultipleChoice = require('.publishMultipleChoice.js');
-
-//以后再做   API.prototype.publishTeamWork = require('./publishTeamWork.js');
-

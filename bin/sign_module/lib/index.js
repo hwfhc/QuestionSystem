@@ -9,7 +9,7 @@ function API(config){
     this.config = config;
 }
 
-API.prototype.signIn = require('./signIn.js');
+API.prototype.getIdByUsernameAndPassword = require('./getIdByUsernameAndPassword');
 
 API.prototype.signUp = require('./signUp.js');
 
