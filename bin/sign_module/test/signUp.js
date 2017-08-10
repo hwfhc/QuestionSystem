@@ -15,21 +15,29 @@ config.modules['saferman'] = (require(directory + './saferman'))(config);
 describe('signUp',function(){
 
     before(function(done){
+        const saferman = config.modules['saferman'];
+
         let deletePersonalInformation = new Promise(function(resolve,reject){
-            config.modules['saferman'].sql('DELETE FROM PersonalInformation',function(){
-                resolve();
+            saferman.sql('DELETE FROM PersonalInformation',function(){
+                saferman.sql('TRUNCATE PersonalInformation',function(){
+                    resolve();
+                });
             });
         });
 
         let deleteShadowTable = new Promise(function(resolve,reject){
-            config.modules['saferman'].sql('DELETE FROM ShadowTable',function(){
-                resolve();
+            saferman.sql('DELETE FROM ShadowTable',function(){
+                saferman.sql('TRUNCATE ShadowTable',function(){
+                    resolve();
+                });
             });
         });
 
         let deleteRightsTable = new Promise(function(resolve,reject){
-            config.modules['saferman'].sql('DELETE FROM RightsTable',function(){
-                resolve();
+            saferman.sql('DELETE FROM RightsTable',function(){
+                saferman.sql('TRUNCATE RightsTable',function(){
+                    resolve();
+                });
             });
         });
 
