@@ -10,21 +10,20 @@ function init(config){
     });
 
     app.post('/signPage/signIn', function(req, res){
+        const sign_module = config.modules['sign_module'];
         var username = req.body.username;
         var password = req.body.password;
         //console.log(username);
         //console.log(password);
 
-        config.modules['sign_module'].signIn(username,password,req,function(){
-            var isSignIn = config.modules['sign_module'].isSignIn(req);
-
-            if(isSignIn){
+        sign_module.getIdByUsernameAndPassword(username,password,function(result){
+            if(result){
+                req.session.ID = result;
                 res.sendFile(directory + '/views/signInSuccess.html');
             }else{
-                //console.log('I should send fail text');
+
                 res.sendFile(directory + '/views/signInFail.html');
             }
-
         });
     });
 
