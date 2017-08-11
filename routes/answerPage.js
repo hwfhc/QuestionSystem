@@ -1,6 +1,6 @@
 module.exports = init;
 
-const answer_module = require('./answer_module')();
+const answer_module = require('../bin/answer_module')();
 
 function init(config){
     var app = config.app;

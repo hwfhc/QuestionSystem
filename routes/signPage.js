@@ -1,12 +1,6 @@
 module.exports = init;
 
-const sign_module = require('./sign_module')();
-const rights_management = require('./rights_management')();
-const personalinformation_module = require('./personalinformation_module')();
-const saferman = require('./saferman')();
-const publish_module = require('./publish_module')();
-const answer_module = require('./answer_module')();
-const view_module = require('./view_module')();
+const sign_module = require('../bin/sign_module')();
 
 function init(config){
     var app = config.app;
@@ -18,7 +12,6 @@ function init(config){
     });
 
     app.post('/signPage/signIn', function(req, res){
-        const sign_module = sign_module;
         var username = req.body.username;
         var password = req.body.password;
         //console.log(username);

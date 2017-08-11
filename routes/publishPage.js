@@ -1,6 +1,6 @@
 module.exports = init;
 
-const publish_module = require('./publish_module')();
+const publish_module = require('../bin/publish_module')();
 
 function init(config){
     var app = config.app;

@@ -1,6 +1,6 @@
 module.exports = init;
 
-const personalinformation_module = require('./personalinformation_module')();
+const personalinformation_module = require('../bin/personalinformation_module')();
 
 function init(config){
     var app = config.app;
