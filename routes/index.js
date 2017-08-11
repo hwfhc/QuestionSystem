@@ -1,10 +1,7 @@
 module.exports = initRoutes;
 
-function initRoutes(config){
+function initRoutes(app,directory){
     let fs = require('fs');
-
-    var app = config.app;
-    var directory = config.directory;
 
     var match1 = new RegExp('css');
     var match2 = new RegExp('javascripts');
@@ -73,12 +70,12 @@ function initRoutes(config){
         res.sendFile(directory + '/public/picture/' + req.paramsfile);
     });*/
 
-    require('./signPage')(config);
-    require('./personalHomePage')(config);
-    require('./questionList')(config);
-    require('./questionDetail')(config);
-    require('./answerPage')(config);
-    require('./publishPage')(config);
-    require('./answerDetail')(config);
-    require('./answerList')(config);
+    require('./signPage')(app,directory);
+    require('./personalHomePage')(app,directory);
+    require('./questionList')(app,directory);
+    require('./questionDetail')(app,directory);
+    require('./answerPage')(app,directory);
+    require('./publishPage')(app,directory);
+    require('./answerDetail')(app,directory);
+    require('./answerList')(app,directory);
 }

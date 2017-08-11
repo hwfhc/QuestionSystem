@@ -8,7 +8,7 @@ var config = {
 
 //module load area
 const sign_module = (require(directory + './sign_module'))(config);
-const saferman = require('saferman')();
+const saferman = require('saferman');
 
 
 describe('signUp',function(){

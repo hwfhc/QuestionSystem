@@ -1,11 +1,8 @@
 module.exports = init;
 
-const view_module = require('../bin/view_module')();
+const view_module = require('../bin/view_module');
 
-function init(config){
-    var app = config.app;
-    var directory = config.directory;
-
+function init(app,directory){
     app.get('/answerList',function(req,res){
         let questionID = getQuestionID();
 

@@ -1,11 +1,8 @@
 module.exports = init;
 
-const answer_module = require('../bin/answer_module')();
+const answer_module = require('../bin/answer_module');
 
-function init(config){
-    var app = config.app;
-    var directory = config.directory;
-
+function init(app,directory){
     app.get('/answerPage',function(req,res){
         res.sendFile(directory + '/views/answerPage.html');
     });

@@ -3,8 +3,8 @@ var expect = require('chai').expect;
 var directory = '../../';
 
 //module load area
-const view_module = (require(directory + './view_module'))();
-const saferman = require('saferman')();
+const view_module = require(directory + './view_module');
+const saferman = require('saferman');
 
 describe('getQuestionList',function(){
 

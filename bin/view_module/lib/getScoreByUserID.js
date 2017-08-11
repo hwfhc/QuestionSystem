@@ -1,6 +1,6 @@
 module.exports = getScoreByUserID;
 
-const saferman = require('saferman')();
+const saferman = require('saferman');
 
 function getScoreByUserID(userID,questionID,callback){
     let sql = saferman.format('SELECT answer,score FROM AnswerTable WHERE userID=? AND questionID=?',

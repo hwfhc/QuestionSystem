@@ -1,11 +1,8 @@
 module.exports = init;
 
-const sign_module = require('../bin/sign_module')();
+const sign_module = require('../bin/sign_module');
 
-function init(config){
-    var app = config.app;
-    var directory = config.directory;
-
+function init(app,directory){
     app.get('/signPage',function(req,res){
         sign_module.logOut(req);
         res.sendFile(directory + '/views/signPage.html');

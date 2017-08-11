@@ -3,8 +3,8 @@ const expect = require('chai').expect;
 const directory = '../../';
 
 //module load area
-const sign_module = (require(directory + './sign_module'))();
-const saferman = require('saferman')();
+const sign_module = require(directory + './sign_module');
+const saferman = require('saferman');
 
 describe('getIdByUsernameAndPassword',function(){
 

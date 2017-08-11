@@ -1,13 +1,10 @@
 module.exports = init;
 
-const personalinformation_module = require('../bin/personalinformation_module')();
-const answer_module = require('../bin/answer_module')();
-const view_module = require('../bin/view_module')();
+const personalinformation_module = require('../bin/personalinformation_module');
+const answer_module = require('../bin/answer_module');
+const view_module = require('../bin/view_module');
 
-function init(config){
-    var app = config.app;
-    var directory = config.directory;
-
+function init(app,directory){
     app.get('/answerDetail', function(req, res){
         let answerID = getAnswerID();
 

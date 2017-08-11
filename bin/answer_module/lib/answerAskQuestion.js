@@ -1,6 +1,6 @@
 module.exports = answerAskQuestion;
 
-const saferman = require('saferman')();
+const saferman = require('saferman');
 
 function answerAskQuestion(answer,questionID,userID,callback){
 

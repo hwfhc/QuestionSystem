@@ -3,8 +3,8 @@ var expect = require('chai').expect;
 var directory = '../../';
 
 //module load area
-const publish_module = (require(directory + './publish_module'))();
-const saferman = require('saferman')();
+const publish_module = require(directory + './publish_module');
+const saferman = require('saferman');
 
 describe('initUser',function(){
 

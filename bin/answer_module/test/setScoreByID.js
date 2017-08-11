@@ -3,8 +3,8 @@ var expect = require('chai').expect;
 var directory = '../../';
 
 //module load area
-const answer_module = (require(directory + './answer_module'))();
-const saferman = require('saferman')();
+const answer_module = require(directory + './answer_module');
+const saferman = require('saferman');
 
 describe('seScoreByID',function(){
 

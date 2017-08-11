@@ -1,20 +1,9 @@
-module.exports = start;
+exports.getQuestionList = require('./getQuestionList.js');
 
-function start(config){
+exports.getAnswerList = require('./getAnswerList.js');
 
-    return (new API(config));
-};
+exports.getQuestionDetail = require('./getQuestionDetail.js');
 
-function API(config){
-    this.config = config;
-}
+exports.getAnswerAndUserIDbyID = require('./getAnswerAndUserIDbyID.js');
 
-API.prototype.getQuestionList = require('./getQuestionList.js');
-
-API.prototype.getAnswerList = require('./getAnswerList.js');
-
-API.prototype.getQuestionDetail = require('./getQuestionDetail.js');
-
-API.prototype.getAnswerAndUserIDbyID = require('./getAnswerAndUserIDbyID.js');
-
-API.prototype.getScoreByUserID = require('./getScoreByUserID.js');
+exports.getScoreByUserID = require('./getScoreByUserID.js');

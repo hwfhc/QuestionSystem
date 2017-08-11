@@ -1,6 +1,6 @@
 module.exports = publishAskQuestion;
 
-const saferman = require('saferman')();
+const saferman = require('saferman');
 
 function publishAskQuestion(title,description,total_score,authorID,callback){
 

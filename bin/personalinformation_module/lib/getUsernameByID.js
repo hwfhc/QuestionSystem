@@ -1,6 +1,6 @@
 module.exports = getUsernameByID;
 
-const saferman = require('saferman')();
+const saferman = require('saferman');
 
 function getUsernameByID(ID,callback){
 
