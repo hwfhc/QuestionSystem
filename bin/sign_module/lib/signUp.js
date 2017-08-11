@@ -1,8 +1,8 @@
 module.exports = signUp;
 
+const saferman = require('saferman')();
+
 function signUp(username,password,callback){
-    const saferman = this.config.modules['saferman'];
-    const rights_management = this.config.modules['rights_management'];
 
     if(!checkUsername() || !checkPassword()){
         executeCallback();

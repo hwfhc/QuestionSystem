@@ -1,5 +1,9 @@
 module.exports = init;
 
+const personalinformation_module = require('./personalinformation_module')();
+const answer_module = require('./answer_module')();
+const view_module = require('./view_module')();
+
 function init(config){
     var app = config.app;
     var directory = config.directory;
@@ -31,7 +35,7 @@ function init(config){
         }
 
         let answerDetail = new Promise(function(resolve,reject){
-            config.modules['view_module'].getAnswerAndUserIDbyID(answerID,function(results){
+            view_module.getAnswerAndUserIDbyID(answerID,function(results){
                 dataToSended.answer = results.answer;
                 dataToSended.score = results.score;
 
@@ -45,7 +49,7 @@ function init(config){
 
             let getUsername = new Promise(function(resolve,reject){
                 //console.log('userIDofAnswer is: '+userIDofAnswer);
-                config.modules['personalinformation_module'].getUsernameByID(userIDofAnswer,function(result){
+                personalinformation_module.getUsernameByID(userIDofAnswer,function(result){
                     dataToSended.username = result;
                     resolve();
                 });
@@ -53,7 +57,7 @@ function init(config){
 
             let getQuestionDetail = new Promise(function(resolve,reject){
                 //console.log('questionID is: '+questionID);
-                config.modules['view_module'].getQuestionDetail(questionID,function(result){
+                view_module.getQuestionDetail(questionID,function(result){
                     dataToSended.title = result.title;
                     dataToSended.description = result.description;
                     resolve();
@@ -80,7 +84,7 @@ function init(config){
         let answerID = getAnswerID();
 
         if(score && answerID){
-            config.modules['answer_module'].setScoreByID(answerID,score,function(){
+            answer_module.setScoreByID(answerID,score,function(){
                 res.sendFile(directory + '/views/signInSuccess.html');
             });
         }else{

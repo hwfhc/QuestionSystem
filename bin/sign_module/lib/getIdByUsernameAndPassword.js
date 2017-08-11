@@ -1,8 +1,7 @@
 module.exports = getIdByUsernameAndPassword;
+const saferman = require('saferman')();
 
 function getIdByUsernameAndPassword(username,password,callback){
-    const saferman = this.config.modules['saferman'];
-
     let sqlString = saferman.format(
         'SELECT ID FROM PersonalInformation WHERE Name=?',
         [username]);

@@ -1,5 +1,7 @@
 module.exports = init;
 
+const personalinformation_module = require('./personalinformation_module')();
+
 function init(config){
     var app = config.app;
     var directory = config.directory;
@@ -12,7 +14,7 @@ function init(config){
         let ID = getUserID();
         let dataToSended = {};
 
-        config.modules['personalinformation_module'].getUsernameByID(ID,function(result){
+        personalinformation_module.getUsernameByID(ID,function(result){
             dataToSended.username = result;
             res.send(JSON.stringify(dataToSended));
         });

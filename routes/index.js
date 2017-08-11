@@ -1,11 +1,10 @@
 module.exports = initRoutes;
 
-
-function initRoutes(config){
+function initRoutes(){
     let fs = require('fs');
 
-    var app = config.app;
-    var directory = config.directory;
+    var app = .app;
+    var directory = .directory;
 
     var match1 = new RegExp('css');
     var match2 = new RegExp('javascripts');
@@ -34,7 +33,7 @@ function initRoutes(config){
             req.path!=='/picture/cross.jpg'&&
             req.path!=='/picture/tick.jpg')
         {
-            var isSignIn = config.modules['sign_module'].isSignIn(req);
+            var isSignIn = sign_module.isSignIn(req);
 
             if(isSignIn){
                 next();
@@ -56,23 +55,23 @@ function initRoutes(config){
     });
 
    /* app.get('/css/:file',function(req,res){
-        res.sendFile(directory + '/public/css/' + req.params['file']);
+        res.sendFile(directory + '/public/css/' + req.paramsfile);
     });
 
     app.get('/javascripts/:file',function(req,res){
-        res.sendFile(directory + '/public/javascripts/' + req.params['file']);
+        res.sendFile(directory + '/public/javascripts/' + req.paramsfile);
     });
 
     app.get('/picture/:file',function(req,res){
-        res.sendFile(directory + '/public/picture/' + req.params['file']);
+        res.sendFile(directory + '/public/picture/' + req.paramsfile);
     });*/
 
-    (require('./signPage'))(config);
-    (require('./personalHomePage'))(config);
-    (require('./questionList'))(config);
-    (require('./questionDetail'))(config);
-    (require('./answerPage'))(config);
-    (require('./publishPage'))(config);
-    (require('./answerDetail'))(config);
-    (require('./answerList'))(config);
+    require('./signPage')();
+    require('./personalHomePage')();
+    require('./questionList')();
+    require('./questionDetail')();
+    require('./answerPage')();
+    require('./publishPage')();
+    require('./answerDetail')();
+    require('./answerList')();
 }

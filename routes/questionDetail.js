@@ -1,5 +1,7 @@
 module.exports = init;
 
+const view_module = require('./view_module')();
+
 function init(config){
     var app = config.app;
     var directory = config.directory;
@@ -32,17 +34,17 @@ function init(config){
             return;
         }
 
-        config.modules['view_module'].getQuestionDetail(questionID,function(result){
+        view_module.getQuestionDetail(questionID,function(result){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.total_score = result.total_score;
 
             authorID = result.authorID;
 
-            config.modules['personalinformation_module'].getUsernameByID(authorID,function(result){
+            personalinformation_module.getUsernameByID(authorID,function(result){
                 dataToSended.author_name = result;
 
-                config.modules['view_module'].getScoreByUserID(userID,questionID,function(result){
+                view_module.getScoreByUserID(userID,questionID,function(result){
                     dataToSended.score = result.score;
                     dataToSended.answer = result.answer;
 

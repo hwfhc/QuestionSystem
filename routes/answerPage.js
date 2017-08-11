@@ -1,5 +1,7 @@
 module.exports = init;
 
+const answer_module = require('./answer_module')();
+
 function init(config){
     var app = config.app;
     var directory = config.directory;
@@ -14,7 +16,7 @@ function init(config){
         var userID = getUserID();
 
         if(answer && questionID && userID){
-            config.modules['answer_module'].answerAskQuestion(answer,questionID,userID,function(){
+            answer_module.answerAskQuestion(answer,questionID,userID,function(){
                 res.sendFile(directory + '/views/signInSuccess.html');
             });
         }else{
