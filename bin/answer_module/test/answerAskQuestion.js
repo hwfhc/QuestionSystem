@@ -2,19 +2,15 @@
 var expect = require('chai').expect;
 var directory = '../../';
 
-var config = {
-    modules: []
-};
-
 //module load area
-config.modules['answer_module'] = (require(directory + './answer_module'))(config);
-config.modules['saferman'] = (require(directory + './saferman'))(config);
+const answer_module = (require(directory + './answer_module'))();
+const saferman = require('saferman')();
 
 describe('answerAskQuestion',function(){
 
     before(function(done){
         var deleteAnswerTable = new Promise(function(resolve,reject){
-            config.modules['saferman'].sql('DELETE FROM AnswerTable',function(){
+            saferman.sql('DELETE FROM AnswerTable',function(){
                 resolve();
             });
         }).then(function(){
@@ -28,11 +24,11 @@ describe('answerAskQuestion',function(){
 
         let insertAnswerTable1 = new Promise(function(resolve,reject){
 
-            let sqlString = config.modules['saferman'].format(
+            let sqlString = saferman.format(
                 'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUE (?,?,?,?,?,?)',
                 [1,1,1,'test1',0,0]);
 
-            config.modules['saferman'].sql(
+            saferman.sql(
                 sqlString,function(){
                     resolve();
                 });
@@ -40,11 +36,11 @@ describe('answerAskQuestion',function(){
 
         let insertAnswerTable2 = new Promise(function(resolve,reject){
 
-            let sqlString = config.modules['saferman'].format(
+            let sqlString = saferman.format(
                 'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUE (?,?,?,?,?,?)',
                 [2,1,2,'test2',0,0]);
 
-            config.modules['saferman'].sql(sqlString,function(){
+            saferman.sql(sqlString,function(){
                 resolve();
             });
         });
@@ -52,15 +48,15 @@ describe('answerAskQuestion',function(){
 
     it('add answer3',function(done){
         let answerAskQuestion = new Promise((resolve,reject)=>{
-            config.modules['answer_module'].answerAskQuestion('test3',2,1,function(){
+            answer_module.answerAskQuestion('test3',2,1,function(){
                 resolve();
             });
         }).then(function(){
-            let sqlString = config.modules['saferman'].format(
+            let sqlString = saferman.format(
                 'SELECT * FROM AnswerTable WHERE ID=?',
                 [3]);
 
-            config.modules['saferman'].sql(sqlString,function(results){
+            saferman.sql(sqlString,function(results){
                 expect(results[0].ID).to.be.equal(3);
                 expect(results[0].ID).to.be.a('number');
                 expect(results[0].questionID).to.be.equal(2);
@@ -81,15 +77,15 @@ describe('answerAskQuestion',function(){
 
    it('update answer2',function(done){
         let answerAskQuestion = new Promise((resolve,reject)=>{
-            config.modules['answer_module'].answerAskQuestion('test2 update',1,2,function(){
+            answer_module.answerAskQuestion('test2 update',1,2,function(){
                 resolve();
             });
         }).then(function(){
-            let sqlString = config.modules['saferman'].format(
+            let sqlString = saferman.format(
                 'SELECT * FROM AnswerTable WHERE ID=?',
                 [2]);
 
-            config.modules['saferman'].sql(sqlString,function(results){
+            saferman.sql(sqlString,function(results){
                 expect(results[0].ID).to.be.equal(2);
                 expect(results[0].ID).to.be.a('number');
                 expect(results[0].questionID).to.be.equal(1);

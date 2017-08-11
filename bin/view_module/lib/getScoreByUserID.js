@@ -1,12 +1,12 @@
 module.exports = getScoreByUserID;
 
-function getScoreByUserID(userID,questionID,callback){
+const saferman = require('saferman')();
 
-    let config = this.config;
-    let sql = config.modules['saferman'].format('SELECT answer,score FROM AnswerTable WHERE userID=? AND questionID=?',
+function getScoreByUserID(userID,questionID,callback){
+    let sql = saferman.format('SELECT answer,score FROM AnswerTable WHERE userID=? AND questionID=?',
         [userID,questionID]);
 
-    config.modules['saferman'].sql(sql,function(results){
+    saferman.sql(sql,function(results){
         if(results.length != 0){
             executeCallback(results[0]);
         }else{

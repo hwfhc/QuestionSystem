@@ -1,5 +1,7 @@
 module.exports = init;
 
+const view_module = require('../bin/view_module')();
+
 function init(config){
     var app = config.app;
     var directory = config.directory;
@@ -9,7 +11,7 @@ function init(config){
     });
 
     app.get('/questionList/getQuestionList', function(req, res){
-        config.modules['view_module'].getQuestionList(function(results){
+        view_module.getQuestionList(function(results){
             res.send(JSON.stringify(results));
         })
     });

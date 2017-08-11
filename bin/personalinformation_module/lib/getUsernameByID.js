@@ -1,24 +1,18 @@
 module.exports = getUsernameByID;
 
+const saferman = require('saferman')();
+
 function getUsernameByID(ID,callback){
 
-    let config = this.config;
-    getUsername();
+    let sql = 'SELECT Name FROM PersonalInformation WHERE ID=' + ID;
+
+    saferman.sql(sql,function(results){
+        executeCallback(results[0].Name);
+    });
 
 
     function executeCallback(argumentOfCallback){
         if(callback!=undefined)
             callback(argumentOfCallback);
     }
-
-    function getUsername(){
-
-        let sql = 'SELECT Name FROM PersonalInformation WHERE ID=' + ID;
-
-        config.modules['saferman'].sql(sql,function(results){
-            executeCallback(results[0].Name);
-        });
-
-    };
-
 }

@@ -1,5 +1,7 @@
 module.exports = init;
 
+const view_module = require('../bin/view_module')();
+
 function init(config){
     var app = config.app;
     var directory = config.directory;
@@ -26,11 +28,11 @@ function init(config){
         let authorID;
         let userID = getUserID();
 
-        config.modules['view_module'].getQuestionDetail(questionID,function(result){
+        view_module.getQuestionDetail(questionID,function(result){
             authorID = result.authorID;
 
             if(userID == authorID && questionID){
-                config.modules['view_module'].getAnswerList(req.session.questionID,function(results){
+                view_module.getAnswerList(req.session.questionID,function(results){
                     res.send(results);
                 })
             }

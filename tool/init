@@ -17,7 +17,7 @@ CREATE DATABASE QuestionSystem;
 USE QuestionSystem;
 
 CREATE TABLE PersonalInformation(
-     ID INT not null primary key,
+     ID INT AUTO_INCREMENT primary key,
      Name VARCHAR(20),
      Graph INT,
      PhoneNumber INT,
@@ -25,29 +25,29 @@ CREATE TABLE PersonalInformation(
    );
 
 CREATE TABLE ShadowTable(
-     ID INT not null primary key,
-     Shadow VARCHAR(20)
+     ID INT AUTO_INCREMENT primary key,
+     Shadow VARCHAR(20) not null
    );
 
 CREATE TABLE RightsTable(
-     ID INT not null primary key,
+     ID INT AUTO_INCREMENT primary key,
      Rights VARCHAR(50)
    );
 
 CREATE TABLE AskQuestionTable(
-     ID INT not null primary key,
-     title VARCHAR(200),
-     description VARCHAR(1000),
+     ID INT AUTO_INCREMENT primary key,
+     title VARCHAR(200) not null,
+     description VARCHAR(1000) not null,
      total_score INT,
      time VARCHAR(20),
      authorID INT
    );
 
 CREATE TABLE AnswerTable(
-     ID INT not null primary key,
-     questionID INT,
-     userID INT,
-     answer VARCHAR(1000),
+     ID INT AUTO_INCREMENT primary key,
+     questionID INT not null,
+     userID INT not null,
+     answer VARCHAR(1000) not null,
      score INT,
      state INT
    );

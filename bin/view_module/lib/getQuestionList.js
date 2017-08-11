@@ -1,27 +1,19 @@
 module.exports = getQuestionList;
 
+const saferman = require('saferman')();
+
 function getQuestionList(callback){
 
-    let config = this.config;
-    getList();
+    let sql = 'SELECT ID,title FROM AskQuestionTable';
+
+    saferman.sql(sql,function(results){
+        executeCallback(results);
+    });
+
 
 
     function executeCallback(argumentOfCallback){
         if(callback!=undefined)
             callback(argumentOfCallback);
     }
-
-    function getList(){
-
-        let sql = 'SELECT ID,title FROM AskQuestionTable';
-
-        config.modules['saferman'].sql(sql,function(results){
-            executeCallback(results);
-
-            ////bug is here !!!
-            //executeCallback(JSON.stringify(results));
-        });
-
-    };
-
 }

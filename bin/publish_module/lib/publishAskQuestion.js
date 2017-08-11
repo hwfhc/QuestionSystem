@@ -1,15 +1,15 @@
 module.exports = publishAskQuestion;
 
+const saferman = require('saferman')();
+
 function publishAskQuestion(title,description,total_score,authorID,callback){
 
-    let config = this.config;
-
     let isTitleDuplicate = new Promise((resolve,reject) => {
-        let sql = config.modules['saferman'].format(
+        let sql = saferman.format(
             'SELECT ID FROM AskQuestionTable WHERE title=?',
             [title]);
 
-        config.modules['saferman'].sql(sql,function(results){
+        saferman.sql(sql,function(results){
             //console.log('results is: '+results.length);
             if(results.length == 0){
                 //console.log('not duplicate');
@@ -34,18 +34,18 @@ function publishAskQuestion(title,description,total_score,authorID,callback){
 
         let sql = 'SELECT count(ID) FROM AskQuestionTable';
 
-        config.modules['saferman'].sql(sql,function(results){
+        saferman.sql(sql,function(results){
             let NextUsableID = results[0]['count(ID)'] + 1;
 
             initAskQuestionTable(NextUsableID);
             executeCallback();
 
             function initAskQuestionTable(NextUsableID){
-                let sql = config.modules['saferman'].format(
+                let sql = saferman.format(
                     'INSERT INTO AskQuestionTable (ID,title,description,total_score,time,authorID) VALUE (?,?,?,?,?,?)',
                     [NextUsableID,title,description,total_score,0,authorID]);
 
-                config.modules['saferman'].sql(sql);
+                saferman.sql(sql);
             }
         });
 

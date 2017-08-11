@@ -1,7 +1,8 @@
 module.exports = setScoreByID;
 
+const saferman = require('saferman')();
+
 function setScoreByID(ID,score,callback){
-    let saferman =  this.config.modules['saferman'];
     let sqlString = saferman.format('UPDATE AnswerTable SET score=? WHERE ID=?',
         [score,ID]);
 

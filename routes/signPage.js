@@ -1,16 +1,17 @@
 module.exports = init;
 
+const sign_module = require('../bin/sign_module')();
+
 function init(config){
     var app = config.app;
     var directory = config.directory;
 
     app.get('/signPage',function(req,res){
-        config.modules['sign_module'].logOut(req);
+        sign_module.logOut(req);
         res.sendFile(directory + '/views/signPage.html');
     });
 
     app.post('/signPage/signIn', function(req, res){
-        const sign_module = config.modules['sign_module'];
         var username = req.body.username;
         var password = req.body.password;
         //console.log(username);
@@ -31,13 +32,13 @@ function init(config){
         var username = req.body.username;
         var password = req.body.password;
 
-        config.modules['sign_module'].signUp(username,password,function(){
+        sign_module.signUp(username,password,function(){
             res.sendFile(directory + '/views/signInSuccess.html');
         });
     });
 
     app.get('/signPage/logOut', function(req, res){
-        config.modules['sign_module'].logOut(req);
+        sign_module.logOut(req);
         res.sendFile(directory + '/views/jump.html');
     });
 

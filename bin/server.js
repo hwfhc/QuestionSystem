@@ -12,7 +12,6 @@ var config = {
 
 initMiddleware(config);
 initRoutes(config);
-initModule(config);
 
 //start server, and listen to port
 var server = config.app.listen(8080,function(){
@@ -51,16 +50,3 @@ function initMiddleware(config){
 function initRoutes(config){
     require('../routes/index.js')(config);
 }
-
-function initModule(config){
-
-    config.modules['sign_module'] = (require('./sign_module'))(config);
-    config.modules['rights_management'] = (require('./rights_management'))(config);
-    config.modules['personalinformation_module'] = (require('./personalinformation_module'))(config);
-    config.modules['saferman'] = (require('./saferman'))(config);
-    config.modules['publish_module'] = (require('./publish_module'))(config);
-    config.modules['answer_module'] = (require('./answer_module'))(config);
-    config.modules['view_module'] = (require('./view_module'))(config);
-}
-
-

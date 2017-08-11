@@ -11,8 +11,6 @@ function API(config){
 
 API.prototype.isAvailable = require('./isAvailable.js');
 
-API.prototype.initRightsOfUser = require('./initRightsOfUser.js');
-
 API.prototype.Add = require('./Add.js');
 
 API.prototype.Delete = require('./Delete.js');
