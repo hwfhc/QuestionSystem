@@ -8,78 +8,76 @@ const saferman = require('saferman')('879574764');
 
 describe('getUsernameByID',function(){
 
-	before(function(done){
-		let deletePersonalInformation = new Promise(function(resolve,reject){
-			saferman.sql('DELETE FROM PersonalInformation',function(){
-				saferman.sql('TRUNCATE PersonalInformation',function(){
-					resolve();
-				});
-			});
-		}).then(function(){
-			let insertPersonalInformation1 = new Promise(function(resolve,reject){
+    before(function(done){
+        let deletePersonalInformation = new Promise(function(resolve,reject){
+            saferman.sql('DELETE FROM PersonalInformation',function(){
+                saferman.sql('TRUNCATE PersonalInformation',function(){
+                    resolve();
+                });
+            });
+        }).then(function(){
+            let insertPersonalInformation1 = new Promise(function(resolve,reject){
 
-				let sqlString = saferman.format(
-					'INSERT INTO PersonalInformation (ID,Name) VALUE (?,?)',
-					[1,'testman']);
+                let sqlString = saferman.format(
+                    'INSERT INTO PersonalInformation (ID,Name) VALUE (?,?)',
+                    [1,'testman']);
 
-				saferman.sql(sqlString,function(){
-					resolve();
-				});
-			});
+                saferman.sql(sqlString,function(){
+                    resolve();
+                });
+            });
 
-			let insertPersonalInformation2 = new Promise(function(resolve,reject){
+            let insertPersonalInformation2 = new Promise(function(resolve,reject){
 
-				let sqlString = saferman.format(
-					'INSERT INTO PersonalInformation (ID,Name) VALUE (?,?)',
-					[2,'test']);
+                let sqlString = saferman.format(
+                    'INSERT INTO PersonalInformation (ID,Name) VALUE (?,?)',
+                    [2,'test']);
 
-				saferman.sql(sqlString,function(){
-					resolve();
-				});
-			});
+                saferman.sql(sqlString,function(){
+                    resolve();
+                });
+            });
 
 
-			Promise.all([
-				insertPersonalInformation1,
-				insertPersonalInformation2
-			]).then(function(){
-				console.log('adfasdf');
-				done();
-			});
-		});
-	});
+            Promise.all([
+                insertPersonalInformation1,
+                insertPersonalInformation2
+            ]).then(function(){
+                done();
+            });
+        });
+    });
 
-	it('get user1',function(done){
-		new Promise((resolve,reject)=>{
-			personalinformation_module.getUsernameByID(1,function(result){
-				expect(result).to.be.equal('testman');
-				expect(result).to.be.a('string');
+    it('get user1',function(done){
+        new Promise((resolve,reject)=>{
+            personalinformation_module.getUsernameByID(1,function(result){
+                expect(result).to.be.equal('testman');
+                expect(result).to.be.a('string');
 
-				resolve();
-				done();
-			});
-		});
-	});
+                done();
+            });
+        });
+    });
 
-	it('get user2',function(done){
-		new Promise((resolve,reject)=>{
-			personalinformation_module.getUsernameByID(2,function(result){
-				expect(result).to.be.equal('test');
-				expect(result).to.be.a('string');
+    it('get user2',function(done){
+        new Promise((resolve,reject)=>{
+            personalinformation_module.getUsernameByID(2,function(result){
+                expect(result).to.be.equal('test');
+                expect(result).to.be.a('string');
 
-				done();
-			});
-		});
-	});
+                done();
+            });
+        });
+    });
 
-	/*it('get user3',function(done){
-		new Promise((resolve,reject)=>{
-			personalinformation_module.getUsernameByID(3,function(result){
-				expect(result).to.be.equal(null);
+    it('get user3',function(done){
+        new Promise((resolve,reject)=>{
+            personalinformation_module.getUsernameByID(3,function(result){
+                expect(result).to.be.equal(null);
 
-				done();
-			});
-		});
-	});*/
+                done();
+            });
+        });
+    });
 
 });

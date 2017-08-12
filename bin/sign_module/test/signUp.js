@@ -1,15 +1,8 @@
-//test environment init
-var expect = require('chai').expect;
-var directory = '../../';
+const expect = require('chai').expect;
+const directory = '../../';
 
-var config = {
-    modules: []
-};
-
-//module load area
-const sign_module = (require(directory + './sign_module'))(config);
-const saferman = require('saferman');
-
+const sign_module = require(directory + './sign_module');
+const saferman = require('saferman')('879574764');
 
 describe('signUp',function(){
 

@@ -9,28 +9,6 @@ const answer_module = require(directory + './answer_module');
 describe('answerAskQuestion',function(){
 
     before(function(done){
-        let insertAnswerTable1 = new Promise(function(resolve,reject){
-
-            let sqlString = saferman.format(
-                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUES (null,?,?,?,?,?)',
-                [1,1,'test1',0,0]);
-
-            saferman.sql(
-                sqlString,function(){
-                    resolve();
-                });
-        });
-
-        let insertAnswerTable2 = new Promise(function(resolve,reject){
-
-            let sqlString = saferman.format(
-                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUES (null,?,?,?,?,?)',
-                [1,2,'test2',0,0]);
-
-            saferman.sql(sqlString,function(){
-                resolve();
-            });
-        });
 
         let deleteAnswerTable = new Promise(function(resolve,reject){
             saferman.sql('DELETE FROM AnswerTable',function(){
@@ -39,6 +17,29 @@ describe('answerAskQuestion',function(){
                 });
             });
         }).then(function(){
+            let insertAnswerTable1 = new Promise(function(resolve,reject){
+
+                let sqlString = saferman.format(
+                    'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUES (?,?,?,?,?,?)',
+                    [1,1,1,'test1',0,0]);
+
+                saferman.sql(
+                    sqlString,function(){
+                        resolve();
+                    });
+            });
+
+            let insertAnswerTable2 = new Promise(function(resolve,reject){
+
+                let sqlString = saferman.format(
+                    'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUES (?,?,?,?,?,?)',
+                    [2,1,2,'test2',0,0]);
+
+                saferman.sql(sqlString,function(){
+                    resolve();
+                });
+            });
+
             Promise.all([
                 insertAnswerTable1,
                 insertAnswerTable2

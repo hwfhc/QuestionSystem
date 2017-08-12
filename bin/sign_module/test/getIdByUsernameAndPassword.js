@@ -4,7 +4,7 @@ const directory = '../../';
 
 //module load area
 const sign_module = require(directory + './sign_module');
-const saferman = require('saferman');
+const saferman = require('saferman')('879574764');
 
 describe('getIdByUsernameAndPassword',function(){
 
