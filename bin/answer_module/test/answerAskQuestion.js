@@ -3,30 +3,17 @@ var expect = require('chai').expect;
 var directory = '../../';
 
 //module load area
+const saferman = require('saferman')('879574764');
 const answer_module = require(directory + './answer_module');
-const saferman = require('saferman');
 
 describe('answerAskQuestion',function(){
 
     before(function(done){
-        var deleteAnswerTable = new Promise(function(resolve,reject){
-            saferman.sql('DELETE FROM AnswerTable',function(){
-                resolve();
-            });
-        }).then(function(){
-            Promise.all([
-                insertAnswerTable1,
-                insertAnswerTable2
-            ]).then(function(){
-                done();
-            });
-        });
-
         let insertAnswerTable1 = new Promise(function(resolve,reject){
 
             let sqlString = saferman.format(
-                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUE (?,?,?,?,?,?)',
-                [1,1,1,'test1',0,0]);
+                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUES (null,?,?,?,?,?)',
+                [1,1,'test1',0,0]);
 
             saferman.sql(
                 sqlString,function(){
@@ -37,13 +24,29 @@ describe('answerAskQuestion',function(){
         let insertAnswerTable2 = new Promise(function(resolve,reject){
 
             let sqlString = saferman.format(
-                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUE (?,?,?,?,?,?)',
-                [2,1,2,'test2',0,0]);
+                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUES (null,?,?,?,?,?)',
+                [1,2,'test2',0,0]);
 
             saferman.sql(sqlString,function(){
                 resolve();
             });
         });
+
+        let deleteAnswerTable = new Promise(function(resolve,reject){
+            saferman.sql('DELETE FROM AnswerTable',function(){
+                saferman.sql('TRUNCATE AnswerTable',function(){
+                    resolve();
+                });
+            });
+        }).then(function(){
+            Promise.all([
+                insertAnswerTable1,
+                insertAnswerTable2
+            ]).then(function(){
+                done();
+            });
+        });
+
     });
 
     it('add answer3',function(done){

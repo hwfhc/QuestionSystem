@@ -1,4 +1,5 @@
 const express = require('express');
+
 const app = express();
 const directory = '/usr/local/QuestionSystem'
 
@@ -7,8 +8,8 @@ const saferman = require('saferman')('879574764');
 initMiddleware(app);
 initRoutes(app,directory);
 
-//start server, and listen to port
-var server = app.listen(8080,function(){
+
+const server = app.listen(8080,function(){
     console.log(`Worker ${process.pid} start`);
     process.title = 'node_worker';
 });
