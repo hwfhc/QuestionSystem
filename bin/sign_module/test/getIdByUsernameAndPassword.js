@@ -11,46 +11,50 @@ describe('getIdByUsernameAndPassword',function(){
     before(function(done){
         var deletePersonalInformation = new Promise(function(resolve,reject){
             saferman.sql('DELETE FROM PersonalInformation',function(){
-                resolve();
+                saferman.sql('TRUNCATE PersonalInformation',function(){
+                    resolve();
+                });
             });
         });
 
         var deleteShadowTable = new Promise(function(resolve,reject){
             saferman.sql('DELETE FROM ShadowTable',function(){
-                resolve();
+                saferman.sql('TRUNCATE ShadowTable',function(){
+                    resolve();
+                });
             });
         });
-
-        var insertShadowTable1 = new Promise(function(resolve,reject){
-            saferman.sql('INSERT INTO ShadowTable (ID,Shadow) VALUE (1,"123")',function(){
-                resolve();
-            });
-        });
-
-        var insertPersonalInformation1 = new Promise(function(resolve,reject){
-            saferman.sql('INSERT INTO PersonalInformation (ID,Name) VALUE (1,"abc")',function(){
-                resolve();
-            });
-        });
-
-        var insertShadowTable2 = new Promise(function(resolve,reject){
-            saferman.sql('INSERT INTO ShadowTable (ID,Shadow) VALUE (2,"abc")',function(){
-                resolve();
-            });
-        });
-
-        var insertPersonalInformation2 = new Promise(function(resolve,reject){
-            saferman.sql('INSERT INTO PersonalInformation (ID,Name) VALUE (2,"123")',function(){
-                resolve();
-            });
-        });
-
 
 
         Promise.all([
             deletePersonalInformation,
             deleteShadowTable
         ]).then(()=>{
+            var insertShadowTable1 = new Promise(function(resolve,reject){
+                saferman.sql('INSERT INTO ShadowTable (ID,Shadow) VALUE (1,"123")',function(){
+                    resolve();
+                });
+            });
+
+            var insertPersonalInformation1 = new Promise(function(resolve,reject){
+                saferman.sql('INSERT INTO PersonalInformation (ID,Name) VALUE (1,"abc")',function(){
+                    resolve();
+                });
+            });
+
+            var insertShadowTable2 = new Promise(function(resolve,reject){
+                saferman.sql('INSERT INTO ShadowTable (ID,Shadow) VALUE (2,"abc")',function(){
+                    resolve();
+                });
+            });
+
+            var insertPersonalInformation2 = new Promise(function(resolve,reject){
+                saferman.sql('INSERT INTO PersonalInformation (ID,Name) VALUE (2,"123")',function(){
+                    resolve();
+                });
+            });
+
+
             Promise.all([
                 insertPersonalInformation1,
                 insertShadowTable1,
