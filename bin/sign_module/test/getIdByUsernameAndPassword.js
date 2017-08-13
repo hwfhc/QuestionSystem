@@ -60,7 +60,7 @@ describe('getIdByUsernameAndPassword',function(){
                 insertShadowTable1,
                 insertPersonalInformation2,
                 insertShadowTable2
-            ]).then(()=>{
+            ]).then(function(){
                 done();
             });
         });

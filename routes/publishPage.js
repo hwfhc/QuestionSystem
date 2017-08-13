@@ -8,12 +8,17 @@ function init(app,directory){
     });
 
     app.post('/publishPage/publishAskQuestion',function(req,res){
+        var userID = getUserID();
         var title = req.body.title;
         var description = req.body.description;
 
         publish_module.publishAskQuestion(title,description,5,req.session.ID,function (){
             res.sendFile(directory + '/views/signInSuccess.html');
         });
+
+        function getUserID(){
+            return req.session.ID;
+        }
     });
 
 }
