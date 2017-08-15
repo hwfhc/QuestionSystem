@@ -1,5 +1,6 @@
 module.exports = getIdByUsernameAndPassword;
-const saferman = require('saferman')();
+
+const saferman = require('saferman');
 
 function getIdByUsernameAndPassword(username,password,callback){
     let sqlString = saferman.format(

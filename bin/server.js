@@ -1,23 +1,20 @@
-var express = require('express');
+const express = require('express');
 
-//init global config
-var app = express();
+const app = express();
+const directory = '/usr/local/QuestionSystem'
 
-var config = {
-    app: app,
-    directory: '/usr/local/QuestionSystem',
-    modules: []
-};
+const saferman = require('saferman')('879574764');
+
+initMiddleware(app);
+initRoutes(app,directory);
 
 
-initMiddleware(config);
-initRoutes(config);
-
-//start server, and listen to port
-var server = config.app.listen(8080,function(){
+const server = app.listen(8080,function(){
+    console.log(`Worker ${process.pid} start`);
+    process.title = 'node_worker';
 });
 
-function initMiddleware(config){
+function initMiddleware(app){
 
     initFormPost();
     initSession();
@@ -28,14 +25,14 @@ function initMiddleware(config){
 
         var multipartMiddleware = multipart();
 
-        config.app.use(bodyParser.urlencoded({ extended: false }));
+        app.use(bodyParser.urlencoded({ extended: false }));
     }
 
     function initSession(){
         var session = require('express-session');
         var FileStore = require('session-file-store')(session);
 
-        config.app.use(session({
+        app.use(session({
             resave: false,
             saveUninitialized: false,
             store: new FileStore(),
@@ -47,6 +44,6 @@ function initMiddleware(config){
     }
 }
 
-function initRoutes(config){
-    require('../routes/index.js')(config);
+function initRoutes(app,directory){
+    require('../routes/index.js')(app,directory);
 }

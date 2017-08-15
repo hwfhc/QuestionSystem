@@ -1,6 +1,6 @@
 module.exports = signUp;
 
-const saferman = require('saferman')();
+const saferman = require('saferman');
 
 function signUp(username,password,callback){
 

@@ -1,15 +1,19 @@
 module.exports = initRoutes;
 
-function initRoutes(config){
+function initRoutes(app,directory){
     let fs = require('fs');
-
-    var app = config.app;
-    var directory = config.directory;
 
     var match1 = new RegExp('css');
     var match2 = new RegExp('javascripts');
     var match3 = new RegExp('picture');
 
+    app.use(function(req,res,next){
+        res.sendFile = function(file){
+            res.setHeader('X-Accel-Redirect','/protected/' + file);
+            res.end();
+        }
+        next();
+    });
 
     app.use(function (req,res,next){
         if(match1.exec(req.url)==null &&
@@ -36,9 +40,7 @@ function initRoutes(config){
             if(isSignIn(req)){
                 next();
             }else{
-                //res.sendFile(directory + '/views/pleaseSignInFirst.html');
-                res.setHeader('X-Accel-Redirect','/protected/pleaseSignInFirst.html');
-                res.end();
+                res.sendFile('pleaseSignInFirst.html');
             }
 
         }else{
@@ -56,12 +58,10 @@ function initRoutes(config){
     });
 
     app.get('/',function(req,res){
-        //res.sendFile(directory + '/views/personalHomePage.html');
-        res.setHeader('X-Accel-Redirect','/protected/personalHomePage.html');
-        res.end();
+        res.sendFile('personalHomePage.html');
     });
 
-   /* app.get('/css/:file',function(req,res){
+    /* app.get('/css/:file',function(req,res){
         res.sendFile(directory + '/public/css/' + req.paramsfile);
     });
 
@@ -73,12 +73,12 @@ function initRoutes(config){
         res.sendFile(directory + '/public/picture/' + req.paramsfile);
     });*/
 
-    require('./signPage')(config);
-    require('./personalHomePage')(config);
-    require('./questionList')(config);
-    require('./questionDetail')(config);
-    require('./answerPage')(config);
-    require('./publishPage')(config);
-    require('./answerDetail')(config);
-    require('./answerList')(config);
+    require('./signPage')(app,directory);
+    require('./personalHomePage')(app,directory);
+    require('./questionList')(app,directory);
+    require('./questionDetail')(app,directory);
+    require('./answerPage')(app,directory);
+    require('./publishPage')(app,directory);
+    require('./answerDetail')(app,directory);
+    require('./answerList')(app,directory);
 }

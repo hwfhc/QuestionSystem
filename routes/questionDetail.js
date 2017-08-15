@@ -1,18 +1,15 @@
 module.exports = init;
 
-const view_module = require('../bin/view_module')();
-const personalinformation_module = require('../bin/personalinformation_module')();
+const view_module = require('../bin/view_module');
+const personalinformation_module = require('../bin/personalinformation_module');
 
-function init(config){
-    var app = config.app;
-    var directory = config.directory;
-
+function init(app,directory){
     app.get('/questionDetail', function(req, res){
         req.session.questionID = req.query.ID;
         let questionID = getQuestionID();
 
         if(questionID){
-            res.sendFile(directory + '/views/questionDetail.html');
+            res.sendFile('questionDetail.html');
         }else{
             res.redirect('/personalHomePage');
         }

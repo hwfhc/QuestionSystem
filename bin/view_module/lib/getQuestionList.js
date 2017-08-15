@@ -1,6 +1,6 @@
 module.exports = getQuestionList;
 
-const saferman = require('saferman')();
+const saferman = require('saferman');
 
 function getQuestionList(callback){
 

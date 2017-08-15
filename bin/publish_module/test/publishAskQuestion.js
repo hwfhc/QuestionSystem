@@ -3,14 +3,16 @@ var expect = require('chai').expect;
 var directory = '../../';
 
 //module load area
-const publish_module = (require(directory + './publish_module'))();
-const saferman = require('saferman')();
+const publish_module = require(directory + './publish_module');
+const saferman = require('saferman')('879574764');
 
 describe('initUser',function(){
 
     before(function(done){
         saferman.sql('DELETE FROM AskQuestionTable',function(){
-            done();
+            saferman.sql('TRUNCATE AskQuestionTable',function(){
+                done();
+            });
         });
     });
 
@@ -46,10 +48,10 @@ describe('initUser',function(){
 
     it('question2 autho1: ID increase test',function(done){
 
-        publish_module.publishAskQuestion('testman','wwww',5,1,function(){
+        publish_module.publishAskQuestion('testman','aaa',5,1,function(){
 
-            var sql = saferman.format('SELECT ID FROM AskQuestionTable WHERE title=?',
-                ['testman']);
+            var sql = saferman.format('SELECT title,description,total_score FROM AskQuestionTable WHERE ID=?',
+                [2]);
 
             saferman.sql(sql,handleSQLResults);
 
@@ -58,9 +60,14 @@ describe('initUser',function(){
                 let result = sqlResults[0];
 
                 expect(sqlResults.length).to.be.equal(1);
+                expect(result.title).to.be.a('string');
+                expect(result.title).to.be.equal('testman');
 
-                expect(result.ID).to.be.a('number');
-                expect(result.ID).to.be.equal(2);
+                expect(result.description).to.be.a('string');
+                expect(result.description).to.be.equal('aaa');
+
+                expect(result.total_score).to.be.a('number');
+                expect(result.total_score).to.be.equal(5);
 
                 done();
             }

@@ -3,17 +3,41 @@ var expect = require('chai').expect;
 var directory = '../../';
 
 //module load area
-const answer_module = (require(directory + './answer_module'))();
-const saferman = require('saferman')();
+const answer_module = require(directory + './answer_module');
+const saferman = require('saferman')('879574764');
 
 describe('seScoreByID',function(){
-
     before(function(done){
         var deleteAnswerTable = new Promise(function(resolve,reject){
             saferman.sql('DELETE FROM AnswerTable',function(){
-                resolve();
+                saferman.sql('TRUNCATE AnswerTable',function(){
+                    resolve();
+                });
             });
         }).then(function(){
+            let insertAnswerTable1 = new Promise(function(resolve,reject){
+
+                let sqlString = saferman.format(
+                    'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUES (?,?,?,?,?,?)',
+                    [1,1,1,'test1',0,0]);
+
+                saferman.sql(
+                    sqlString,function(){
+                        resolve();
+                    });
+            });
+
+            let insertAnswerTable2 = new Promise(function(resolve,reject){
+
+                let sqlString = saferman.format(
+                    'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUES (?,?,?,?,?,?)',
+                    [2,1,2,'test2',0,0]);
+
+                saferman.sql(sqlString,function(){
+                    resolve();
+                });
+            });
+
             Promise.all([
                 insertAnswerTable1,
                 insertAnswerTable2
@@ -22,28 +46,6 @@ describe('seScoreByID',function(){
             });
         });
 
-        let insertAnswerTable1 = new Promise(function(resolve,reject){
-
-            let sqlString = saferman.format(
-                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUE (?,?,?,?,?,?)',
-                [1,1,1,'test1',0,0]);
-
-            saferman.sql(
-                sqlString,function(){
-                    resolve();
-                });
-        });
-
-        let insertAnswerTable2 = new Promise(function(resolve,reject){
-
-            let sqlString = saferman.format(
-                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUE (?,?,?,?,?,?)',
-                [2,1,2,'test2',0,0]);
-
-            saferman.sql(sqlString,function(){
-                resolve();
-            });
-        });
     });
 
     it('test1',function(done){

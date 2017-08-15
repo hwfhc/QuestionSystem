@@ -1,21 +1,19 @@
 const fs = require('fs');
+let stdout;
+let errout;
 
-module.exports = start;
+let init = module.exports = function init(directory){
+    stdout = new console.Console(fs.createWriteStream(directory+'/stdout.log',{flags:'a'}));
+    errout = new console.Console(fs.createWriteStream(directory+'/stderr.log',{flags:'a'}));
 
-function start(directory){
-
-    return (new logger(directory));
+    return init;
 };
 
-function logger(directory){
-    let stdout = new console.Console(fs.createWriteStream(directory+'/stdout.log',{flags:'a'}));
-    let errout = new console.Console(fs.createWriteStream(directory+'/stderr.log',{flags:'a'}));
-
-    this.console = function(message){
-        stdout.log(message)
-    }
-
-    this.error = function(message){
-        errout.log(message)
-    }
+init.console = function(message){
+    stdout.log(message)
 }
+
+init.error = function(message){
+    errout.log(message)
+}
+

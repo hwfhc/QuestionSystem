@@ -1,13 +1,10 @@
 module.exports = init;
 
-const personalinformation_module = require('../bin/personalinformation_module')();
-const answer_module = require('../bin/answer_module')();
-const view_module = require('../bin/view_module')();
+const personalinformation_module = require('../bin/personalinformation_module');
+const answer_module = require('../bin/answer_module');
+const view_module = require('../bin/view_module');
 
-function init(config){
-    var app = config.app;
-    var directory = config.directory;
-
+function init(app,directory){
     app.get('/answerDetail', function(req, res){
         let answerID = getAnswerID();
 
@@ -15,7 +12,7 @@ function init(config){
             res.redirect('/personalHomePage');
         }else{
             req.session.answerID = answerID;
-            res.sendFile(directory + '/views/answerDetail.html');
+            res.sendFile('answerDetail.html');
         }
 
 
@@ -85,7 +82,7 @@ function init(config){
 
         if(score && answerID){
             answer_module.setScoreByID(answerID,score,function(){
-                res.sendFile(directory + '/views/signInSuccess.html');
+                res.sendFile('signInSuccess.html');
             });
         }else{
             res.redirect('/personalHomePage');

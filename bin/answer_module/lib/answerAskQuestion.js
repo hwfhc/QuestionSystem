@@ -1,6 +1,6 @@
 module.exports = answerAskQuestion;
 
-const saferman = require('saferman')();
+const saferman = require('saferman');
 
 function answerAskQuestion(answer,questionID,userID,callback){
 
@@ -16,31 +16,16 @@ function answerAskQuestion(answer,questionID,userID,callback){
         }
 
         function haveNotAnswered(){
-
-            let sql = 'SELECT count(ID) FROM AnswerTable';
-            saferman.sql(sql,function(results){
-                let NextUsableID = results[0]['count(ID)'] + 1;
-
-                initAnswerTable(NextUsableID);
-                executeCallback();
-
-                function initAnswerTable(NextUsableID){
-                    let sql = saferman.format(
-                        'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUE (?,?,?,?,0,0)',
-                        [NextUsableID,questionID,userID,answer]);
-                    saferman.sql(sql);
-                }
-            });
-
+            var sqlString = saferman.format(
+                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUE (null,?,?,?,0,0)',
+                [questionID,userID,answer]);
+            saferman.sql(sqlString,executeCallback);
         }
 
         function haveAnswered(){
-            var sql = saferman.format('UPDATE AnswerTable SET answer=?,score=0 WHERE ID=?',
+            var sqlString = saferman.format('UPDATE AnswerTable SET answer=?,score=0 WHERE ID=?',
                 [answer,ID]);
-
-            saferman.sql(sql,function(results){
-                executeCallback();
-            });
+            saferman.sql(sqlString,executeCallback);
         }
     })
 
