@@ -4,7 +4,7 @@ const personalinformation_module = require('../bin/personalinformation_module');
 
 function init(app,directory){
     app.get('/personalHomePage',function(req,res){
-        res.sendFile(directory + '/views/personalHomePage.html');
+        res.sendFile('personalHomePage.html');
     });
 
     app.get('/personalHomePage/getPersonalInformation', function(req, res){

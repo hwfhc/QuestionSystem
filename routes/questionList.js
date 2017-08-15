@@ -4,7 +4,7 @@ const view_module = require('../bin/view_module');
 
 function init(app,directory){
     app.get('/questionList',function(req,res){
-        res.sendFile(directory + '/views/questionList.html');
+        res.sendFile('questionList.html');
     });
 
     app.get('/questionList/getQuestionList', function(req, res){

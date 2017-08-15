@@ -7,7 +7,7 @@ function init(app,directory){
         let questionID = getQuestionID();
 
         if(questionID){
-            res.sendFile(directory + '/views/answerList.html');
+            res.sendFile('answerList.html');
         }else{
             res.redirect('/personalHomePage');
         }

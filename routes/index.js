@@ -7,6 +7,13 @@ function initRoutes(app,directory){
     var match2 = new RegExp('javascripts');
     var match3 = new RegExp('picture');
 
+    app.use(function(req,res,next){
+        res.sendFile = function(file){
+            res.setHeader('X-Accel-Redirect','/protected/' + file);
+            res.end();
+        }
+        next();
+    });
 
     app.use(function (req,res,next){
         if(match1.exec(req.url)==null &&
@@ -33,9 +40,7 @@ function initRoutes(app,directory){
             if(isSignIn(req)){
                 next();
             }else{
-                //res.sendFile(directory + '/views/pleaseSignInFirst.html');
-                res.setHeader('X-Accel-Redirect','/protected/pleaseSignInFirst.html');
-                res.end();
+                res.sendFile('pleaseSignInFirst.html');
             }
 
         }else{
@@ -53,12 +58,10 @@ function initRoutes(app,directory){
     });
 
     app.get('/',function(req,res){
-        //res.sendFile(directory + '/views/personalHomePage.html');
-        res.setHeader('X-Accel-Redirect','/protected/personalHomePage.html');
-        res.end();
+        res.sendFile('personalHomePage.html');
     });
 
-   /* app.get('/css/:file',function(req,res){
+    /* app.get('/css/:file',function(req,res){
         res.sendFile(directory + '/public/css/' + req.paramsfile);
     });
 

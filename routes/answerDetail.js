@@ -12,7 +12,7 @@ function init(app,directory){
             res.redirect('/personalHomePage');
         }else{
             req.session.answerID = answerID;
-            res.sendFile(directory + '/views/answerDetail.html');
+            res.sendFile('answerDetail.html');
         }
 
 
@@ -82,7 +82,7 @@ function init(app,directory){
 
         if(score && answerID){
             answer_module.setScoreByID(answerID,score,function(){
-                res.sendFile(directory + '/views/signInSuccess.html');
+                res.sendFile('signInSuccess.html');
             });
         }else{
             res.redirect('/personalHomePage');

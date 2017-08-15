@@ -9,7 +9,7 @@ function init(app,directory){
         let questionID = getQuestionID();
 
         if(questionID){
-            res.sendFile(directory + '/views/questionDetail.html');
+            res.sendFile('questionDetail.html');
         }else{
             res.redirect('/personalHomePage');
         }
