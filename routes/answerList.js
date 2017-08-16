@@ -29,8 +29,8 @@ function init(app,directory){
             authorID = result.authorID;
 
             if(userID == authorID && questionID){
-                view_module.getAnswerList(req.session.questionID,function(results){
-                    res.send(results);
+                view_module.getAnswerList(req.session.questionID,function(result){
+                    res.send(JSON.stringify(result));
                 })
             }
         });

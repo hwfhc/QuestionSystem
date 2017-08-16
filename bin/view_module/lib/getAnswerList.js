@@ -4,10 +4,10 @@ const saferman = require('saferman');
 
 function getAnswerList(questionID,callback){
 
-    let sql = 'SELECT ID,answer FROM AnswerTable WHERE questionID=' + questionID;
+    let sql = 'SELECT ID,Username FROM AnswerTable WHERE questionID=' + questionID;
 
-    saferman.sql(sql,function(results){
-        executeCallback(JSON.stringify(results));
+    saferman.sql(sql,function(result){
+        executeCallback(result);
     });
 
 

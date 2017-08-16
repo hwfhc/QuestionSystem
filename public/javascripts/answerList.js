@@ -9,7 +9,7 @@ function addItemToAnswerList(){
             answerList = JSON.parse(this.responseText);
 
             for(let i=0;i < answerList.length;i++){
-                answerTable.innerHTML += '<tr><td><a href="/answerDetail?ID=' + answerList[i].ID + '">' + answerList[i].answer + '</a></td></tr>';
+                answerTable.innerHTML += '<tr><td><a href="/answerDetail?ID=' + answerList[i].ID + '">' + answerList[i].Username + '</a></td></tr>';
             }
         }
     }

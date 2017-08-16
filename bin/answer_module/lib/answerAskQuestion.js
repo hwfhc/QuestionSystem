@@ -1,6 +1,7 @@
 module.exports = answerAskQuestion;
 
 const saferman = require('saferman');
+const personalinformation_module = require('../../personalinformation_module');
 
 function answerAskQuestion(answer,questionID,userID,callback){
 
@@ -16,10 +17,14 @@ function answerAskQuestion(answer,questionID,userID,callback){
         }
 
         function haveNotAnswered(){
-            var sqlString = saferman.format(
-                'INSERT INTO AnswerTable (ID,questionID,userID,answer,score,state) VALUE (null,?,?,?,0,0)',
-                [questionID,userID,answer]);
-            saferman.sql(sqlString,executeCallback);
+            personalinformation_module.getUsernameByID(userID,function(username){
+                if(username){
+                    var sqlString = saferman.format(
+                        'INSERT INTO AnswerTable (ID,questionID,userID,Username,answer,score,state) VALUE (null,?,?,?,?,0,0)',
+                        [questionID,userID,username,answer]);
+                    saferman.sql(sqlString,executeCallback);
+                }
+            });
         }
 
         function haveAnswered(){
