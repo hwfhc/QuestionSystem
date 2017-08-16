@@ -17,10 +17,10 @@ function init(app,directory){
         sign_module.getIdByUsernameAndPassword(username,password,function(result){
             if(result){
                 req.session.ID = result;
-                res.sendFile('signInSuccess.html');
+                res.redirect('/signInSuccess');
             }else{
 
-                res.sendFile('signInFail.html');
+                res.redirect('/signInFail');
             }
         });
     });
@@ -30,7 +30,7 @@ function init(app,directory){
         var password = req.body.password;
 
         sign_module.signUp(username,password,function(){
-            res.sendFile('signInSuccess.html');
+            res.redirect('/signInSuccess');
         });
     });
 

@@ -14,7 +14,7 @@ function init(app,directory){
 
         if(answer && questionID && userID){
             answer_module.answerAskQuestion(answer,questionID,userID,function(){
-                res.sendFile('signInSuccess.html');
+                res.redirect('/signInSuccess');
             });
         }else{
             res.redirect('/personalHomePage');
