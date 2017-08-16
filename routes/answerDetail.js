@@ -82,7 +82,7 @@ function init(app,directory){
 
         if(score && answerID){
             answer_module.setScoreByID(answerID,score,function(){
-                res.sendFile('signInSuccess.html');
+                res.redirect('/signInSuccess');
             });
         }else{
             res.redirect('/personalHomePage');

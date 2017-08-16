@@ -13,7 +13,7 @@ function init(app,directory){
         var description = req.body.description;
 
         publish_module.publishAskQuestion(title,description,5,req.session.ID,function (){
-            res.sendFile('signInSuccess.html');
+            res.redirect('/signInSuccess');
         });
 
         function getUserID(){

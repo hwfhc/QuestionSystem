@@ -48,6 +48,8 @@ CREATE TABLE AnswerTable(
      questionID INT not null,
      userID INT not null,
      answer VARCHAR(1000) not null,
+     Username VARCHAR(20),
+     Graph INT,
      score INT,
      state INT
    );

@@ -10,6 +10,7 @@ function initRoutes(app,directory){
     app.use(function(req,res,next){
         res.sendFile = function(file){
             res.setHeader('X-Accel-Redirect','/protected/' + file);
+            res.setHeader('Cache-Control','max-age=3600');
             res.end();
         }
         next();
@@ -81,4 +82,5 @@ function initRoutes(app,directory){
     require('./publishPage')(app,directory);
     require('./answerDetail')(app,directory);
     require('./answerList')(app,directory);
+    require('./jumpPage')(app,directory);
 }
