@@ -4,7 +4,9 @@ const saferman = require('saferman');
 
 function getAnswerAndUserIDbyID(ID,callback){
 
-    let sql = 'SELECT answer,userID,questionID,score FROM AnswerTable WHERE ID=' + ID;
+    let sql = saferman.format(
+        'SELECT answer,userID,questionID,score FROM AnswerTable WHERE ID=?',
+        [ID]);
 
     saferman.sql(sql,function(results){
         executeCallback(results[0]);
