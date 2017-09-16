@@ -34,9 +34,9 @@ function init(app,directory){
         });
     });
 
-    app.get('/signPage/logOut', function(req, res){
+    app.get('/logOut', function(req, res){
         sign_module.logOut(req);
-        res.sendFile('jump.html');
+        res.redirect('/');
     });
 
 }
