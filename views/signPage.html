@@ -30,67 +30,76 @@ function tran2(){
 </head>
 
 <body>
-<div id="wrap1" class="wrap">
+	<div id="wrap1" class="wrap">
 
-	<div class="header">
-	  <span>登陆</span>
-	  <span>Log in</span>
+		<div class="header">
+			<span>登陆</span>
+			<span>Log in</span>
+		</div>
+
+		<div class="container">
+
+			<form name="form" method="post" action="/signPage/signIn">
+
+					<span class="username">邮箱/用户名</span>
+					<input type="text" required="required" name="username"></input>
+
+					<div class="line">
+						<span class="password">密码</span>
+						<a class="forget" href="">忘记密码</a>
+					</div>
+
+					<input type="password" required="required" name="password"></input>
+
+					<button type="submit" class="button" data-title="My mission clear">
+						<span class="line line-top"></span>
+						<span class="line line-left"></span>
+						<span class="line line-bottom"></span>
+						<span class="line line-right"></span>
+						登录MICRO
+					</button>
+
+					<footer><span>还没有账号？&nbsp&nbsp</span><a onclick="tran1();">立即注册</a></footer>
+			</form>
+
+		</div>
+
 	</div>
 
-	<div class="container">
+	<div id="wrap2" class="wrap" style="display:none">
+		<div class="header">
+			<span>注册</span>
+			<span>Sign in</span>
+		</div>
 
-		<form name="form" method="post" action="/signPage/signIn">
+		<div class="container">
+			<form name="form" method="post" action="/signPage/signUp">
 
-		    <span class="username">邮箱/用户名</span>
-		    <input type="text" required="required" name="username"></input>
+				<span class="username">*用户名</span>
+				<input type="text" required="required" name="username"></input>
 
-		    <div class="line">
-					<span class="password">密码</span>
-			    <a class="forget" href="">忘记密码</a>
-				</div>
+				<span>*密码</span>
+				<input type="password" required="required" name="password"></input>
 
-		    <input type="password" required="required" name="password"></input>
+				<span>*重复密码</span>
+				<input type="password" required="required" name="repassword"></input>
 
-		    <button type="submit" class="button" name="submit" value="submit">登录</button>
+				<span>邮箱</span>
+				<input type="text" name="mail"></input>
 
-		    <footer><span>还没有账号？&nbsp&nbsp</span><a onclick="tran1();">立即注册</a></footer>
-		</form>
+				<button class="button" type="submit" value="submit">注册</button>
 
+				<footer>
+					<span>*为必填项</span>
+					<a onclick="tran2();">已有账号</a>
+				</footer>
+
+			</form>
+		</div>
 	</div>
 
-</div>
-
-<div id="wrap2" class="wrap" style="display:none">
-	<div class="header">
-	  <span>注册</span>
-	  <span>Sign in</span>
-	</div>
-
-	<div class="container">
-	  <form name="form" method="post" action="/signPage/signUp">
-
-	    <span class="username">*用户名</span>
-	    <input type="text" required="required" name="username"></input>
-
-	    <span>*密码</span>
-	    <input type="password" required="required" name="password"></input>
-
-			<span>*重复密码</span>
-			<input type="password" required="required" name="repassword"></input>
-
-	    <span>邮箱</span>
-	    <input type="text" name="mail"></input>
-
-	    <button class="button" type="submit" value="submit">注册</button>
-
-	    <footer>
-	      <span>*为必填项</span>
-	      <a onclick="tran2();">已有账号</a>
-	    </footer>
-
-	  </form>
-	</div>
-</div>
-
+	<canvas height="620" width="1360" id="canvas" style="position: fixed; height: 100%;z-index: -1;"></canvas>
 </body>
+<script src="javascripts/signPage.js" charset="utf-8"></script>
+
 </html>
