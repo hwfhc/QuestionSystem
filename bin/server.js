@@ -1,9 +1,8 @@
-const express = require('express');
+const fs = require('fs');
 
-const app = express();
-const directory = '/usr/local/QuestionSystem'
-
-const saferman = require('saferman')('879574764');
+const {directory,database_user,database_password} = JSON.parse(fs.readFileSync(`${__dirname}/../config.json`));
+const app = require('express')();
+const saferman = require('saferman')(database_password);
 
 initMiddleware(app);
 initRoutes(app,directory);
