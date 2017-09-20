@@ -42,7 +42,7 @@ function initRoutes(app,directory){
             if(isSignIn(req)){
                 next();
             }else{
-                res.sendFile('pleaseSignInFirst.html');
+                res.redirect('/signPage');
             }
 
         }else{
@@ -76,7 +76,7 @@ function initRoutes(app,directory){
     });*/
 
     require('./signPage')(app,directory);
-    require('./personalHomePage')(app,directory);
+    require('./homePage')(app,directory);
     require('./questionList')(app,directory);
     require('./questionDetail')(app,directory);
     require('./answerPage')(app,directory);

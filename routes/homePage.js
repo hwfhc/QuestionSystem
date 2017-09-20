@@ -3,11 +3,11 @@ module.exports = init;
 const personalinformation_module = require('../bin/personalinformation_module');
 
 function init(app,directory){
-    app.get('/personalHomePage',function(req,res){
+    app.get('/homePage',function(req,res){
         res.sendFile('personalHomePage.html');
     });
 
-    app.get('/personalHomePage/getPersonalInformation', function(req, res){
+    app.get('/homePage/getPersonalInformation', function(req, res){
         let ID = getUserID();
         let dataToSended = {};
 
