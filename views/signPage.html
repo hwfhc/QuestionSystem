@@ -33,8 +33,7 @@ function tran2(){
 	<div id="wrap1" class="wrap">
 
 		<div class="header">
-			<span>登陆</span>
-			<span>Log in</span>
+			<img src="picture/logo.png"></img>
 		</div>
 
 		<div class="container">
@@ -51,15 +50,15 @@ function tran2(){
 
 					<input type="password" required="required" name="password"></input>
 
-					<button type="submit" class="button" data-title="My mission clear">
+					<button type="submit" class="button">
 						<span class="line line-top"></span>
 						<span class="line line-left"></span>
 						<span class="line line-bottom"></span>
 						<span class="line line-right"></span>
-						登录MICRO
+						登录
 					</button>
 
-					<footer><span>还没有账号？&nbsp&nbsp</span><a onclick="tran1();">立即注册</a></footer>
+					<footer><span>还没有账号？</span><a onclick="tran1();">立即注册</a></footer>
 			</form>
 
 		</div>
@@ -68,29 +67,34 @@ function tran2(){
 
 	<div id="wrap2" class="wrap" style="display:none">
 		<div class="header">
-			<span>注册</span>
-			<span>Sign in</span>
+			<img src="picture/logo.png"></img>
 		</div>
 
 		<div class="container">
 			<form name="form" method="post" action="/signPage/signUp">
 
-				<span class="username">*用户名</span>
+				<span class="username">用户名</span>
 				<input type="text" required="required" name="username"></input>
 
-				<span>*密码</span>
+				<span>密码</span>
 				<input type="password" required="required" name="password"></input>
 
-				<span>*重复密码</span>
+				<span>重复密码</span>
 				<input type="password" required="required" name="repassword"></input>
 
 				<span>邮箱</span>
 				<input type="text" name="mail"></input>
 
-				<button class="button" type="submit" value="submit">注册</button>
+				<button type="submit" class="button">
+					<span class="line line-top"></span>
+					<span class="line line-left"></span>
+					<span class="line line-bottom"></span>
+					<span class="line line-right"></span>
+					注册
+				</button>
 
 				<footer>
-					<span>*为必填项</span>
+					<a></a>
 					<a onclick="tran2();">已有账号</a>
 				</footer>
 
