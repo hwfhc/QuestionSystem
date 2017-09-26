@@ -4,6 +4,7 @@ const sign_module = require('../bin/sign_module');
 
 function init(app,directory){
     app.get('/signPage',function(req,res){
+        console.log('asdf');
         sign_module.logOut(req);
         res.sendFile('signPage.html');
     });
