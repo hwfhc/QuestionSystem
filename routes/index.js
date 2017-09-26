@@ -10,8 +10,8 @@ function initRoutes(app,directory){
     app.use(function(req,res,next){
         res.sendFile = function(file){
             res.setHeader('X-Accel-Redirect','/protected/' + file);
-            //res.setHeader('Cache-Control','no-store');
-            res.setHeader('Cache-Control','max-age=3600');
+            res.setHeader('Cache-Control','no-store');
+            //res.setHeader('Cache-Control','max-age=3600');
             res.end();
         }
         next();
