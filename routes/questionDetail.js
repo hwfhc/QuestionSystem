@@ -4,8 +4,8 @@ const view_module = require('../bin/view_module');
 const personalinformation_module = require('../bin/personalinformation_module');
 
 function init(app,directory){
-    app.get('/questionDetail', function(req, res){
-        req.session.questionID = req.query.ID;
+    app.get('/questionDetail/:id', function(req, res){
+        req.session.questionID = req.params['id'];
         let questionID = getQuestionID();
 
         if(questionID){
