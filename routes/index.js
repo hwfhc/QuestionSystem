@@ -8,10 +8,12 @@ function initRoutes(app,directory){
     var match3 = new RegExp('picture');
 
     app.use(function(req,res,next){
+        res.sendSpec = res.sendFile;
+
         res.sendFile = function(file){
             res.setHeader('X-Accel-Redirect','/protected/' + file);
-            //res.setHeader('Cache-Control','no-store');
-            res.setHeader('Cache-Control','max-age=3600');
+            res.setHeader('Cache-Control','no-store');
+            //res.setHeader('Cache-Control','max-age=3600');
             res.end();
         }
         next();
@@ -63,17 +65,18 @@ function initRoutes(app,directory){
         res.sendFile('homePage.html');
     });
 
-    /* app.get('/css/:file',function(req,res){
-        res.sendFile(directory + '/public/css/' + req.paramsfile);
+    app.get('/core',function(req,res){
+        res.sendSpec(`${directory}/public/core.js`);
     });
 
-    app.get('/javascripts/:file',function(req,res){
-        res.sendFile(directory + '/public/javascripts/' + req.paramsfile);
+    app.get('/components/:file',function(req,res){
+        res.sendSpec(`${directory}/public/components/${req.params['file']}/index.html`);
     });
 
-    app.get('/picture/:file',function(req,res){
-        res.sendFile(directory + '/public/picture/' + req.paramsfile);
-    });*/
+    app.get('/components/:file/index.css',function(req,res){
+        res.sendSpec(`${directory}/public/components/${req.params['file']}/index.css`);
+    });
+
 
     require('./signPage')(app,directory);
     require('./homePage')(app,directory);

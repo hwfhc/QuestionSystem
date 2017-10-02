@@ -7,13 +7,12 @@ function init(app,directory){
         res.sendFile('homePage.html');
     });
 
-    app.get('/homePage/getPersonalInformation', function(req, res){
+    app.get('/homePage/username', function(req, res){
         let ID = getUserID();
         let dataToSended = {};
 
         personalinformation_module.getUsernameByID(ID,function(result){
-            dataToSended.username = result;
-            res.send(JSON.stringify(dataToSended));
+            res.send(result);
         });
 
         function getUserID(){
