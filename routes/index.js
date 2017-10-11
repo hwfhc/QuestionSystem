@@ -62,11 +62,11 @@ function initRoutes(app,directory){
     });
 
     app.get('/',function(req,res){
-        res.sendFile('homePage.html');
+        res.redirect('/homePage');
     });
 
-    app.get('/core',function(req,res){
-        res.sendSpec(`${directory}/public/core.js`);
+    app.get('/drypot',function(req,res){
+        res.sendSpec(`${directory}/public/drypot.js`);
     });
 
     app.get('/components/:file',function(req,res){
@@ -87,4 +87,6 @@ function initRoutes(app,directory){
     require('./answerDetail')(app,directory);
     require('./answerList')(app,directory);
     require('./jumpPage')(app,directory);
+
+    require('./resources')(app,directory);
 }
