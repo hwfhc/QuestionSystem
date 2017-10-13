@@ -78,15 +78,9 @@ function initRoutes(app,directory){
     });
 
 
-    require('./homePage')(app,directory);
-    require('./questionList')(app,directory);
-    require('./questionDetail')(app,directory);
-    require('./answerPage')(app,directory);
-    require('./publishPage')(app,directory);
-    require('./answerDetail')(app,directory);
-    require('./answerList')(app,directory);
-
     require('./page')(app,directory);
     require('./sign')(app,directory);
     require('./user')(app,directory);
+    require('./question')(app,directory);
+    require('./answer')(app,directory);
 }

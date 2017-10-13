@@ -60,25 +60,52 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = { set,get,getChild };
+
+const scope = {
+    ajax : 'asdfadsf',
+    demo : { test:123 }
+}
+
+function set(ident = undefined,value){
+    scope[ident] = value;
+}
+
+function get(ident){
+    return scope[ident];
+}
+
+function getChild(ident,child){
+    return scope[ident][child];
+}
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (){
-    const compiler = __webpack_require__(1);
+    const compiler = __webpack_require__(2);
+    const scope = __webpack_require__(0);
 
-    const components = document.getElementsByClassName('dp-component');
-    const dynamic = document.getElementsByClassName('dp-dynamic');
+    const dp_component = document.getElementsByClassName('dp-component');
+    const dp_dynamic = document.getElementsByClassName('dp-dynamic');
+    const dp_item = document.getElementsByClassName('dp-item');
+    const dp_for = document.getElementsByClassName('dp-for');
 
-    (function initComponents(){
-        for(var i=0;i<components.length;i++){
-            let name = components[i].tagName.toLowerCase();
+    (function initComponent(){
+        for(var i=0;i<dp_component.length;i++){
+            let name = dp_component[i].tagName.toLowerCase();
 
             // I can add a module to manage ajax request, and there is just one ajax request to the same resources at the same time
-            getDataWithAJAX('GET',`/components/${name}`,components[i],function(data,component){
+            getDataWithAJAX('GET',`/components/${name}`,dp_component[i],function(data,component){
                 data += `<link href="/components/${name}/index.css" rel="stylesheet" type="text/css" />`;
                 component.innerHTML = data;
             });
@@ -86,8 +113,7 @@
     })();
 
     (function initDynamic(){
-        var reg = /\{\{[^\)]+\}\}/g;
-        var element = dynamic;
+        var element = dp_dynamic;
 
         for(let i=0;i<element.length;i++){
             let innerHTML = element[i].innerHTML;
@@ -97,6 +123,47 @@
             });
         }
     })();
+
+    (function initItem(){
+        var element = dp_item;
+
+        for(let i=0;i<element.length;i++){
+            let innerHTML = element[i].innerHTML;
+            let name = element[i].getAttribute('dp-name');
+
+            compiler(element[i].getAttribute('dp-data'),function(result){
+                scope.set(name,JSON.parse(result));
+
+                compiler(innerHTML,function(result){
+                    element[i].innerHTML = result;
+                });
+            });
+        }
+    })();
+
+
+
+    /*(function initFor(){
+        var elements = dp_for;
+        for(let i=0;i<elements.length;i++){
+
+            let item = elements[i].innerHTML;
+            elements[i].innerHTML = '';
+
+            compiler.interpretDynamicHtml(elements[i].getAttribute('dp-data'),function(result){
+                var data = JSON.parse(result);
+                compiler.add('item',data);
+                var length = data.length
+
+                for(let j=0;j<length;j++){
+                    compiler.interpretDynamicHtml(item,function(result){
+                        var test = result;
+                        elements[i].innerHTML += result;
+                    });
+                }
+            });
+        }
+    })();*/
 
     function getDataWithAJAX(method,url,element,callback) {
         var xhttp = new XMLHttpRequest();
@@ -108,30 +175,14 @@
         xhttp.open(method,url, true);
         xhttp.send();
     }
-
-
-    function demo(){
-        //var code = "asd  af{{ajax (`/homePgae/${getPathname(13 + 126,12, a  = 5,`asf449`)}/test`)}}sadfsf";
-        var code = "asd  af   {{ajax (`/user/${getPathname(2)}/username`)}}  sadfsf";
-
-        console.log(code);
-
-        var input = inputStream(code);
-        var token = tokenStream(input);
-        var parse = parseDynamicHtml(token);
-        compilerDynamicHtml(parse,function(result){
-            console.log(result);
-        });
-        console.log(parse);
-    }
 })();
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const interpreter = __webpack_require__(2);
+const interpreter = __webpack_require__(3);
 
 module.exports = function(text,callback){
     interpreter(text,callback);
@@ -139,39 +190,14 @@ module.exports = function(text,callback){
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = interpretDynamicHtml;
 
-const parser = __webpack_require__(3);
-
-const call = (function call(){
-    function call(func,arg,callback){
-        arg.push(callback);
-        funcPool[func].apply(window,arg);
-    }
-
-    var funcPool = {};
-    funcPool.getPathname = function(number,callback){
-        callback(window.location.pathname.split('/')[number]);
-    }
-    funcPool.ajax = function (url,callback){
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function()
-        {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            {
-                callback(xmlhttp.responseText);
-            }
-        }
-
-        xmlhttp.open("GET",url,true);
-        xmlhttp.send();
-    }
-
-    return call;
-})();
+const parser = __webpack_require__(4);
+const call = __webpack_require__(7);
+const scope = __webpack_require__(0);
 
 
 function interpretDynamicHtml(code,callback){
@@ -204,6 +230,8 @@ function interpretDynamicHtml(code,callback){
         if(is_text(input)) callback(input.value);
         if(is_num(input)) callback(interpret_num(input));
         if(is_call(input)) interpret_call(input,callback);
+        if(is_var(input)) callback(interpret_var(input));
+        if(is_dot(input)) callback(interpret_dot(input));
         if(is_str(input)) interpret_str(input,callback);
     }
 
@@ -250,6 +278,12 @@ function interpretDynamicHtml(code,callback){
             callback(text);
         });
     }
+    function interpret_var(input){
+        return scope.get(input.value);
+    }
+    function interpret_dot(input){
+        return scope.getChild(input.value,input.arrow.value);
+    }
     function interpret_num(input){
         return input.value;
     }
@@ -263,6 +297,12 @@ function interpretDynamicHtml(code,callback){
     function is_call(input){
         return input.type === 'call';
     }
+    function is_var(input){
+        return input.type === 'var';
+    }
+    function is_dot(input){
+        return input.type === 'dot';
+    }
     function is_str(input){
         return input.type === 'str';
     }
@@ -273,12 +313,13 @@ function interpretDynamicHtml(code,callback){
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = parseDynamicHtml;
 
-const lexer = __webpack_require__(4);
+
+const lexer = __webpack_require__(5);
 
 function parseDynamicHtml(code){
     var input = lexer(code);
@@ -326,6 +367,8 @@ function parseDynamicHtml(code){
 
         if(is_call(tok)) return parse_call(tok);
         if(is_str(tok)) return parse_str(tok);
+        if(is_punc('.')) return parse_dot(tok);
+        if(is_ident(tok)) return parse_ident(tok);
         //if(is_bin_exp(tok)) return parse_str();
         //if(is_end(tok)) return parse_str();
         if(is_num(tok)) return parse_num(tok);
@@ -357,6 +400,17 @@ function parseDynamicHtml(code){
             return tok.value === '${' && tok.type == "punc";
         }
     }
+    function parse_dot(tok){
+        input.next();
+        return {
+            type: 'dot',
+            value: tok.value,
+            arrow: parse_code()
+        };
+    }
+    function parse_ident(tok){
+        return tok;
+    }
     function parse_num(tok){
         return tok;
     }
@@ -367,6 +421,10 @@ function parseDynamicHtml(code){
     }
     function is_call(tok){
         if(is_punc('(')) return true;
+        return false;
+    }
+    function is_ident(tok){
+        if(tok.type === 'var') return true;
         return false;
     }
     function is_num(tok){
@@ -394,18 +452,19 @@ function parseDynamicHtml(code){
         if (is_punc(ch)) input.next();
         else input.croak("Expecting punctuation: \"" + ch + "\"");
     }
+
+
 }
 
 
 
-
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = tokenStream;
 
-const inputStream = __webpack_require__(5);
+const inputStream = __webpack_require__(6);
 
 function tokenStream(code) {
     var input = inputStream(code);
@@ -479,8 +538,7 @@ function tokenStream(code) {
         }
 
         function is_str_end(ch){
-            return "`".indexOf(ch) >= 0;
-        }
+            return "`".indexOf(ch) >= 0; }
     }
     function read_var_in_str(){
         input.next();input.next();
@@ -520,7 +578,7 @@ function tokenStream(code) {
         return ch === '$';
     }
     function is_punc(ch){
-        return ",;(){}".indexOf(ch) >= 0;
+        return ",;(){}.".indexOf(ch) >= 0;
     }
     function is_op(ch){
         return "+-*/=".indexOf(ch) >= 0;
@@ -546,15 +604,6 @@ function tokenStream(code) {
 }
 
 
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const input = __webpack_require__(6);
-
-module.exports = input;
 
 
 /***/ }),
@@ -629,6 +678,39 @@ function inputStream(input) {
     }
 
 }
+
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = call;
+
+const funcPool = {};
+funcPool.getPathname = function(number,callback){
+    callback(window.location.pathname.split('/')[number]);
+}
+funcPool.ajax = function (url,callback){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            callback(xmlhttp.responseText);
+        }
+    }
+
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send();
+}
+
+
+function call(func,arg,callback){
+    arg.push(callback);
+    funcPool[func].apply(window,arg);
+}
+
 
 
 
