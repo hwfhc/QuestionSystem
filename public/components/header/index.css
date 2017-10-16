@@ -1,0 +1,15 @@
+header {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  box-shadow: 0 0.5px 3px grey;
+}
+header .logo {
+  height: 85px;
+  margin-left: 10%;
+}
+header .user {
+  height: 85px;
+  margin-left: 50%;
+}
