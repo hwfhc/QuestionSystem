@@ -1,4 +1,5 @@
 *.swp
 
+logs/*
 sessions/*
 node_modules/*

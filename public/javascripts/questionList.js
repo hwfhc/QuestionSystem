@@ -14,7 +14,7 @@ function addItemToQuesiontList(){
         }
     }
 
-    xhttp.open('GET','/questionList/getQuestionList',true);
+    xhttp.open('GET','/question/list',true);
     xhttp.send();
 
 }

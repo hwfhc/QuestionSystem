@@ -65,8 +65,8 @@ function initRoutes(app,directory){
         res.redirect('/homePage');
     });
 
-    app.get('/drypot.js',function(req,res){
-        res.sendSpec(`${directory}/public/drypot.js`);
+    app.get('/drypot.min.js',function(req,res){
+        res.sendSpec(`${directory}/public/drypot.min.js`);
     });
 
     app.get('/components/:file',function(req,res){

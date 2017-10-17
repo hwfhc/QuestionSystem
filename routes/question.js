@@ -1,10 +1,11 @@
 module.exports = init;
 
-const sign_module = require('../bin/sign_module');
+const publish_module = require('../bin/publish_module');
+const question = require('../bin/question');
 
 function init(app,directory){
     app.get('/question/list',function(req,res){
-        view_module.getQuestionList(function(results){
+        question.getQuestionList(function(results){
             res.send(JSON.stringify(results));
         })
     });

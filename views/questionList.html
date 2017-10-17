@@ -7,7 +7,7 @@
         <link href="css/questionList.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-	<header class="header"></header>	
+        <header class="dp-component"></header>
 
         <div id="main">
 
@@ -23,6 +23,12 @@
                                 <th>题目名称</th>
                             </tr>
                         </table>
+                        <table  class="dp-for" dp-name="render" dp-data="{{ajax(`/question/list`)}}" id="questionTable">
+                            <tr>
+                                <td><a href="/questionDetail?ID={{item.ID}}">{{item.title}}</a></td>
+                            </tr>
+                        </table>
+
                     </div>
 
                 </div>
@@ -30,6 +36,6 @@
 
         </div>
     </body>
-    <script type="text/javascript" src="javascripts/questionList.js"></script>
-    <script src="/drypot.js" charset="utf-8"></script>
+    <!-- <script type="text/javascript" src="javascripts/questionList.js"></script>-->
+    <script src="/drypot.min.js" charset="utf-8"></script>
 </html>
