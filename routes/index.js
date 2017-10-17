@@ -34,8 +34,8 @@ function initRoutes(app,directory){
             req.path!=='/css/signPage.css'&&
             req.path!=='/pleaseSignInFirst'&&
             req.path!=='/css/pleaseSignInFirst.css'&&
-            req.path!=='/signPage/signIn'&&
-            req.path!=='/signPage/signUp'&&
+            req.path!=='/sign/in'&&
+            req.path!=='/sign/up'&&
             req.path!=='/css/signInSuccess.css'&&
             req.path!=='/css/signInFail.css'&&
             req.path!=='/picture/cross.jpg'&&
@@ -65,8 +65,8 @@ function initRoutes(app,directory){
         res.redirect('/homePage');
     });
 
-    app.get('/drypot',function(req,res){
-        res.sendSpec(`${directory}/public/drypot.js`);
+    app.get('/drypot.min.js',function(req,res){
+        res.sendSpec(`${directory}/public/drypot.min.js`);
     });
 
     app.get('/components/:file',function(req,res){
@@ -78,15 +78,9 @@ function initRoutes(app,directory){
     });
 
 
-    require('./signPage')(app,directory);
-    require('./homePage')(app,directory);
-    require('./questionList')(app,directory);
-    require('./questionDetail')(app,directory);
-    require('./answerPage')(app,directory);
-    require('./publishPage')(app,directory);
-    require('./answerDetail')(app,directory);
-    require('./answerList')(app,directory);
-    require('./jumpPage')(app,directory);
-
-    require('./resources')(app,directory);
+    require('./page')(app,directory);
+    require('./sign')(app,directory);
+    require('./user')(app,directory);
+    require('./question')(app,directory);
+    require('./answer')(app,directory);
 }

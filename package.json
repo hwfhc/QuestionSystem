@@ -1,0 +1,39 @@
+{
+  "name": "questionsystem",
+  "version": "1.0.0",
+  "description": "a question system",
+  "main": "app.js",
+  "bin": {
+    "questionsystem": "server.js"
+  },
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-multiparty": "^2.0.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mysql": "^2.15.0",
+    "session-file-store": "^1.1.2"
+  },
+  "devDependencies": {
+    "benchmark": "^2.1.4",
+    "chai": "^3.5.0",
+    "less": "^3.0.0-alpha.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hwfhc/QuestionSystem.git"
+  },
+  "author": "hwfhc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hwfhc/QuestionSystem/issues"
+  },
+  "homepage": "https://github.com/hwfhc/QuestionSystem#readme"
+}

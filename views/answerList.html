@@ -7,26 +7,11 @@
         <link href="css/answerList.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div id="header">
-            <div class="logo">
-                <img src="picture/logo.jpg" alt="logo"/>
-            </div>
-
-            <div class="user">
-                <a href="/logout"><img src="picture/exit.png" alt="face"/></a>
-            </div>
-        </div>
+        <header class="dp-component"></header>
 
         <div id="main">
 
-            <div id="left">
-                <div class="title">凌睿工作室答题系统</div>
-                <ul>
-                    <li class="item"><a href="/homePage">首页</a></li>
-                    <li class="item"><a href="/questionList">题目列表</a></li>
-                    <li class="item"><a href="/publishPage">题目发布</a></li>
-                </ul>
-            </div>
+            <left-nav class="dp-component"></left-nav>
 
             <div id="right">
                 <div id="userimformation">
@@ -45,6 +30,6 @@
 
         </div>
     </body>
-
     <script type="text/javascript" src="javascripts/answerList.js"></script>
+    <script src="/drypot.min.js" charset="utf-8"></script>
 </html>

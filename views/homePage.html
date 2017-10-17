@@ -6,15 +6,7 @@
         <link href="/css/homePage.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div id="header">
-            <div class="logo">
-                <img src="/picture/logo.png" alt="logo"/>
-            </div>
-
-            <div class="user">
-                <a href="/logout"><img src="/picture/exit.png" alt="face"/></a>
-            </div>
-        </div>
+        <header class="dp-component"></header>
 
         <div id="main">
 
@@ -30,7 +22,7 @@
                             <div class="face">
                                 <img src="/picture/face.jpg" alt="face"/>
                             </div>
-                            <div class="username dp-dynamic">{{ajax(`/resources/user/${getPathname(2)}/username`)}}</div>
+                            <div class="username dp-dynamic">{{ajax(`/user/${getPathname(2)}/name`)}}</div>
                         </div>
 
                         <div class="uiright"></div><!--这里是一个空的div框框-->
@@ -41,6 +33,5 @@
 
         </div>
     </body>
-    <script type="text/javascript" src="/javascripts/homePage.js"></script>
-    <script src="/drypot" charset="utf-8"></script>
+    <script src="/drypot.min.js" charset="utf-8"></script>
 </html>
