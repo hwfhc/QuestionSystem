@@ -29,17 +29,18 @@ function init(app,directory){
     });
 
     app.get('/questionDetail/:questionID', function(req, res){
-        req.session.questionID = req.params['id'];
+        res.sendFile('questionDetail.html');
+        /*req.session.questionID = req.params['id'];
         let questionID = getQuestionID(req);
 
         if(questionID){
             res.sendFile('questionDetail.html');
         }else{
             res.redirect('/personalHomePage');
-        }
+        }*/
     });
 
-    app.get('/answerPage',function(req,res){
+    app.get('/answerPage/:questionID',function(req,res){
         res.sendFile('answerPage.html');
     });
 
