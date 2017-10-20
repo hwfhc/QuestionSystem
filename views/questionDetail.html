@@ -11,7 +11,7 @@
 
             <left-nav class="dp-component"></left-nav>
 
-            <div id="right" class="dp-item question" dp-name="question" dp-data="{{ajax(`/question/${getPathname(2)}/detail`)}}">
+            <div id="right" class="dp-dynamic question" dp-name="question" dp-data="{{ajax(`/question/${getPathname(2)}/detail`)}}">
                 <div class="information">
                     <div class="uiheader"></div>
                     <div class="container">
@@ -31,7 +31,8 @@
                             <span>出题人：&nbsp; </span><span>{{question.author_name}}</span>
 
                             <div class="button_group">
-                                <a id="viewAnswer" href="/answer/list/{{getPathname(2)}}">查看回答</a>
+                                <!--here should be a dp-if-->
+                                <a id="viewAnswer" href="/answerList/{{getPathname(2)}}">查看回答</a>
                                 <a id="answer" href="/answerPage/{{getPathname(2)}}">回答题目</a>
                             </div>
 

@@ -45,25 +45,11 @@ function init(app,directory){
     });
 
     app.get('/answerDetail/:answerID', function(req, res){
-        let answerID = getAnswerID(req);
-
-        if(!answerID){
-            res.redirect('/personalHomePage');
-        }else{
-            req.session.answerID = answerID;
-            res.sendFile('answerDetail.html');
-        }
-
+        res.sendFile('answerDetail.html');
     });
 
     app.get('/answerList/:questionID',function(req,res){
-        let questionID = getQuestionID(req);
-
-        if(questionID){
-            res.sendFile('answerList.html');
-        }else{
-            res.redirect('/personalHomePage');
-        }
+        res.sendFile('answerList.html');
     });
 
     app.get('/signInSuccess',function(req,res){
