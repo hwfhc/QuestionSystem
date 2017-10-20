@@ -1,6 +1,8 @@
 module.exports = init;
 
 const publish_module = require('../bin/publish_module');
+const view_module = require('../bin/view_module');
+const personalinformation_module = require('../bin/personalinformation_module');
 const question = require('../bin/question');
 
 function init(app,directory){
@@ -13,14 +15,9 @@ function init(app,directory){
     app.get('/question/:questionID/detail',function(req,res){
         let dataToSended = {};
 
-        let questionID = req.param['questionID'];
+        let questionID = req.params['questionID'];
         let authorID;
-        let userID = getUserID();
-
-        if(!questionID){
-            res.redirect('/personalHomePage');
-            return;
-        }
+        let userID = getUserID(req);
 
         view_module.getQuestionDetail(questionID,function(result){
             dataToSended.title = result.title;

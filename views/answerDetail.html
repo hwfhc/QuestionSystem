@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>个人主页</title>
-        <link href="css/answerDetail.css" rel="stylesheet" type="text/css" />
+        <link href="/css/answerDetail.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <header class="dp-component"></header>
@@ -17,14 +17,14 @@
 
                     <div class="uiheader"></div>
 
-                    <div class="container">
+                    <div class="dp-dynamic container" dp-name="answer" dp-data="{{ajax(`/answer/${getPathname(2)}/detail`)}}">
 
                         <div class="question">
                             <div class="header"></div>
-                            <div class="title" id="title"></div>
-                            <pre class="description" id="description"></pre>
+                            <div class="title">{{answer.title}}</div>
+                            <pre class="description">{{answer.description}}</pre>
                             <div class="line"></div>
-                            <div class="answer" id="answer"></div>
+                            <div class="answer">{{answer.answer}}</div>
                         </div>
 
                         <div class="score">
@@ -37,7 +37,7 @@
 
                                 <div class="your_score">
                                     <span>答题人：&nbsp; </span>
-                                    <span id="answer_man"></span>
+                                    <span>{{answer.username}}</span>
                                 </div>
 
                                 <div class="button_container"><button type="submit">提交</button></div>
@@ -52,6 +52,7 @@
 
         </div>
     </body>
-    <script src='javascripts/answerDetail.js' type='text/javascript'></script>
+
     <script src="/drypot.min.js" charset="utf-8"></script>
+
 </html>

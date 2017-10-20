@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>个人主页</title>
-        <link href="css/answerPage.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="reply.js"></script>
+        <link href="/css/answerPage.css" rel="stylesheet" type="text/css" />
+
     </head>
     <body> 
         <header class="dp-component"></header>
@@ -14,18 +15,16 @@
             <left-nav class="dp-component"></left-nav>
 
             <div id="right">
-                <div id="userimformation">
+                <div class="dp-dynamic" id="userimformation">
                     <div class="uiheader"></div>
                     <div class="uimain">
-                        <!--<div class="questionnumber">第1题</div>-->
                         <div id="description" class="questioncontent"></div>
 
-                        <form action="/answerPage/answerAskQuestion" method="post">
+                        <form action="/answer/{{getPathname(2)}}/publish" method="post">
                             <textarea name="answer" class="replyzone"></textarea>
 
                             <div class="uifooter">
                                 <button type="submit" class="submit" name="submit" value="submit">提交</button>
-                                <!--<div class="next"><a href="">下一题</a></div><-->
                             </div>
                         </form>
                     </div>
@@ -34,6 +33,7 @@
 
         </div>
     </body>
-    <script type="text/javascript" src="javascripts/publishPage.js"></script>
+
     <script src="/drypot.min.js" charset="utf-8"></script>
+
 </html>

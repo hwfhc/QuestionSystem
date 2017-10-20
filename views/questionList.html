@@ -18,14 +18,14 @@
                     <div class="uiheader"></div>
 
                     <div class="uimain">
-                        <table id="questionTable">
+                        <table>
                             <tr>
                                 <th>题目名称</th>
                             </tr>
                         </table>
-                        <table  class="dp-for" dp-name="render" dp-data="{{ajax(`/question/list`)}}" id="questionTable">
+                        <table class="dp-for" dp-data="{{ajax(`/question/list`)}}">
                             <tr>
-                                <td><a href="/questionDetail?ID={{item.ID}}">{{item.title}}</a></td>
+                                <td><a href="/questionDetail/{{item.ID}}">{{item.title}}</a></td>
                             </tr>
                         </table>
 
@@ -36,6 +36,6 @@
 
         </div>
     </body>
-    <!-- <script type="text/javascript" src="javascripts/questionList.js"></script>-->
+
     <script src="/drypot.min.js" charset="utf-8"></script>
 </html>

@@ -1,31 +1,28 @@
 module.exports = init;
 
-const sign_module = require('../bin/sign_module');
+const answer_module = require('../bin/answer_module');
+const view_module = require('../bin/view_module');
+const personalinformation_module = require('../bin/personalinformation_module');
 
 function init(app,directory){
     app.get('/answer/list/:questionID',function(req,res){
-        let questionID = req.param['questionID'];
+        let questionID = req.params['questionID'];
 
+        if(!questionID){
+            return;
+        }
 
-        let authorID;
-        let userID = getUserID(req);
-
-        view_module.getQuestionDetail(questionID,function(result){
-            authorID = result.authorID;
-
-            if(userID == authorID && questionID){
-                view_module.getAnswerList(req.session.questionID,function(result){
-                    res.send(JSON.stringify(result));
-                })
-            }
+        view_module.getAnswerList(questionID,result => {
+            res.send(JSON.stringify(result));
         });
     });
-
 
     app.get('/answer/:answerID/detail',function(req,res){
         let dataToSended = {};
         let userIDofAnswer;
-        let answerID = req.param['answerID'];
+        let answerID = req.params['answerID'];
+
+        console.log(answerID);
         let questionID;
 
         if(!answerID){
@@ -73,10 +70,12 @@ function init(app,directory){
 
     });
 
-    app.post('/answer/publish', function(req, res){
+    app.post('/answer/:questionID/publish', function(req, res){
         var answer = getAnswer();
         var questionID = getQuestionID();
         var userID = getUserID();
+        console.log(questionID);
+        console.log(userID);
 
         if(answer && questionID && userID){
             answer_module.answerAskQuestion(answer,questionID,userID,function(){
@@ -92,7 +91,7 @@ function init(app,directory){
         }
 
         function getQuestionID(){
-            return req.session.questionID
+            return req.params['questionID'];
         }
 
         function getUserID(){

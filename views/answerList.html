@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>题目列表</title>
+        <link href="/css/answerList.css" rel="stylesheet" type="text/css" />
 
-        <link href="css/answerList.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <header class="dp-component"></header>
@@ -18,11 +19,19 @@
                     <div class="uiheader"></div>
 
                     <div class="uimain">
-                        <table id="answerTable">
+                        <table>
                             <tr>
                                 <th>答题者</th>
                             </tr>
                         </table>
+                        <table class="dp-for" dp-data="{{ajax(`/answer/list/${getPathname(2)}/`)}}">
+                            <tr>
+                                <td>
+                                    <a href="/answerDetail/{{item.ID}}">{{item.Username}}</a>
+                                </td>
+                            </tr>
+                        </table>
+
                     </div>
 
                 </div>
@@ -30,6 +39,7 @@
 
         </div>
     </body>
-    <script type="text/javascript" src="javascripts/answerList.js"></script>
+
     <script src="/drypot.min.js" charset="utf-8"></script>
+
 </html>

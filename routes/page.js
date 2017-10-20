@@ -29,40 +29,27 @@ function init(app,directory){
     });
 
     app.get('/questionDetail/:questionID', function(req, res){
-        req.session.questionID = req.params['id'];
+        res.sendFile('questionDetail.html');
+        /*req.session.questionID = req.params['id'];
         let questionID = getQuestionID(req);
 
         if(questionID){
             res.sendFile('questionDetail.html');
         }else{
             res.redirect('/personalHomePage');
-        }
+        }*/
     });
 
-    app.get('/answerPage',function(req,res){
+    app.get('/answerPage/:questionID',function(req,res){
         res.sendFile('answerPage.html');
     });
 
     app.get('/answerDetail/:answerID', function(req, res){
-        let answerID = getAnswerID(req);
-
-        if(!answerID){
-            res.redirect('/personalHomePage');
-        }else{
-            req.session.answerID = answerID;
-            res.sendFile('answerDetail.html');
-        }
-
+        res.sendFile('answerDetail.html');
     });
 
     app.get('/answerList/:questionID',function(req,res){
-        let questionID = getQuestionID(req);
-
-        if(questionID){
-            res.sendFile('answerList.html');
-        }else{
-            res.redirect('/personalHomePage');
-        }
+        res.sendFile('answerList.html');
     });
 
     app.get('/signInSuccess',function(req,res){
