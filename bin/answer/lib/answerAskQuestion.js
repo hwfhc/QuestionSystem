@@ -17,7 +17,7 @@ function answerAskQuestion(answer,questionID,userID,callback){
         }
 
         function haveNotAnswered(){
-            personalinformation_module.getUsernameByID(userID,function(username){
+            user.getUsernameByID(userID,function(username){
                 if(username){
                     var sqlString = saferman.format(
                         'INSERT INTO AnswerTable (ID,questionID,userID,Username,answer,score,state) VALUE (null,?,?,?,?,0,0)',

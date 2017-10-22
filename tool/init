@@ -20,8 +20,7 @@ CREATE TABLE PersonalInformation(
      ID INT AUTO_INCREMENT primary key,
      Name VARCHAR(20),
      Graph INT,
-     PhoneNumber INT,
-     Score INT
+     PhoneNumber INT
    );
 
 CREATE TABLE ShadowTable(
@@ -48,8 +47,6 @@ CREATE TABLE AnswerTable(
      questionID INT not null,
      userID INT not null,
      answer VARCHAR(1000) not null,
-     Username VARCHAR(20),
-     Graph INT,
      score INT,
      state INT
    );

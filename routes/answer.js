@@ -27,44 +27,13 @@ function init(app,directory){
         if(!answerID){
             return;
         }
+        answer.getAnswerDetail(answerID,function(result){
+            dataToSended.title = result.title;
+            dataToSended.description = result.description;
+            dataToSended.answer_content = result.answer;
+            dataToSended.username = result.Name;
 
-        let answerDetail = new Promise(function(resolve,reject){
-            answer.getAnswerAndUserIDbyID(answerID,function(results){
-                dataToSended.answer = results.answer;
-                dataToSended.score = results.score;
-
-                questionID = results.questionID;
-                userIDofAnswer = results.userID;
-                resolve();
-            });
-        });
-
-        answerDetail.then(function(){
-
-            let getUsername = new Promise(function(resolve,reject){
-                //console.log('userIDofAnswer is: '+userIDofAnswer);
-                user.getUsernameByID(userIDofAnswer,function(result){
-                    dataToSended.username = result;
-                    resolve();
-                });
-            });
-
-            let getQuestionDetail = new Promise(function(resolve,reject){
-                //console.log('questionID is: '+questionID);
-                question.getQuestionDetail(questionID,function(result){
-                    dataToSended.title = result.title;
-                    dataToSended.description = result.description;
-                    resolve();
-                });
-            });
-
-            Promise.all([
-                getUsername,
-                getQuestionDetail
-            ]).then(function(){
-                res.send(JSON.stringify(dataToSended));
-            })
-
+            res.send(JSON.stringify(dataToSended));
         });
 
     });
@@ -73,8 +42,6 @@ function init(app,directory){
         var content = getAnswer();
         var questionID = getQuestionID();
         var userID = getUserID();
-        console.log(questionID);
-        console.log(userID);
 
         if(answer && questionID && userID){
             answer.answerAskQuestion(content,questionID,userID,function(){

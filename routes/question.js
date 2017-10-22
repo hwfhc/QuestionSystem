@@ -18,29 +18,19 @@ function init(app,directory){
         let authorID;
         let userID = getUserID(req);
 
-        question.getQuestionDetail(questionID,function(result){
+        question.getQuestionDetail(userID,questionID,function(result){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.total_score = result.total_score;
+            dataToSended.author_name = result.Name;
 
-            authorID = result.authorID;
+            if(result.answer) dataToSended.answer = result.answer;
+            else dataToSended.answer = 'You have not answer this question!';
 
-            user.getUsernameByID(authorID,function(result){
-                dataToSended.author_name = result;
+            if(result.score) dataToSended.score = result.score;
+            else dataToSended.score = 0;
 
-                answer.getScoreByUserID(userID,questionID,function(result){
-                    dataToSended.score = result.score;
-                    dataToSended.answer = result.answer;
-
-                    if(userID==authorID){
-                        dataToSended.isAuthor = true;
-                    }else{
-                        dataToSended.isAuthor = false;
-                    }
-
-                    res.send(JSON.stringify(dataToSended));
-                });
-            });
+            res.send(JSON.stringify(dataToSended));
         });
     });
 
