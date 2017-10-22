@@ -1,8 +1,8 @@
 module.exports = init;
 
-const answer_module = require('../bin/answer_module');
-const view_module = require('../bin/view_module');
-const personalinformation_module = require('../bin/personalinformation_module');
+const answer = require('../bin/answer');
+const question = require('../bin/question');
+const user = require('../bin/user');
 
 function init(app,directory){
     app.get('/answer/list/:questionID',function(req,res){
@@ -12,7 +12,7 @@ function init(app,directory){
             return;
         }
 
-        view_module.getAnswerList(questionID,result => {
+        answer.getAnswerList(questionID,result => {
             res.send(JSON.stringify(result));
         });
     });
@@ -22,7 +22,6 @@ function init(app,directory){
         let userIDofAnswer;
         let answerID = req.params['answerID'];
 
-        console.log(answerID);
         let questionID;
 
         if(!answerID){
@@ -30,7 +29,7 @@ function init(app,directory){
         }
 
         let answerDetail = new Promise(function(resolve,reject){
-            view_module.getAnswerAndUserIDbyID(answerID,function(results){
+            answer.getAnswerAndUserIDbyID(answerID,function(results){
                 dataToSended.answer = results.answer;
                 dataToSended.score = results.score;
 
@@ -44,7 +43,7 @@ function init(app,directory){
 
             let getUsername = new Promise(function(resolve,reject){
                 //console.log('userIDofAnswer is: '+userIDofAnswer);
-                personalinformation_module.getUsernameByID(userIDofAnswer,function(result){
+                user.getUsernameByID(userIDofAnswer,function(result){
                     dataToSended.username = result;
                     resolve();
                 });
@@ -52,7 +51,7 @@ function init(app,directory){
 
             let getQuestionDetail = new Promise(function(resolve,reject){
                 //console.log('questionID is: '+questionID);
-                view_module.getQuestionDetail(questionID,function(result){
+                question.getQuestionDetail(questionID,function(result){
                     dataToSended.title = result.title;
                     dataToSended.description = result.description;
                     resolve();
@@ -71,18 +70,18 @@ function init(app,directory){
     });
 
     app.post('/answer/:questionID/publish', function(req, res){
-        var answer = getAnswer();
+        var content = getAnswer();
         var questionID = getQuestionID();
         var userID = getUserID();
         console.log(questionID);
         console.log(userID);
 
         if(answer && questionID && userID){
-            answer_module.answerAskQuestion(answer,questionID,userID,function(){
+            answer.answerAskQuestion(content,questionID,userID,function(){
                 res.redirect('/signInSuccess');
             });
         }else{
-            res.redirect('/personalHomePage');
+            res.redirect('/');
         }
 
 
@@ -109,11 +108,11 @@ function init(app,directory){
         let answerID = getAnswerID();
 
         if(score && answerID){
-            answer_module.setScoreByID(answerID,score,function(){
+            answer.setScoreByID(answerID,score,function(){
                 res.redirect('/signInSuccess');
             });
         }else{
-            res.redirect('/personalHomePage');
+            res.redirect('/');
         }
 
         function getScore(){

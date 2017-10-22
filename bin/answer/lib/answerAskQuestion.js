@@ -1,7 +1,7 @@
 module.exports = answerAskQuestion;
 
 const saferman = require('saferman');
-const personalinformation_module = require('../../personalinformation_module');
+const user = require('../../user');
 
 function answerAskQuestion(answer,questionID,userID,callback){
 

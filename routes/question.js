@@ -1,9 +1,8 @@
 module.exports = init;
 
-const publish_module = require('../bin/publish_module');
-const view_module = require('../bin/view_module');
-const personalinformation_module = require('../bin/personalinformation_module');
+const user = require('../bin/user');
 const question = require('../bin/question');
+const answer = require('../bin/answer');
 
 function init(app,directory){
     app.get('/question/list',function(req,res){
@@ -19,17 +18,17 @@ function init(app,directory){
         let authorID;
         let userID = getUserID(req);
 
-        view_module.getQuestionDetail(questionID,function(result){
+        question.getQuestionDetail(questionID,function(result){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.total_score = result.total_score;
 
             authorID = result.authorID;
 
-            personalinformation_module.getUsernameByID(authorID,function(result){
+            user.getUsernameByID(authorID,function(result){
                 dataToSended.author_name = result;
 
-                view_module.getScoreByUserID(userID,questionID,function(result){
+                answer.getScoreByUserID(userID,questionID,function(result){
                     dataToSended.score = result.score;
                     dataToSended.answer = result.answer;
 
@@ -58,7 +57,7 @@ function init(app,directory){
         var title = req.body.title;
         var description = req.body.description;
 
-        publish_module.publishAskQuestion(title,description,5,req.session.ID,function (){
+        question.publishAskQuestion(title,description,5,req.session.ID,function (){
             res.redirect('/signInSuccess');
         });
     });

@@ -1,11 +1,11 @@
 module.exports = init;
 
-const sign_module = require('../bin/sign_module');
+const sign = require('../bin/sign');
 
 function init(app,directory){
     app.get('/signPage',function(req,res){
         console.log('asdf');
-        sign_module.logOut(req);
+        sign.logOut(req);
         res.sendFile('signPage.html');
     });
 
