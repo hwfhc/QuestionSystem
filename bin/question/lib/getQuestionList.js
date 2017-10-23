@@ -4,7 +4,7 @@ const saferman = require('saferman');
 
 function getQuestionList(callback){
 
-    let sql = 'SELECT ID,title FROM AskQuestionTable';
+    let sql = 'SELECT ID,title FROM QUESTION';
 
     saferman.sql(sql,function(results){
         executeCallback(results);

@@ -3,7 +3,11 @@ module.exports = getScoreByUserID;
 const saferman = require('saferman');
 
 function getScoreByUserID(userID,questionID,callback){
-    let sql = saferman.format('SELECT answer,score FROM AnswerTable WHERE userID=? AND questionID=?',
+    let sql = saferman.format(
+        `SELECT answer,score
+         FROM ANSWER
+         WHERE authoID=? AND
+         questionID=?`,
         [userID,questionID]);
 
     saferman.sql(sql,function(results){

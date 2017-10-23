@@ -11,7 +11,8 @@ function signUp(username,password,callback){
 
     new Promise((resolve,reject) => {
         let sqlString = saferman.format(
-            'SELECT ID FROM PersonalInformation WHERE Name=?',
+            `SELECT ID FROM USER
+            WHERE username=?`,
             [username]);
 
         saferman.sql(sqlString,function(results){
@@ -71,8 +72,10 @@ function signUp(username,password,callback){
 
         let initPersonalInformation = new Promise(function(resolve,reject){
             let sqlString = saferman.format(
-                'INSERT INTO PersonalInformation (ID,Name) VALUE (null,?)',
+                `INSERT INTO USER (ID,username)
+                VALUE (null,?)`,
                 [username]);
+
             saferman.sql(sqlString,function(){
                 resolve();
             });
@@ -80,7 +83,8 @@ function signUp(username,password,callback){
 
         let initShadowTable = new Promise(function(resolve,reject){
             let sqlString = saferman.format(
-                'INSERT INTO ShadowTable (ID,Shadow) VALUE (null,?)',
+                `INSERT INTO SHADOW (ID,shadow)
+                VALUE (null,?)`,
                 [password]);
 
             saferman.sql(sqlString,function(){

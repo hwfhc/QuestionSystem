@@ -1,11 +1,13 @@
 module.exports = answerAskQuestion;
 
 const saferman = require('saferman');
-const personalinformation_module = require('../../personalinformation_module');
+const user = require('../../user');
 
 function answerAskQuestion(answer,questionID,userID,callback){
 
-    var sql = saferman.format('SELECT ID FROM AnswerTable WHERE questionID=? AND userID=?',
+    var sql = saferman.format(
+        `SELECT ID FROM ANSWER
+        WHERE questionID=? AND authorID=?`,
         [questionID,userID]);
 
     saferman.sql(sql,function(results){
@@ -17,10 +19,12 @@ function answerAskQuestion(answer,questionID,userID,callback){
         }
 
         function haveNotAnswered(){
-            personalinformation_module.getUsernameByID(userID,function(username){
+            user.getUsernameByID(userID,function(username){
                 if(username){
                     var sqlString = saferman.format(
-                        'INSERT INTO AnswerTable (ID,questionID,userID,Username,answer,score,state) VALUE (null,?,?,?,?,0,0)',
+                        `INSERT INTO
+                        ANSWER (ID,questionID,authorID,answer,score)
+                        VALUE (null,?,?,?,?)`,
                         [questionID,userID,username,answer]);
                     saferman.sql(sqlString,executeCallback);
                 }
@@ -28,7 +32,9 @@ function answerAskQuestion(answer,questionID,userID,callback){
         }
 
         function haveAnswered(){
-            var sqlString = saferman.format('UPDATE AnswerTable SET answer=?,score=0 WHERE ID=?',
+            var sqlString = saferman.format(
+                `UPDATE ANSWER SET answer=?,score=0
+                WHERE ID=?`,
                 [answer,ID]);
             saferman.sql(sqlString,executeCallback);
         }

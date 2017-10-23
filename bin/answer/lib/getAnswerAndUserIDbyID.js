@@ -1,10 +1,14 @@
-module.exports = getQuestionDetail;
+module.exports = getAnswerAndUserIDbyID;
 
 const saferman = require('saferman');
 
-function getQuestionDetail(ID,callback){
+function getAnswerAndUserIDbyID(ID,callback){
 
-    let sql = 'SELECT title,description,total_score,authorID FROM AskQuestionTable WHERE ID=' + ID;
+    let sql = saferman.format(
+        `SELECT answer,authoID,questionID,score
+        FROM ANSWER
+        WHERE ID=?`,
+        [ID]);
 
     saferman.sql(sql,function(results){
         executeCallback(results[0]);

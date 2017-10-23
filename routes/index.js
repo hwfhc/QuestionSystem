@@ -8,8 +8,6 @@ function initRoutes(app,directory){
     var match3 = new RegExp('picture');
 
     app.use(function(req,res,next){
-        res.sendSpec = res.sendFile;
-
         res.sendFile = function(file){
             res.setHeader('X-Accel-Redirect','/protected/' + file);
             res.setHeader('Cache-Control','no-store');
@@ -64,19 +62,6 @@ function initRoutes(app,directory){
     app.get('/',function(req,res){
         res.redirect('/homePage');
     });
-
-    app.get('/drypot.min.js',function(req,res){
-        res.sendSpec(`${directory}/public/drypot.min.js`);
-    });
-
-    app.get('/components/:file',function(req,res){
-        res.sendSpec(`${directory}/public/components/${req.params['file']}/index.html`);
-    });
-
-    app.get('/components/:file/index.css',function(req,res){
-        res.sendSpec(`${directory}/public/components/${req.params['file']}/index.css`);
-    });
-
 
     require('./page')(app,directory);
     require('./sign')(app,directory);
