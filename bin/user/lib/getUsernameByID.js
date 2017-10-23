@@ -5,7 +5,7 @@ const saferman = require('saferman');
 function getUsernameByID(ID,callback){
 
     let sql = saferman.format(
-        'SELECT Name FROM PersonalInformation WHERE ID=?',
+        'SELECT username FROM USER WHERE ID=?',
         [ID]);
 
     saferman.sql(sql,results => {

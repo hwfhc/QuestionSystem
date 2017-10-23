@@ -5,13 +5,13 @@ const saferman = require('saferman');
 function getQuestionDetail(userID,questionID,callback){
 
     let sql = saferman.format(
-        `SELECT title,description,answer,total_score,Name,AnswerTable.score
-         FROM AskQuestionTable,PersonalInformation
-         LEFT JOIN AnswerTable ON
-              AnswerTable.userID = ? AND
-              AnswerTable.questionID = ?
-         WHERE AskQuestionTable.ID=? AND
-              AskQuestionTable.authorID = PersonalInformation.ID
+        `SELECT title,description,answer,total_score,username,score
+         FROM QUESTION,USER
+         LEFT JOIN ANSWER ON
+              ANSWER.authorID = ? AND
+              ANSWER.questionID = ?
+         WHERE QUESTION.ID=? AND
+               QUESTION.authorID = USER.ID
          LIMIT 1`,
         [questionID,userID,questionID]);
 

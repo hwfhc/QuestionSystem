@@ -4,7 +4,13 @@ const saferman = require('saferman');
 
 function getAnswerList(questionID,callback){
 
-    let sql = 'SELECT ID,Username FROM AnswerTable WHERE questionID=' + questionID;
+
+    let sql = saferman.format(
+        `SELECT ID,username
+        FROM ANSWER,USER
+        WHERE questionID = ? AND
+        ANSWER.authorID = USER.ID`,
+        [ID]);
 
     saferman.sql(sql,function(result){
         executeCallback(result);

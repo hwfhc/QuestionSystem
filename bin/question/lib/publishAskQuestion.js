@@ -6,7 +6,7 @@ function publishAskQuestion(title,description,total_score,authorID,callback){
 
     let isTitleDuplicate = new Promise((resolve,reject) => {
         let sql = saferman.format(
-            'SELECT ID FROM AskQuestionTable WHERE title=?',
+            'SELECT ID FROM QUESTION WHERE title=?',
             [title]);
 
         saferman.sql(sql,function(results){
@@ -27,8 +27,8 @@ function publishAskQuestion(title,description,total_score,authorID,callback){
     function titleNotDuplicate(){
 
         let sql = saferman.format(
-            'INSERT INTO AskQuestionTable (ID,title,description,total_score,time,authorID) VALUE (null,?,?,?,?,?)',
-            [title,description,total_score,0,authorID]);
+            'INSERT INTO QUESTION (ID,title,description,total_score,authorID) VALUE (null,?,?,?,?,?)',
+            [title,description,total_score,authorID]);
 
         saferman.sql(sql,executeCallback);
     };
