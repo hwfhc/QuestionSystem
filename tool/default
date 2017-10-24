@@ -54,11 +54,13 @@ server {
     }
 
     location /components/ {
+        expires 1d;
         root /usr/local/QuestionSystem/public;
         try_files $uri $uri/ =404;
     }
 
     location /drypot.min.js {
+        expires 1d;
         root /usr/local/QuestionSystem/public;
         try_files /usr/local/QuestionSystem/public/drypot.min.js =404;
     }
@@ -69,6 +71,7 @@ server {
     }
 
     location ~ \.(js|css|png|jpg)$ {
+        expires 1d;
         root /usr/local/QuestionSystem/public/;
         try_files $uri $uri/ =404;
     }
