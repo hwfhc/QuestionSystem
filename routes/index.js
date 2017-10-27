@@ -3,26 +3,21 @@ module.exports = initRoutes;
 function initRoutes(app,directory){
     let fs = require('fs');
 
-    var match1 = new RegExp('css');
-    var match2 = new RegExp('javascripts');
-    var match3 = new RegExp('picture');
-
     app.use(function(req,res,next){
-        res.sendSpec = res.sendFile;
-
         res.sendFile = function(file){
             res.setHeader('X-Accel-Redirect','/protected/' + file);
-            res.setHeader('Cache-Control','no-store');
-            //res.setHeader('Cache-Control','max-age=3600');
+            //res.setHeader('Cache-Control','no-store');
+            res.setHeader('Cache-Control','max-age=3600');
             res.end();
         }
         next();
     });
 
     app.use(function (req,res,next){
-        if(match1.exec(req.url)==null &&
-            match2.exec(req.url)==null &&
-            match3.exec(req.url)==null){
+        if(!/\.css$/.test(req.url) &&
+           !/\.js/.test(req.url) &&
+           !/\.png/.test(req.url) &&
+           !/\.jpg/.test(req.url)){
 
             let log = {
                 type:'view_log',
@@ -64,19 +59,6 @@ function initRoutes(app,directory){
     app.get('/',function(req,res){
         res.redirect('/homePage');
     });
-
-    app.get('/drypot.min.js',function(req,res){
-        res.sendSpec(`${directory}/public/drypot.min.js`);
-    });
-
-    app.get('/components/:file',function(req,res){
-        res.sendSpec(`${directory}/public/components/${req.params['file']}/index.html`);
-    });
-
-    app.get('/components/:file/index.css',function(req,res){
-        res.sendSpec(`${directory}/public/components/${req.params['file']}/index.css`);
-    });
-
 
     require('./page')(app,directory);
     require('./sign')(app,directory);

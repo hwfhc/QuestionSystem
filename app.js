@@ -1,6 +1,6 @@
 const cluster = require('cluster');
 const fs = require('fs');
-const logger = require('./bin/watcher_module')('./logs');;
+const logger = require('./bin/watcher')('./logs');;
 
 cluster.setupMaster({
     exec: './bin/server.js',

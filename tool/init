@@ -16,41 +16,34 @@ CREATE DATABASE QuestionSystem;
 
 USE QuestionSystem;
 
-CREATE TABLE PersonalInformation(
+CREATE TABLE USER(
      ID INT AUTO_INCREMENT primary key,
-     Name VARCHAR(20),
-     Graph INT,
-     PhoneNumber INT,
-     Score INT
+     username VARCHAR(20) not null unique
    );
 
-CREATE TABLE ShadowTable(
-     ID INT AUTO_INCREMENT primary key,
-     Shadow VARCHAR(20) not null
-   );
+CREATE TABLE SHADOW(
+     ID INT AUTO_INCREMENT primary key references USER(ID),
+     shadow VARCHAR(20) not null
+    );
 
 CREATE TABLE RightsTable(
      ID INT AUTO_INCREMENT primary key,
      Rights VARCHAR(50)
    );
 
-CREATE TABLE AskQuestionTable(
+CREATE TABLE QUESTION(
      ID INT AUTO_INCREMENT primary key,
-     title VARCHAR(200) not null,
+     title VARCHAR(200) not null unique,
      description VARCHAR(1000) not null,
      total_score INT,
-     time VARCHAR(20),
-     authorID INT
+     authorID INT references USER(ID)
    );
 
-CREATE TABLE AnswerTable(
+CREATE TABLE ANSWER(
      ID INT AUTO_INCREMENT primary key,
-     questionID INT not null,
-     userID INT not null,
+     questionID INT not null references QUESTION(ID),
+     authorID INT not null references USER(ID),
      answer VARCHAR(1000) not null,
-     Username VARCHAR(20),
-     Graph INT,
-     score INT,
-     state INT
+     score INT
    );
 eof
