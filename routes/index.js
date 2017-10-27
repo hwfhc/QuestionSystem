@@ -3,10 +3,6 @@ module.exports = initRoutes;
 function initRoutes(app,directory){
     let fs = require('fs');
 
-    var match1 = new RegExp('css');
-    var match2 = new RegExp('javascripts');
-    var match3 = new RegExp('picture');
-
     app.use(function(req,res,next){
         res.sendFile = function(file){
             res.setHeader('X-Accel-Redirect','/protected/' + file);
@@ -18,9 +14,10 @@ function initRoutes(app,directory){
     });
 
     app.use(function (req,res,next){
-        if(match1.exec(req.url)==null &&
-            match2.exec(req.url)==null &&
-            match3.exec(req.url)==null){
+        if(!/\.css$/.test(req.url) &&
+           !/\.js/.test(req.url) &&
+           !/\.png/.test(req.url) &&
+           !/\.jpg/.test(req.url)){
 
             let log = {
                 type:'view_log',
