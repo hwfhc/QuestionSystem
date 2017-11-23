@@ -11,5 +11,16 @@ function init(app,directory){
         });
     });
 
+    app.get('/user/:userID/money',function(req,res){
+        var userID = req.params['userID'];
+        res.send('100');
+
+        /*user.getUsernameByID(userID,function(result){
+            res.send(result);
+        });*/
+    });
+
+
+
 }
 

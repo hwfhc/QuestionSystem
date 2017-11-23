@@ -24,32 +24,32 @@ function init(app,directory){
         res.sendFile('publishPage.html');
     });
 
-    app.get('/questionList',function(req,res){
-        res.sendFile('questionList.html');
+    app.get('/itemList',function(req,res){
+        res.sendFile('itemList.html');
     });
 
-    app.get('/questionDetail/:questionID', function(req, res){
-        res.sendFile('questionDetail.html');
-        /*req.session.questionID = req.params['id'];
-        let questionID = getQuestionID(req);
+    app.get('/itemDetail/:itemID', function(req, res){
+        res.sendFile('itemDetail.html');
+        /*req.session.itemID = req.params['id'];
+        let itemID = getitemID(req);
 
-        if(questionID){
-            res.sendFile('questionDetail.html');
+        if(itemID){
+            res.sendFile('itemDetail.html');
         }else{
             res.redirect('/personalHomePage');
         }*/
     });
 
-    app.get('/answerPage/:questionID',function(req,res){
-        res.sendFile('answerPage.html');
+    app.get('/orderPage/:itemID',function(req,res){
+        res.sendFile('orderPage.html');
     });
 
-    app.get('/answerDetail/:answerID', function(req, res){
-        res.sendFile('answerDetail.html');
+    app.get('/orderDetail/:orderID', function(req, res){
+        res.sendFile('orderDetail.html');
     });
 
-    app.get('/answerList/:questionID',function(req,res){
-        res.sendFile('answerList.html');
+    app.get('/orderList/:itemID',function(req,res){
+        res.sendFile('orderList.html');
     });
 
     app.get('/signInSuccess',function(req,res){
@@ -65,11 +65,11 @@ function getUserID(req){
     return req.session.ID;
 }
 
-function getQuestionID(req){
-    return req.session.questionID;
+function getItemID(req){
+    return req.session.itemID;
 }
 
-function getAnswerID(req){
+function getOrderID(req){
     return req.query.ID;
 }
 

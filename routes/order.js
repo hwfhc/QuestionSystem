@@ -1,8 +1,8 @@
 module.exports = init;
 
-const answer = require('../bin/answer');
-const question = require('../bin/question');
 const user = require('../bin/user');
+const item = require('../bin/item');
+const order = require('../bin/order');
 
 function init(app,directory){
     app.get('/answer/list/:questionID',function(req,res){
@@ -12,7 +12,7 @@ function init(app,directory){
             return;
         }
 
-        answer.getAnswerList(questionID,result => {
+        order.getAnswerList(questionID,result => {
             res.send(JSON.stringify(result));
         });
     });
@@ -27,7 +27,7 @@ function init(app,directory){
         if(!answerID){
             return;
         }
-        answer.getAnswerDetail(answerID,function(result){
+        order.getAnswerDetail(answerID,function(result){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.answer_content = result.answer;
@@ -44,7 +44,7 @@ function init(app,directory){
         var userID = getUserID();
 
         if(answer && questionID && userID){
-            answer.answerAskQuestion(content,questionID,userID,function(){
+            order.answerAskQuestion(content,questionID,userID,function(){
                 res.redirect('/signInSuccess');
             });
         }else{
@@ -75,7 +75,7 @@ function init(app,directory){
         let answerID = getAnswerID();
 
         if(score && answerID){
-            answer.setScoreByID(answerID,score,function(){
+            order.setScoreByID(answerID,score,function(){
                 res.redirect('/signInSuccess');
             });
         }else{

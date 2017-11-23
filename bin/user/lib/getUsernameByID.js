@@ -10,7 +10,7 @@ function getUsernameByID(ID,callback){
 
     saferman.sql(sql,results => {
         if(results.length){
-            executeCallback(results[0].Name);
+            executeCallback(results[0].username);
         }else{
             executeCallback(null);
         }

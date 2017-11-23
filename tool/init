@@ -31,19 +31,17 @@ CREATE TABLE RightsTable(
      Rights VARCHAR(50)
    );
 
-CREATE TABLE QUESTION(
+CREATE TABLE ITEM(
      ID INT AUTO_INCREMENT primary key,
      title VARCHAR(200) not null unique,
      description VARCHAR(1000) not null,
-     total_score INT,
+     price INT,
      authorID INT references USER(ID)
    );
 
-CREATE TABLE ANSWER(
+CREATE TABLE ORDER(
      ID INT AUTO_INCREMENT primary key,
-     questionID INT not null references QUESTION(ID),
+     itemID INT not null references QUESTION(ID),
      authorID INT not null references USER(ID),
-     answer VARCHAR(1000) not null,
-     score INT
    );
 eof

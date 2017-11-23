@@ -1,12 +1,12 @@
 module.exports = init;
 
 const user = require('../bin/user');
-const question = require('../bin/question');
-const answer = require('../bin/answer');
+const item = require('../bin/item');
+const order = require('../bin/order');
 
 function init(app,directory){
     app.get('/question/list',function(req,res){
-        question.getQuestionList(function(results){
+        item.getItemList(function(results){
             res.send(JSON.stringify(results));
         })
     });
@@ -18,7 +18,7 @@ function init(app,directory){
         let authorID;
         let userID = getUserID(req);
 
-        question.getQuestionDetail(userID,questionID,function(result){
+        item.getItemDetail(userID,questionID,function(result){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.total_score = result.total_score;
@@ -47,7 +47,7 @@ function init(app,directory){
         var title = req.body.title;
         var description = req.body.description;
 
-        question.publishAskQuestion(title,description,5,req.session.ID,function (){
+        item.publishItem(title,description,5,req.session.ID,function (){
             res.redirect('/signInSuccess');
         });
     });

@@ -66,6 +66,6 @@ function initRoutes(app,directory){
     require('./page')(app,directory);
     require('./sign')(app,directory);
     require('./user')(app,directory);
-    require('./question')(app,directory);
-    require('./answer')(app,directory);
+    require('./item')(app,directory);
+    require('./order')(app,directory);
 }

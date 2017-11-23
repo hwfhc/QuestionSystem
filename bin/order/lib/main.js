@@ -1,10 +1,10 @@
-exports.answerAskQuestion = require('./answerAskQuestion.js');
+exports.orderItem = require('./orderItem.js');
 
 exports.getAnswerAndUserIDbyID = require('./getAnswerAndUserIDbyID.js');
 
-exports.getAnswerDetail = require('./getAnswerDetail.js');
+exports.getOrderDetail = require('./getOrderDetail.js');
 
-exports.getAnswerList = require('./getAnswerList.js');
+exports.getOrderList = require('./getOrderList.js');
 
 exports.getScoreByUserID = require('./getScoreByUserID.js');
 
