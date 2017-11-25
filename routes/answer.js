@@ -31,7 +31,7 @@ function init(app,directory){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.answer_content = result.answer;
-            dataToSended.username = result.Name;
+            dataToSended.username = result.username;
 
             res.send(JSON.stringify(dataToSended));
         });

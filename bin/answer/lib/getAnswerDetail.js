@@ -5,11 +5,11 @@ const saferman = require('saferman');
 function getAnswerDetail(ID,callback){
 
     let sql = saferman.format(
-        `SELECT title,description,answer,username
+        `SELECT QUESTION.title,QUESTION.description,ANSWER.answer,USER.username
         FROM ANSWER,QUESTION,USER
         WHERE ANSWER.ID=? AND
               QUESTION.ID = ANSWER.questionID AND
-              USER.ID = ANSWER.authoID
+              USER.ID = ANSWER.authorID
         LIMIT 1`,
         [ID]);
 

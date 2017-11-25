@@ -22,7 +22,7 @@ function init(app,directory){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.total_score = result.total_score;
-            dataToSended.author_name = result.Name;
+            dataToSended.author_name = result.username;
 
             if(result.answer) dataToSended.answer = result.answer;
             else dataToSended.answer = 'You have not answer this question!';
