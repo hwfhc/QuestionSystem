@@ -10,7 +10,7 @@ function getAnswerList(questionID,callback){
         FROM ANSWER,USER
         WHERE questionID = ? AND
         ANSWER.authorID = USER.ID`,
-        [ID]);
+        [questionID]);
 
     saferman.sql(sql,function(result){
         executeCallback(result);

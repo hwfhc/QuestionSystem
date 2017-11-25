@@ -27,7 +27,7 @@ function publishAskQuestion(title,description,total_score,authorID,callback){
     function titleNotDuplicate(){
 
         let sql = saferman.format(
-            'INSERT INTO QUESTION (ID,title,description,total_score,authorID) VALUE (null,?,?,?,?,?)',
+            'INSERT INTO QUESTION (ID,title,description,total_score,authorID) VALUE (null,?,?,?,?)',
             [title,description,total_score,authorID]);
 
         saferman.sql(sql,executeCallback);
