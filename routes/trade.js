@@ -2,7 +2,7 @@ module.exports = init;
 
 const user = require('../bin/user');
 const item = require('../bin/item');
-const order = require('../bin/order');
+const trade = require('../bin/trade');
 
 function init(app,directory){
     app.get('/answer/list/:questionID',function(req,res){
@@ -12,7 +12,7 @@ function init(app,directory){
             return;
         }
 
-        order.getAnswerList(questionID,result => {
+        trade.getAnswerList(questionID,result => {
             res.send(JSON.stringify(result));
         });
     });
@@ -27,7 +27,7 @@ function init(app,directory){
         if(!answerID){
             return;
         }
-        order.getAnswerDetail(answerID,function(result){
+        trade.getAnswerDetail(answerID,function(result){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.answer_content = result.answer;
@@ -44,7 +44,7 @@ function init(app,directory){
         var userID = getUserID();
 
         if(answer && questionID && userID){
-            order.answerAskQuestion(content,questionID,userID,function(){
+            trade.answerAskQuestion(content,questionID,userID,function(){
                 res.redirect('/signInSuccess');
             });
         }else{
@@ -75,7 +75,7 @@ function init(app,directory){
         let answerID = getAnswerID();
 
         if(score && answerID){
-            order.setScoreByID(answerID,score,function(){
+            trade.setScoreByID(answerID,score,function(){
                 res.redirect('/signInSuccess');
             });
         }else{

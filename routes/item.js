@@ -2,7 +2,7 @@ module.exports = init;
 
 const user = require('../bin/user');
 const item = require('../bin/item');
-const order = require('../bin/order');
+const trade = require('../bin/trade');
 
 function init(app,directory){
     app.get('/question/list',function(req,res){

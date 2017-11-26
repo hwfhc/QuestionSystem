@@ -67,5 +67,5 @@ function initRoutes(app,directory){
     require('./sign')(app,directory);
     require('./user')(app,directory);
     require('./item')(app,directory);
-    require('./order')(app,directory);
+    require('./trade')(app,directory);
 }

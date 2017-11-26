@@ -61,15 +61,6 @@ function signUp(username,password,callback){
     }
 
     function NameNotDuplicate(){
-        let initRightsManagement = new Promise(function(resolve,reject){
-            let sqlString = saferman.format(
-                'INSERT INTO RightsTable (ID,Rights) VALUE (null,?)',
-                ['|publish|view']);
-            saferman.sql(sqlString,function(){
-                resolve();
-            });
-        });
-
         let initPersonalInformation = new Promise(function(resolve,reject){
             let sqlString = saferman.format(
                 `INSERT INTO USER (ID,username)
@@ -94,7 +85,6 @@ function signUp(username,password,callback){
 
 
         Promise.all([
-            initRightsManagement,
             initPersonalInformation,
             initShadowTable
         ]).then(executeCallback);
