@@ -3,43 +3,14 @@ module.exports = answerAskQuestion;
 const saferman = require('saferman');
 const user = require('../../user');
 
-function answerAskQuestion(answer,questionID,userID,callback){
+function answerAskQuestion(authorID,itemID,callback){
 
-    var sql = saferman.format(
-        `SELECT ID FROM ANSWER
-        WHERE questionID=? AND authorID=?`,
-        [questionID,userID]);
-
-    saferman.sql(sql,function(results){
-        if(results.length != 0){
-            var ID = results[0].ID;
-            haveAnswered();
-        }else{
-            haveNotAnswered();
-        }
-
-        function haveNotAnswered(){
-            user.getUsernameByID(userID,function(username){
-                if(username){
-                    var sqlString = saferman.format(
-                        `INSERT INTO
-                        ANSWER (ID,questionID,authorID,answer,score)
-                        VALUE (null,?,?,?,?)`,
-                        [questionID,userID,username,answer]);
-                    saferman.sql(sqlString,executeCallback);
-                }
-            });
-        }
-
-        function haveAnswered(){
-            var sqlString = saferman.format(
-                `UPDATE ANSWER SET answer=?,score=0
-                WHERE ID=?`,
-                [answer,ID]);
-            saferman.sql(sqlString,executeCallback);
-        }
-    })
-
+    var sqlString = saferman.format(
+        `INSERT INTO
+                        TRADE (ID,authorID,itemID)
+                        VALUE (null,?,?)`,
+        [authorID,itemID]);
+    saferman.sql(sqlString,executeCallback);
 
     function executeCallback(argumentOfCallback){
         if(callback!=undefined)

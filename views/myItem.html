@@ -23,9 +23,9 @@
                                 <th>商品名称</th>
                             </tr>
                         </table>
-                        <table class="dp-for" dp-data="{{ajax(`/item/list`)}}">
+                        <table class="dp-for" dp-data="{{ajax(`/item/my/list`)}}">
                             <tr>
-                                <td><a href="/itemDetail/{{item.ID}}">{{item.title}}</a></td>
+                                <td><span href="/itemDetail/{{item.ID}}">{{item.title}}</span></td>
                             </tr>
                         </table>
 

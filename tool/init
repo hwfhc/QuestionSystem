@@ -36,6 +36,7 @@ CREATE TABLE ITEM(
 
 CREATE TABLE TRADE(
      ID INT AUTO_INCREMENT primary key,
-     authorID INT not null references USER(ID)
+     authorID INT not null references USER(ID),
+     itemID INT not null references ITEM(ID)
    );
 eof

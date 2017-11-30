@@ -24,10 +24,10 @@
                                 <th>购买者</th>
                             </tr>
                         </table>
-                        <table class="dp-for" dp-data="{{ajax(`/answer/list/${getPathname(2)}/`)}}">
+                        <table class="dp-for" dp-data="{{ajax(`/trade/list/${getPathname(2)}/`)}}">
                             <tr>
                                 <td>
-                                    <a href="/answerDetail/{{item.ID}}">{{item.Username}}</a>
+                                    <span href="/answerDetail/{{item.ID}}">{{item.username}}</span>
                                 </td>
                             </tr>
                         </table>

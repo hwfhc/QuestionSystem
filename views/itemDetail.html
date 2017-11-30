@@ -11,29 +11,25 @@
 
             <left-nav class="dp-component"></left-nav>
 
-            <div id="right" class="dp-dynamic question" dp-name="question" dp-data="{{ajax(`/question/${getPathname(2)}/detail`)}}">
+            <div id="right" class="dp-dynamic question" dp-name="item" dp-data="{{ajax(`/item/${getPathname(2)}/detail`)}}">
                 <div class="information">
                     <div class="uiheader"></div>
                     <div class="container">
 
                         <div class="question">
                             <div class="header"></div>
-                            <div class="title">{{question.title}}</div>
-                            <pre class="description">{{question.description}}</pre>
+                            <div class="title">{{item.title}}</div>
+                            <pre class="description">{{item.description}}</pre>
                             <div class="line"></div>
-                            <div class="answer">{{question.answer}}</div>
                         </div>
 
                         <div class="message">
-                            <span>该题总分: </span><span>{{question.total_score}}</span><br><br>
-                            <span>你的得分: </span><span>{{question.score}}</span><br><br>
-
-                            <span>出题人：&nbsp; </span><span>{{question.author_name}}</span>
+                            <span>publisher：&nbsp; </span><span>{{item.author_name}}</span>
 
                             <div class="button_group">
                                 <!--here should be a dp-if-->
-                                <a href="/answerList/{{getPathname(2)}}">查看回答</a>
-                                <a href="/answerPage/{{getPathname(2)}}">回答题目</a>
+                                <a href="/orderList/{{getPathname(2)}}">view buy list</a>
+                                <a href="/orderPage/{{getPathname(2)}}">buy</a>
                             </div>
 
                         </div>

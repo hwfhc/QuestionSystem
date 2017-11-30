@@ -22,13 +22,13 @@ function init(app,directory){
         var password = req.body.password;
 
         sign.signUp(username,password,function(){
-            res.redirect('/signInSuccess');
+            res.redirect('/signPage');
         });
     });
 
     app.get('/sign/logOut', function(req, res){
         sign.logOut(req);
-        res.redirect('/');
+        res.redirect('/signPage');
     });
 
 }

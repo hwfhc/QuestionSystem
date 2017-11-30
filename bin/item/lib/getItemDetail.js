@@ -1,19 +1,16 @@
-module.exports = getQuestionDetail;
+module.exports = getItemDetail;
 
 const saferman = require('saferman');
 
-function getQuestionDetail(userID,questionID,callback){
+function getItemDetail(userID,itemID,callback){
 
     let sql = saferman.format(
-        `SELECT title,description,answer,total_score,username,score
-         FROM QUESTION,USER
-         LEFT JOIN ANSWER ON
-              ANSWER.authorID = ? AND
-              ANSWER.questionID = ?
-         WHERE QUESTION.ID=? AND
-               QUESTION.authorID = USER.ID
+        `SELECT title,description,username
+         FROM ITEM,USER
+         WHERE ITEM.ID=? AND
+               ITEM.authorID = USER.ID
          LIMIT 1`,
-        [questionID,userID,questionID]);
+        [itemID]);
 
 
     saferman.sql(sql,results => executeCallback(results[0]));

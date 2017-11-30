@@ -24,6 +24,10 @@ function init(app,directory){
         res.sendFile('publishPage.html');
     });
 
+    app.get('/myItem',function(req,res){
+        res.sendFile('myItem.html');
+    });
+
     app.get('/itemList',function(req,res){
         res.sendFile('itemList.html');
     });

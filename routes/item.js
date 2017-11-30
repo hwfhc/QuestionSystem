@@ -5,30 +5,31 @@ const item = require('../bin/item');
 const trade = require('../bin/trade');
 
 function init(app,directory){
-    app.get('/question/list',function(req,res){
+    app.get('/item/list',function(req,res){
         item.getItemList(function(results){
             res.send(JSON.stringify(results));
         })
     });
 
-    app.get('/question/:questionID/detail',function(req,res){
+    app.get('/item/my/list',function(req,res){
+        var userID = getUserID(req);
+
+        item.getItemListByUserID(userID,function(results){
+            res.send(JSON.stringify(results));
+        })
+    });
+
+    app.get('/item/:itemID/detail',function(req,res){
         let dataToSended = {};
 
-        let questionID = req.params['questionID'];
+        let itemID = req.params['itemID'];
         let authorID;
         let userID = getUserID(req);
 
-        item.getItemDetail(userID,questionID,function(result){
+        item.getItemDetail(userID,itemID,function(result){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
-            dataToSended.total_score = result.total_score;
-            dataToSended.author_name = result.Name;
-
-            if(result.answer) dataToSended.answer = result.answer;
-            else dataToSended.answer = 'You have not answer this question!';
-
-            if(result.score) dataToSended.score = result.score;
-            else dataToSended.score = 0;
+            dataToSended.author_name = result.username;
 
             res.send(JSON.stringify(dataToSended));
         });

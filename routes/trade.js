@@ -5,14 +5,14 @@ const item = require('../bin/item');
 const trade = require('../bin/trade');
 
 function init(app,directory){
-    app.get('/answer/list/:questionID',function(req,res){
-        let questionID = req.params['questionID'];
+    app.get('/trade/list/:itemID',function(req,res){
+        let itemID = req.params['itemID'];
 
-        if(!questionID){
+        if(!itemID){
             return;
         }
 
-        trade.getAnswerList(questionID,result => {
+        trade.getTradeList(itemID,result => {
             res.send(JSON.stringify(result));
         });
     });
@@ -31,20 +31,19 @@ function init(app,directory){
             dataToSended.title = result.title;
             dataToSended.description = result.description;
             dataToSended.answer_content = result.answer;
-            dataToSended.username = result.Name;
+            dataToSended.username = result.username;
 
             res.send(JSON.stringify(dataToSended));
         });
 
     });
 
-    app.post('/answer/:questionID/publish', function(req, res){
-        var content = getAnswer();
-        var questionID = getQuestionID();
+    app.post('/trade/:itemID/publish', function(req, res){
+        var itemID = getItemID();
         var userID = getUserID();
 
-        if(answer && questionID && userID){
-            trade.answerAskQuestion(content,questionID,userID,function(){
+        if(itemID && userID){
+            trade.orderItem(userID,itemID,function(){
                 res.redirect('/signInSuccess');
             });
         }else{
@@ -52,12 +51,8 @@ function init(app,directory){
         }
 
 
-        function getAnswer(){
-            return req.body.answer;
-        }
-
-        function getQuestionID(){
-            return req.params['questionID'];
+        function getItemID(){
+            return req.params['itemID'];
         }
 
         function getUserID(){
