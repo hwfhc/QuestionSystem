@@ -6,11 +6,11 @@ function getAnswerList(questionID,callback){
 
 
     let sql = saferman.format(
-        `SELECT ID,username
+        `SELECT USER.ID,USER.username
         FROM ANSWER,USER
-        WHERE questionID = ? AND
+        WHERE ANSWER.questionID = ? AND
         ANSWER.authorID = USER.ID`,
-        [ID]);
+        [questionID]);
 
     saferman.sql(sql,function(result){
         executeCallback(result);

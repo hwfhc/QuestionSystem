@@ -28,7 +28,7 @@ function init(app,directory){
 
     app.get('/sign/logOut', function(req, res){
         sign.logOut(req);
-        res.redirect('/');
+        res.redirect('/signPage');
     });
 
 }

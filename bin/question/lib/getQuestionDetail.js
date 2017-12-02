@@ -13,7 +13,7 @@ function getQuestionDetail(userID,questionID,callback){
          WHERE QUESTION.ID=? AND
                QUESTION.authorID = USER.ID
          LIMIT 1`,
-        [questionID,userID,questionID]);
+        [userID,questionID,questionID]);
 
 
     saferman.sql(sql,results => executeCallback(results[0]));

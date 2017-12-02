@@ -25,7 +25,7 @@ function answerAskQuestion(answer,questionID,userID,callback){
                         `INSERT INTO
                         ANSWER (ID,questionID,authorID,answer,score)
                         VALUE (null,?,?,?,?)`,
-                        [questionID,userID,username,answer]);
+                        [questionID,userID,answer,5]);
                     saferman.sql(sqlString,executeCallback);
                 }
             });

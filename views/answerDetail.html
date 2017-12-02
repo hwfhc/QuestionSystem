@@ -30,18 +30,21 @@
                         <div class="score">
                             <div class="total_score" id="total_socre">该题总分 &nbsp; 5</div>
 
-                            <form method="post" action="/answerDetail/setScore">
-                                <div class="your_score">您的给分 &nbsp;
-                                    <input type="text" name="score" required="required">
-                                </div>
+                            <div class="your_score">
+                                <span>答题人：&nbsp; </span>
+                                <span>{{answer.username}}</span>
+                            </div>
 
-                                <div class="your_score">
-                                    <span>答题人：&nbsp; </span>
-                                    <span>{{answer.username}}</span>
+
+
+                            <!--<form method="post" action="/answerDetail/setScore">
+                                <div class="your_score">您的给分 &nbsp;
+                                <input type="text" name="score" required="required">
                                 </div>
 
                                 <div class="button_container"><button type="submit">提交</button></div>
-                            </form>
+                                </form>
+                            -->
 
                         </div>
 
