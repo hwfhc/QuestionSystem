@@ -3,6 +3,7 @@ const fs = require('fs');
 const {directory,database_user,database_password} = JSON.parse(fs.readFileSync(`${__dirname}/../config.json`));
 const app = require('express')();
 const saferman = require('saferman')(database_password);
+const sign = require('./sign');
 
 initMiddleware(app);
 initRoutes(app,directory);

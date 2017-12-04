@@ -3,23 +3,23 @@ const expect = require('chai').expect;
 const directory = '../../';
 
 //module load area
-const sign_module = require(directory + './sign_module');
+const sign = require(directory + './sign');
 const saferman = require('saferman')('879574764');
 
 describe('getIdByUsernameAndPassword',function(){
 
     before(function(done){
-        var deletePersonalInformation = new Promise(function(resolve,reject){
-            saferman.sql('DELETE FROM PersonalInformation',function(){
-                saferman.sql('TRUNCATE PersonalInformation',function(){
+        var deleteUSER = new Promise(function(resolve,reject){
+            saferman.sql('DELETE FROM USER',function(){
+                saferman.sql('TRUNCATE USER',function(){
                     resolve();
                 });
             });
         });
 
-        var deleteShadowTable = new Promise(function(resolve,reject){
-            saferman.sql('DELETE FROM ShadowTable',function(){
-                saferman.sql('TRUNCATE ShadowTable',function(){
+        var deleteSHADOW = new Promise(function(resolve,reject){
+            saferman.sql('DELETE FROM SHADOW',function(){
+                saferman.sql('TRUNCATE SHADOW',function(){
                     resolve();
                 });
             });
@@ -27,39 +27,39 @@ describe('getIdByUsernameAndPassword',function(){
 
 
         Promise.all([
-            deletePersonalInformation,
-            deleteShadowTable
+            deleteUSER,
+            deleteSHADOW
         ]).then(()=>{
-            var insertShadowTable1 = new Promise(function(resolve,reject){
-                saferman.sql('INSERT INTO ShadowTable (ID,Shadow) VALUE (1,"123")',function(){
+            var insertSHADOW1 = new Promise(function(resolve,reject){
+                saferman.sql('INSERT INTO SHADOW (ID,shadow) VALUE (1,"123")',function(){
                     resolve();
                 });
             });
 
-            var insertPersonalInformation1 = new Promise(function(resolve,reject){
-                saferman.sql('INSERT INTO PersonalInformation (ID,Name) VALUE (1,"abc")',function(){
+            var insertUSER1 = new Promise(function(resolve,reject){
+                saferman.sql('INSERT INTO USER (ID,username) VALUE (1,"abc")',function(){
                     resolve();
                 });
             });
 
-            var insertShadowTable2 = new Promise(function(resolve,reject){
-                saferman.sql('INSERT INTO ShadowTable (ID,Shadow) VALUE (2,"abc")',function(){
+            var insertSHADOW2 = new Promise(function(resolve,reject){
+                saferman.sql('INSERT INTO SHADOW (ID,shadow) VALUE (2,"abc")',function(){
                     resolve();
                 });
             });
 
-            var insertPersonalInformation2 = new Promise(function(resolve,reject){
-                saferman.sql('INSERT INTO PersonalInformation (ID,Name) VALUE (2,"123")',function(){
+            var insertUSER2 = new Promise(function(resolve,reject){
+                saferman.sql('INSERT INTO USER (ID,username) VALUE (2,"123")',function(){
                     resolve();
                 });
             });
 
 
             Promise.all([
-                insertPersonalInformation1,
-                insertShadowTable1,
-                insertPersonalInformation2,
-                insertShadowTable2
+                insertUSER1,
+                insertSHADOW1,
+                insertUSER2,
+                insertSHADOW2
             ]).then(function(){
                 done();
             });
@@ -67,7 +67,7 @@ describe('getIdByUsernameAndPassword',function(){
     });
 
     it('user1,correct password and username',function(done){
-        sign_module.getIdByUsernameAndPassword('abc',"123",function(result){
+        sign.getIdByUsernameAndPassword('abc',"123",function(result){
             expect(result).to.be.a('number');
             expect(result).to.be.equal(1);
 
@@ -76,7 +76,7 @@ describe('getIdByUsernameAndPassword',function(){
     });
 
     it('user1,incorrect password and username',function(done){
-        sign_module.getIdByUsernameAndPassword('abc',"0",function(result){
+        sign.getIdByUsernameAndPassword('abc',"0",function(result){
             expect(result).to.be.equal(null);
 
             done();
@@ -84,7 +84,7 @@ describe('getIdByUsernameAndPassword',function(){
     });
 
     it('user2,correct password and username',function(done){
-        sign_module.getIdByUsernameAndPassword('123',"abc",function(result){
+        sign.getIdByUsernameAndPassword('123',"abc",function(result){
             expect(result).to.be.a('number');
             expect(result).to.be.equal(2);
 

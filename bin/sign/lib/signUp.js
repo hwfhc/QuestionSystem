@@ -4,7 +4,7 @@ const saferman = require('saferman');
 
 function signUp(username,password,callback){
 
-    if(!checkUsername() || !checkPassword()){
+    if(!checkUsername(username) || !checkPassword(password)){
         executeCallback();
         return;
     }
@@ -15,62 +15,28 @@ function signUp(username,password,callback){
             WHERE username=?`,
             [username]);
 
+        var isDuplicate;
+
         saferman.sql(sqlString,function(results){
-            //console.log('results is: '+results.length);
-            if(results.length == 0){
-                //console.log('not duplicate');
-                resolve();
+            if(results.length != 0){
+                isDuplicate = true;
+
+                resolve(isDuplicate);
             }else{
-                //console.log('duplicate');
-                reject();
+                isDuplicate = false;
+
+                resolve(isDuplicate);
             }
         });
-    }).then(NameNotDuplicate,NameDuplicate);
-
-
-
-    function checkUsername(){
-        let regexpForUsername = new RegExp(/[^\u4e00-\u9fa5\w]/);
-        let isUsernameLeagal = ( username != '' && regexpForUsername.test(username) != true);
-
-        if(isUsernameLeagal){
-            //console.log('username is leagal');
-            return true;
-        }else{
-            //console.log('username is not leagal');
-            return false;
-        }
-    }
-
-    function checkPassword(){
-        let regexpForPassword = new RegExp(/[^\w]/);
-        let isPasswordLeagal = ( password != '' && regexpForPassword.test(password) != true);
-
-        if(isPasswordLeagal){
-            //console.log('password is leagal');
-            return true;
-        }else{
-            //console.log('password is not leagal');
-            return false;
-        }
-    }
-
-    function executeCallback(argumentOfCallback){
-        if(callback!=undefined)
-            callback(argumentOfCallback);
-    }
+    }).then(isDuplicate => {
+        if(isDuplicate)
+            NameDuplicate();
+        else
+            NameNotDuplicate();
+    });
 
     function NameNotDuplicate(){
-        let initRightsManagement = new Promise(function(resolve,reject){
-            let sqlString = saferman.format(
-                'INSERT INTO RightsTable (ID,Rights) VALUE (null,?)',
-                ['|publish|view']);
-            saferman.sql(sqlString,function(){
-                resolve();
-            });
-        });
-
-        let initPersonalInformation = new Promise(function(resolve,reject){
+        var insertUser = new Promise(function(resolve,reject){
             let sqlString = saferman.format(
                 `INSERT INTO USER (ID,username)
                 VALUE (null,?)`,
@@ -81,7 +47,7 @@ function signUp(username,password,callback){
             });
         });
 
-        let initShadowTable = new Promise(function(resolve,reject){
+        var insertShadow = new Promise(function(resolve,reject){
             let sqlString = saferman.format(
                 `INSERT INTO SHADOW (ID,shadow)
                 VALUE (null,?)`,
@@ -90,18 +56,46 @@ function signUp(username,password,callback){
             saferman.sql(sqlString,function(){
                 resolve();
             });
+
         });
 
+        Promise.all([insertUser,insertShadow])
+            .then(executeCallback);
 
-        Promise.all([
-            initRightsManagement,
-            initPersonalInformation,
-            initShadowTable
-        ]).then(executeCallback);
     };
 
     function NameDuplicate(){
         executeCallback()
     };
 
+    function executeCallback(argumentOfCallback){
+        if(callback!=undefined)
+            callback(argumentOfCallback);
+    }
+}
+
+function checkUsername(username){
+    let regexpForUsername = new RegExp(/[^\u4e00-\u9fa5\w]/);
+    let isUsernameLeagal = (username != '' && regexpForUsername.test(username) != true);
+
+    if(isUsernameLeagal){
+        //console.log('username is leagal');
+        return true;
+    }else{
+        //console.log('username is not leagal');
+        return false;
+    }
+}
+
+function checkPassword(password){
+    let regexpForPassword = new RegExp(/[^\w]/);
+    let isPasswordLeagal =(password != '' && regexpForPassword.test(password) != true);
+
+    if(isPasswordLeagal){
+        //console.log('password is leagal');
+        return true;
+    }else{
+        //console.log('password is not leagal');
+        return false;
+    }
 }
