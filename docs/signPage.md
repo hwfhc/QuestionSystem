@@ -21,7 +21,7 @@
 #### 按钮:
 + username:输入用户名
 + password:输入密码
-+ GO!:登录注册页面
++ Log in:登录注册页面
 + forget password:找回密码
 + sign up：注册
 <img src="登陆界面+.jpg"></img>
