@@ -10,10 +10,11 @@ let init = module.exports = function init(directory){
 };
 
 init.console = function(message){
-    stdout.log(message)
+    let meta = '[' + new Date() + '] ' + '\n';
+    stdout.log(meta + message + '\n');
 }
 
 init.error = function(message){
-    errout.log(message)
+    let meta = '[' + new Date() + '] ' + '\n';
+    stdout.log(meta + message + '\n');
 }
-
