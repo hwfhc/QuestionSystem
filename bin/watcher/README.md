@@ -1,10 +1,20 @@
-## Rights_management
+## Watcher
 ---
-**isAvailable:**  
-查找某用户是否拥有某个权限  
+**传入参数**
+directory
+
+第一次调用传入日志文件存储根目录参数，再次调用不需要传入
+
+**stdout:**
+输出网站访问日志
+
 
 参数：  
-+ ID：查找用户的ID
-+ right：查找的权限
-+ callback：回调函数，sql查询完毕后会调用此函数，并传入参数  
-  + bool:true(该用户有此权限),false(该用户无此权限)
++ message：网站访问信息
+
+**errout:**
+输出网站访问日志
+
+
+参数：  
++ message：错误输出信息
