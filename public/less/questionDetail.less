@@ -43,65 +43,63 @@ a{
 }
 
 #left{
-  min-height: 100%;
-  min-width: 300px;
-  width: 25%;
-  height: 100%;
-  background-color: @base-color;
-  color: white;
+    min-height: 100%;
+    min-width: 300px;
+    width: 25%;
+    height: 100%;
+    background-color: @base-color;
+    color: white;
 
-  .item{
-    a{
-      color:white;
+    .item{
+        a{
+            color:white;
+        }
+
+        display: block;
+        height: 50px;
+        width: 200px;
+        margin: 5px 20px;
+        line-height: 50px;
+
+        list-style-type: none;
+        font-size: 16px;
+        text-align: center;
     }
 
-    display: block;
-    height: 50px;
-    width: 200px;
-    margin: 5px 20px;
-    line-height: 50px;
-
-    list-style-type: none;
-    font-size: 16px;
-    text-align: center;
-  }
-
-  .title{
-    margin: 80px 5% 10px 5%;
-    height:100px;
-    width: 250px;
-    font-size: 25px;
-    font-weight: bold;
-    line-height: 100px;
-    overflow: hidden;
-    border-bottom: 1px solid white;
-  }
+    .title{
+        margin: 80px 5% 10px 5%;
+        height:100px;
+        width: 250px;
+        font-size: 25px;
+        font-weight: bold;
+        line-height: 100px;
+        overflow: hidden;
+        border-bottom: 1px solid white;
+    }
 }
 
 
 #right{
-  min-width: 600px;
-  width: 74%;
+    width: 100%;
 
-  .information{
-    margin: 4%;
-    width: 90%;
+    .information{
+        width: 100%;
 
-    box-shadow:0 0.5px 10px grey;
-    overflow: hidden;
+        box-shadow:0 0.5px 10px grey;
+        overflow: hidden;
 
-    .uiheader{
-      background-color: @base-color;
-      width: auto;
-      height: 20px;
+        .uiheader{
+            background-color: @base-color;
+            width: auto;
+            height: 20px;
+        }
+
+        .container {
+            min-height: 300px;
+            margin: 30px 20px 0 30px;
+        }
     }
-
-    .container {
-      min-height: 300px;
-      margin: 30px 20px 0 30px;
-    }
-  ｝
-｝
+}
 
 #right{
   .information{

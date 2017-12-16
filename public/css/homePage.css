@@ -62,12 +62,11 @@ html {
   border-bottom: 1px solid white;
 }
 #right {
-  min-width: 600px;
-  width: 74%;
+  min-width: 100%;
+  width: 100%;
 }
 #userimformation {
-  margin: 4%;
-  width: 90%;
+  width: 100%;
   box-shadow: 0 0.5px 10px grey;
   overflow: hidden;
 }

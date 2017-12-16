@@ -64,12 +64,10 @@ a {
   border-bottom: 1px solid white;
 }
 #right {
-  min-width: 600px;
-  width: 74%;
+  width: 100%;
 }
 #right .information {
-  margin: 4%;
-  width: 90%;
+  width: 100%;
   box-shadow: 0 0.5px 10px grey;
   overflow: hidden;
 }
@@ -100,8 +98,8 @@ a {
 }
 #right .information .question .description {
   margin: 20px;
-  font-size:20px;
-  width:100%;
+  font-size: 20px;
+  width: 100%;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
@@ -112,7 +110,7 @@ a {
   margin: 20px;
 }
 #right .information .message {
-  width: 100%;
+  width: 90%;
   padding: 20px 0;
   margin: auto;
   border-top: 2px solid #dedede;

@@ -62,8 +62,8 @@ html {
   border-bottom: 1px solid white;
 }
 #right {
-  min-width: 100%;
-  width: 100%;
+  min-width: 600px;
+  width: 74%;
 }
 #userimformation {
   width: 100%;
@@ -76,26 +76,26 @@ html {
   height: 20px;
 }
 #userimformation .uimain {
-  min-height: 500px;
+  display: flex;
 }
-#userimformation .uimain table {
-  border-collapse: collapse;
-  width: 100%;
+#userimformation .uileft {
+  min-height: 600px;
+  width: 20%;
+  padding: 0 20px;
+  background-color: #f6f6f6;
 }
-#userimformation .uimain th,
-#userimformation .uimain td {
-  text-align: left;
-  padding-left: 40px;
-  border-bottom: 1px solid black;
+#userimformation .uileft .face {
+  margin-top: 60px;
+  width: auto;
+  height: 120px;
 }
-#userimformation .uimain th a,
-#userimformation .uimain td a {
-  text-decoration: none;
-  color: black;
+#userimformation .uileft .username {
+  height: 30px;
+  width: auto;
+  font-color: black;
+  line-height: 30px;
+  font-size: 14px;
 }
-#userimformation .uimain th {
-  height: 50px;
-}
-#userimformation .uimain td {
-  height: 40px;
+#userimformation .uiright {
+  width: 80%;
 }
