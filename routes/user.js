@@ -20,7 +20,12 @@ function init(app,directory){
         });*/
     });
 
+    app.get('/user/isRoot',function(req,res){
+        res.send(req.session.ID === 1);
 
-
+        /*user.getUsernameByID(userID,function(result){
+            res.send(result);
+        });*/
+    });
 }
 

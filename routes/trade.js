@@ -38,7 +38,7 @@ function init(app,directory){
 
     });
 
-    app.post('/trade/:itemID/publish', function(req, res){
+    app.get('/trade/:itemID/publish', function(req, res){
         var itemID = getItemID();
         var userID = getUserID();
 

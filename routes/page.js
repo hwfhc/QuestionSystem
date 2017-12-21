@@ -21,7 +21,10 @@ function init(app,directory){
 
 
     app.get('/publishPage',function(req,res){
-        res.sendFile('publishPage.html');
+        if(req.session.ID != 1)
+            res.redirect('/homePage');
+        else
+            res.sendFile('publishPage.html');
     });
 
     app.get('/myItem',function(req,res){
@@ -53,7 +56,10 @@ function init(app,directory){
     });
 
     app.get('/orderList/:itemID',function(req,res){
-        res.sendFile('orderList.html');
+        if(req.session.ID != 1)
+            res.redirect('/homePage');
+        else
+            res.sendFile('orderList.html');
     });
 
     app.get('/signInSuccess',function(req,res){

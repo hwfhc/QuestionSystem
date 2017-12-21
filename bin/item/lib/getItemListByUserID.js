@@ -5,7 +5,7 @@ const saferman = require('saferman');
 function getQuestionList(userID,callback){
 
     let sql = saferman.format(
-        `SELECT ITEM.title
+        `SELECT ITEM.ID,ITEM.title
          FROM ITEM,TRADE
          WHERE ITEM.ID=TRADE.itemID AND
                TRADE.authorID=?`,

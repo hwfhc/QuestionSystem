@@ -43,7 +43,7 @@ function init(app,directory){
 
     });
 
-    app.post('/question/publish',function(req,res){
+    app.post('/item/publish',function(req,res){
         var userID = getUserID(req);
         var title = req.body.title;
         var description = req.body.description;
