@@ -18,7 +18,8 @@ USE QuestionSystem;
 
 CREATE TABLE USER(
      ID INT AUTO_INCREMENT primary key,
-     username VARCHAR(20) not null unique
+     username VARCHAR(20) not null unique,
+     money int not null
    );
 
 CREATE TABLE SHADOW(

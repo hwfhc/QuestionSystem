@@ -4,7 +4,6 @@ const sign = require('../bin/sign');
 
 function init(app,directory){
     app.get('/signPage',function(req,res){
-        console.log('asdf');
         sign.logOut(req);
         res.sendFile('signPage.html');
     });
@@ -22,7 +21,7 @@ function init(app,directory){
 
     app.get('/publishPage',function(req,res){
         if(req.session.ID != 1)
-            res.redirect('/homePage');
+            res.redirect('/signInFail');
         else
             res.sendFile('publishPage.html');
     });
@@ -57,7 +56,7 @@ function init(app,directory){
 
     app.get('/orderList/:itemID',function(req,res){
         if(req.session.ID != 1)
-            res.redirect('/homePage');
+            res.redirect('/signInFail');
         else
             res.sendFile('orderList.html');
     });

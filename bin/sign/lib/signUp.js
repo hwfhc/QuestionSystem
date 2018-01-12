@@ -63,8 +63,8 @@ function signUp(username,password,callback){
     function NameNotDuplicate(){
         let initPersonalInformation = new Promise(function(resolve,reject){
             let sqlString = saferman.format(
-                `INSERT INTO USER (ID,username)
-                VALUE (null,?)`,
+                `INSERT INTO USER (ID,username,money)
+                VALUE (null,?,100)`,
                 [username]);
 
             saferman.sql(sqlString,function(){
